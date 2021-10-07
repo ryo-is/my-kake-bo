@@ -14,7 +14,10 @@ const Home: NextPage = () => {
 
       <main className="flex justify-center items-center h-full w-full flex-col">
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to{' '}
+          <a href="https://nextjs.org" className="bg-red-200">
+            Next.js!
+          </a>
         </h1>
 
         <p className={styles.description}>
