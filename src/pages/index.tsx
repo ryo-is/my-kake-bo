@@ -1,9 +1,21 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useEffect } from 'react';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
+  useEffect(() => {
+    fetch('/mock/user')
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((body) => {
+        console.log(body);
+      });
+  }, []);
+
   return (
     <div className="min-h-screen flex justify-center items-center h-screen flex-col">
       <Head>
