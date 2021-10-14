@@ -1,11 +1,4 @@
-import { rest } from 'msw';
-import { getUser } from './mockResponse/user';
+import { getAuthResolvers } from './resolvers/auth';
+import { getUserResolvers } from './resolvers/user';
 
-export const handlers = [
-  rest.post('/mock/login', (req, res, ctx) => {
-    return res(ctx.status(200));
-  }),
-  rest.get('/mock/user', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(getUser()));
-  }),
-];
+export const handlers = [...getAuthResolvers(), ...getUserResolvers()];
