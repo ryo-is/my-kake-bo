@@ -27,7 +27,7 @@ export const CalendarDays = () => {
     <div className="flex flex-wrap border-r border-gray-400">
       {days.map((n, i) => (
         <CalendarDayBox key={`day-${n}-${i}`}>
-          <div>{n}</div>
+          <div className="py-4">{n}</div>
         </CalendarDayBox>
       ))}
     </div>
