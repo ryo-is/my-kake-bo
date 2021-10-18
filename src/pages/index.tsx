@@ -5,7 +5,7 @@ import { Analytics } from '@templates/Analytics';
 
 const Index: NextPage = () => {
   return (
-    <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen">
+    <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen bg-gray-100">
       <Calendar />
       <Detail />
       <Analytics />

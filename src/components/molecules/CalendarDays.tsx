@@ -2,14 +2,18 @@ import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { CalendarDayBox } from '@atoms/CalendarDayBox';
 
-export const CalendarDays = () => {
+type Props = {
+  month: dayjs.Dayjs;
+};
+
+export const CalendarDays = (props: Props) => {
+  const { month } = props;
   const [days, setDays] = useState<Array<number | null>>([]);
 
   useEffect(() => {
-    const now = dayjs();
-    const nowMonthDays = now.endOf('M').get('date');
-    const startMonthDayOfWeek = now.startOf('M').get('day');
-    const endMonthDayOfWeek = now.endOf('M').get('day');
+    const nowMonthDays = month.endOf('M').get('date');
+    const startMonthDayOfWeek = month.startOf('M').get('day');
+    const endMonthDayOfWeek = month.endOf('M').get('day');
     const dateValues = [];
     for (let i = 0; i < startMonthDayOfWeek; i++) {
       dateValues.push(null);
@@ -21,7 +25,7 @@ export const CalendarDays = () => {
       dateValues.push(null);
     }
     setDays([...dateValues]);
-  }, []);
+  }, [month]);
 
   return (
     <div className="flex flex-wrap border-r border-gray-400">
