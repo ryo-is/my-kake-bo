@@ -6,9 +6,11 @@ import { Analytics } from '@templates/Analytics';
 const Index: NextPage = () => {
   return (
     <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen bg-gray-100">
-      <Calendar />
+      <div className="w-2/3 p-6">
+        <Calendar />
+        <Analytics />
+      </div>
       <Detail />
-      <Analytics />
     </div>
   );
 };
