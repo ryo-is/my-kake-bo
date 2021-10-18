@@ -11,6 +11,10 @@ module.exports = {
           "'Avenir Next','Noto Sans JP', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
         ],
       },
+      width: {
+        icon: '24px',
+        '1/7': '14.285%',
+      },
     },
   },
   variants: {

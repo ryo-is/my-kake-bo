@@ -1,19 +1,16 @@
 import type { NextPage } from 'next';
-import { useUser } from '@hooks/useUser';
+import { Calendar } from '@templates/Calendar';
+import { Detail } from '@templates/Detail';
+import { Analytics } from '@templates/Analytics';
 
-const Home: NextPage = () => {
-  const { user } = useUser();
-
+const Index: NextPage = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center h-screen flex-col">
-      {user && (
-        <>
-          <strong>{user.name}</strong>
-          <div>{user.permission}</div>
-        </>
-      )}
+    <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen">
+      <Calendar />
+      <Detail />
+      <Analytics />
     </div>
   );
 };
 
-export default Home;
+export default Index;
