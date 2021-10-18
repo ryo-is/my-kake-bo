@@ -16,7 +16,7 @@ export const CalendarHeader = (props: Props) => {
         <ChevronLeftIcon />
       </div>
       <div className="flex-1 text-center font-bold">
-        {dayjs(month).get('y')}年 {dayjs(month).get('M') + 1}月
+        {dayjs(month).get('y')} / {dayjs(month).get('M') + 1}
       </div>
       <div className="cursor-pointer w-icon" onClick={next}>
         <ChevronRightIcon />
