@@ -1,24 +1,21 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import { IUseDate } from '@hooks/useDate';
 import dayjs from 'dayjs';
 
-type Props = {
-  month: dayjs.Dayjs;
-  next: () => void;
-  prev: () => void;
-};
-
-export const CalendarHeader = (props: Props) => {
-  const { month, next, prev } = props;
-
+export const CalendarHeader = ({
+  selectDate,
+  prevMonth,
+  nextMonth,
+}: IUseDate) => {
   return (
     <div className="border border-gray-400 flex py-2 px-4">
-      <div className="cursor-pointer w-icon" onClick={prev}>
+      <div className="cursor-pointer w-icon" onClick={prevMonth}>
         <ChevronLeftIcon />
       </div>
       <div className="flex-1 text-center font-bold">
-        {dayjs(month).get('y')} / {dayjs(month).get('M') + 1}
+        {dayjs(selectDate).get('y')} / {dayjs(selectDate).get('M') + 1}
       </div>
-      <div className="cursor-pointer w-icon" onClick={next}>
+      <div className="cursor-pointer w-icon" onClick={nextMonth}>
         <ChevronRightIcon />
       </div>
     </div>

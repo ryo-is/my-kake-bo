@@ -1,16 +1,22 @@
-import { useDate } from '@hooks/useDate';
+import { useDate, IUseDate } from '@hooks/useDate';
 import { CalendarHeader } from '@molecules/CalendarHeader';
 import { CalendarDayOfWeek } from '@molecules/CalendarDayOfWeek';
 import { CalendarDays } from '@molecules/CalendarDays';
 
-export const CalendarContent = () => {
-  const { selectDate, prevMonth, nextMonth } = useDate();
-
+export const CalendarContent = ({
+  selectDate,
+  prevMonth,
+  nextMonth,
+}: IUseDate) => {
   return (
     <>
-      <CalendarHeader month={selectDate} prev={prevMonth} next={nextMonth} />
+      <CalendarHeader
+        selectDate={selectDate}
+        prevMonth={prevMonth}
+        nextMonth={nextMonth}
+      />
       <CalendarDayOfWeek />
-      <CalendarDays month={selectDate} />
+      <CalendarDays selectDate={selectDate} />
     </>
   );
 };

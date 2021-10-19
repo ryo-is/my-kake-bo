@@ -4,16 +4,15 @@ import dayjs from 'dayjs';
 import { CalendarDayBox } from '@atoms/CalendarDayBox';
 
 type Props = {
-  month: dayjs.Dayjs;
+  selectDate: dayjs.Dayjs;
 };
 
-export const CalendarDays = (props: Props) => {
-  const { month } = props;
+export const CalendarDays = ({ selectDate }: Props) => {
   const [days, setDays] = useState<Array<dayjs.Dayjs>>([]);
 
   useEffect(() => {
-    const startMonthDay = month.startOf('M');
-    const endMonthDay = month.endOf('M');
+    const startMonthDay = selectDate.startOf('M');
+    const endMonthDay = selectDate.endOf('M');
     const startMonthDayOfWeek = startMonthDay.get('day');
     const endMonthDayOfWeek = endMonthDay.get('day');
     const nowMonthDayCount = endMonthDay.get('date');
@@ -28,7 +27,7 @@ export const CalendarDays = (props: Props) => {
       dateValues.push(endMonthDay.add(i, 'd'));
     }
     setDays([...dateValues]);
-  }, [month]);
+  }, [selectDate]);
 
   return (
     <div className="flex flex-wrap border-r border-gray-400">
@@ -37,7 +36,8 @@ export const CalendarDays = (props: Props) => {
           <div
             className={clsx(
               'py-6',
-              day.format('MM') !== dayjs(month).format('MM') && 'opacity-40'
+              day.format('MM') !== dayjs(selectDate).format('MM') &&
+                'opacity-40'
             )}
           >
             {day.format('D')}

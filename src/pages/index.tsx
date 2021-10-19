@@ -1,13 +1,20 @@
 import type { NextPage } from 'next';
+import { useDate } from '@hooks/useDate';
 import { Calendar } from '@templates/Calendar';
 import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';
 
 const Index: NextPage = () => {
+  const { selectDate, prevMonth, nextMonth } = useDate();
+
   return (
     <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen bg-gray-100">
       <div className="w-2/3 py-6 pl-6 pr-0">
-        <Calendar />
+        <Calendar
+          selectDate={selectDate}
+          prevMonth={prevMonth}
+          nextMonth={nextMonth}
+        />
         <Analytics />
       </div>
       <Detail />
