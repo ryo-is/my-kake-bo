@@ -37,7 +37,7 @@ export const CalendarDays = (props: Props) => {
           <div
             className={clsx(
               'py-6',
-              day.format('MM') !== dayjs().format('MM') && 'opacity-40'
+              day.format('MM') !== dayjs(month).format('MM') && 'opacity-40'
             )}
           >
             {day.format('D')}

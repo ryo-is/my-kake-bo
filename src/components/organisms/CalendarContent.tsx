@@ -1,29 +1,16 @@
-import { useState } from 'react';
-import dayjs from 'dayjs';
+import { useDate } from '@hooks/useDate';
 import { CalendarHeader } from '@molecules/CalendarHeader';
 import { CalendarDayOfWeek } from '@molecules/CalendarDayOfWeek';
 import { CalendarDays } from '@molecules/CalendarDays';
 
 export const CalendarContent = () => {
-  const [selectedMonth, setSelectedMonth] = useState(dayjs());
-
-  const handleNextMonth = () => {
-    setSelectedMonth((prev) => dayjs(prev).add(1, 'M'));
-  };
-
-  const handlePrevMonth = () => {
-    setSelectedMonth((prev) => dayjs(prev).subtract(1, 'M'));
-  };
+  const { selectDate, prevMonth, nextMonth } = useDate();
 
   return (
     <>
-      <CalendarHeader
-        month={selectedMonth}
-        next={handleNextMonth}
-        prev={handlePrevMonth}
-      />
+      <CalendarHeader month={selectDate} prev={prevMonth} next={nextMonth} />
       <CalendarDayOfWeek />
-      <CalendarDays month={selectedMonth} />
+      <CalendarDays month={selectDate} />
     </>
   );
 };
