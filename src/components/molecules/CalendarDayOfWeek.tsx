@@ -4,25 +4,25 @@ export const CalendarDayOfWeek = () => {
   return (
     <div className="flex border-r border-gray-400">
       <CalendarDayBox>
-        <div className="text-red-500">Sun</div>
+        <div className="text-red-500 p-2">Sun</div>
       </CalendarDayBox>
       <CalendarDayBox>
-        <div>Mon</div>
+        <div className="p-2">Mon</div>
       </CalendarDayBox>
       <CalendarDayBox>
-        <div>Tue</div>
+        <div className="p-2">Tue</div>
       </CalendarDayBox>
       <CalendarDayBox>
-        <div>Wed</div>
+        <div className="p-2">Wed</div>
       </CalendarDayBox>
       <CalendarDayBox>
-        <div>Thu</div>
+        <div className="p-2">Thu</div>
       </CalendarDayBox>
       <CalendarDayBox>
-        <div>Fri</div>
+        <div className="p-2">Fri</div>
       </CalendarDayBox>
       <CalendarDayBox>
-        <div className="text-blue-500">Sat</div>
+        <div className="text-blue-500 p-2">Sat</div>
       </CalendarDayBox>
     </div>
   );

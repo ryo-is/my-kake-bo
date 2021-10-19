@@ -35,11 +35,12 @@ export const CalendarDays = ({ selectMonth, selectDetailDate }: Props) => {
           <div
             className={clsx(
               'w-full',
-              'h-16',
               'flex',
               'justify-center',
               'items-center',
               'cursor-pointer',
+              'hover:bg-blue-100',
+              'p-8',
               day.format('MM') !== dayjs(selectMonth).format('MM') &&
                 'opacity-40'
             )}
