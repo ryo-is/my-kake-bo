@@ -1,11 +1,13 @@
 import { IUseDate } from '@hooks/useDate';
 import { CalendarContent } from '@organisms/CalendarContent';
 
-export const Calendar = ({ selectDate, prevMonth, nextMonth }: IUseDate) => {
+type Props = Pick<IUseDate, 'selectMonth' | 'prevMonth' | 'nextMonth'>;
+
+export const Calendar = ({ selectMonth, prevMonth, nextMonth }: Props) => {
   return (
     <div>
       <CalendarContent
-        selectDate={selectDate}
+        selectMonth={selectMonth}
         prevMonth={prevMonth}
         nextMonth={nextMonth}
       />

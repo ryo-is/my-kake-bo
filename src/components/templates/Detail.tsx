@@ -1,9 +1,12 @@
+import { IUseDate } from '@hooks/useDate';
 import { DetailContent } from '@organisms/DetailContent';
 
-export const Detail = () => {
+type Props = Pick<IUseDate, 'selectDate'>;
+
+export const Detail = ({ selectDate }: Props) => {
   return (
     <div className="w-1/3 p-6">
-      <DetailContent />
+      <DetailContent selectDate={selectDate} />
     </div>
   );
 };

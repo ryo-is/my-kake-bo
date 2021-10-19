@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
+import { IUseDate } from '@hooks/useDate';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { CalendarDayBox } from '@atoms/CalendarDayBox';
 
-type Props = {
-  selectDate: dayjs.Dayjs;
-};
+type Props = Pick<IUseDate, 'selectMonth'>;
 
-export const CalendarDays = ({ selectDate }: Props) => {
+export const CalendarDays = ({ selectMonth }: Props) => {
   const [days, setDays] = useState<Array<dayjs.Dayjs>>([]);
 
   useEffect(() => {
-    const startMonthDay = selectDate.startOf('M');
-    const endMonthDay = selectDate.endOf('M');
+    const startMonthDay = selectMonth.startOf('M');
+    const endMonthDay = selectMonth.endOf('M');
     const startMonthDayOfWeek = startMonthDay.get('day');
     const endMonthDayOfWeek = endMonthDay.get('day');
     const nowMonthDayCount = endMonthDay.get('date');
@@ -27,7 +26,7 @@ export const CalendarDays = ({ selectDate }: Props) => {
       dateValues.push(endMonthDay.add(i, 'd'));
     }
     setDays([...dateValues]);
-  }, [selectDate]);
+  }, [selectMonth]);
 
   return (
     <div className="flex flex-wrap border-r border-gray-400">
@@ -36,7 +35,7 @@ export const CalendarDays = ({ selectDate }: Props) => {
           <div
             className={clsx(
               'py-6',
-              day.format('MM') !== dayjs(selectDate).format('MM') &&
+              day.format('MM') !== dayjs(selectMonth).format('MM') &&
                 'opacity-40'
             )}
           >
