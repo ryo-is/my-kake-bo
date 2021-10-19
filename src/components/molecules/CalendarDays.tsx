@@ -4,9 +4,9 @@ import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { CalendarDayBox } from '@atoms/CalendarDayBox';
 
-type Props = Pick<IUseDate, 'selectMonth'>;
+type Props = Pick<IUseDate, 'selectMonth' | 'selectDetailDate'>;
 
-export const CalendarDays = ({ selectMonth }: Props) => {
+export const CalendarDays = ({ selectMonth, selectDetailDate }: Props) => {
   const [days, setDays] = useState<Array<dayjs.Dayjs>>([]);
 
   useEffect(() => {
@@ -34,10 +34,16 @@ export const CalendarDays = ({ selectMonth }: Props) => {
         <CalendarDayBox key={`day-${day.format('YYYY-MM-DD')}`}>
           <div
             className={clsx(
-              'py-6',
+              'w-full',
+              'h-16',
+              'flex',
+              'justify-center',
+              'items-center',
+              'cursor-pointer',
               day.format('MM') !== dayjs(selectMonth).format('MM') &&
                 'opacity-40'
             )}
+            onClick={() => selectDetailDate(day)}
           >
             {day.format('D')}
           </div>
