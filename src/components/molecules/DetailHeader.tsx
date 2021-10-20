@@ -5,5 +5,7 @@ type Props = {
 };
 
 export const DetailHeader = ({ selectDate }: Props) => {
-  return <div>{selectDate.format('YYYY-MM-DD')}</div>;
+  return (
+    <div className="text-xl pl-2 pt-2">{selectDate.format('YYYY/MM/DD')}</div>
+  );
 };
