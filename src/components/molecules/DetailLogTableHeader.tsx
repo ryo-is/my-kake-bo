@@ -1,19 +1,13 @@
+import { TableCol } from '@atoms/TableCol';
+
 export const DetailLogTableHeader = () => {
   return (
     <thead>
       <tr className="border-b border-gray-400 text-sm">
-        <td width="20%" className="pl-1 pb-2">
-          カテゴリー
-        </td>
-        <td width="25%" className="pb-2">
-          場所
-        </td>
-        <td width="20%" className="pb-2">
-          金額
-        </td>
-        <td width="35%" className="pr-1 pb-2">
-          メモ
-        </td>
+        <TableCol width="20%" text="カテゴリー" addClass="pl-1" />
+        <TableCol width="25%" text="場所" />
+        <TableCol width="20%" text="金額" />
+        <TableCol width="35%" text="メモ" addClass="pr-1" />
       </tr>
     </thead>
   );
