@@ -1,14 +1,16 @@
 import { IUseDate } from '@hooks/useDate';
+import { IUseModal } from '@hooks/useModal';
 import { PlusIcon } from '@heroicons/react/solid';
 import { Button } from '@atoms/Button';
 
 type Props = {
   selectDate: IUseDate['selectDate'];
+  setIsModalOpen: IUseModal['setIsModalOpen'];
 };
 
-export const DetailHeader = ({ selectDate }: Props) => {
+export const DetailHeader = ({ selectDate, setIsModalOpen }: Props) => {
   const handleClick = () => {
-    console.log('handleClick');
+    setIsModalOpen((prev) => !prev);
   };
 
   return (
