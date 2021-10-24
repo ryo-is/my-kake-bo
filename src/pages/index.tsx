@@ -4,12 +4,10 @@ import { useModal } from '@hooks/useModal';
 import { Calendar } from '@templates/Calendar';
 import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';
-import { Modal } from '@templates/Modal';
 
 const Index: NextPage = () => {
   const { selectMonth, selectDate, prevMonth, nextMonth, selectDetailDate } =
     useDate();
-  const { isModalOpen, setIsModalOpen } = useModal();
 
   return (
     <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen bg-gray-100">
@@ -22,8 +20,7 @@ const Index: NextPage = () => {
         />
         <Analytics />
       </div>
-      <Detail selectDate={selectDate} setIsModalOpen={setIsModalOpen} />
-      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <Detail selectDate={selectDate} />
     </div>
   );
 };

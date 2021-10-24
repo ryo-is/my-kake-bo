@@ -5,13 +5,11 @@ import { Button } from '@atoms/Button';
 
 type Props = {
   selectDate: IUseDate['selectDate'];
-  setIsModalOpen: IUseModal['setIsModalOpen'];
 };
 
-export const DetailHeader = ({ selectDate, setIsModalOpen }: Props) => {
+export const DetailHeader = ({ selectDate }: Props) => {
   const handleClick = () => {
     console.log('handleClick');
-    setIsModalOpen((prev) => !prev);
   };
 
   return (

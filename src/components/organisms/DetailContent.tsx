@@ -5,13 +5,12 @@ import { DetailLogTable } from '@molecules/DetailLogTable';
 
 type Props = {
   selectDate: IUseDate['selectDate'];
-  setIsModalOpen: IUseModal['setIsModalOpen'];
 };
 
-export const DetailContent = ({ selectDate, setIsModalOpen }: Props) => {
+export const DetailContent = ({ selectDate }: Props) => {
   return (
     <div className="border border-gray-400 p-2 rounded h-full">
-      <DetailHeader selectDate={selectDate} setIsModalOpen={setIsModalOpen} />
+      <DetailHeader selectDate={selectDate} />
       <DetailLogTable />
     </div>
   );
