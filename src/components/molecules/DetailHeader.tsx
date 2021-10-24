@@ -10,6 +10,7 @@ type Props = {
 
 export const DetailHeader = ({ selectDate, setIsModalOpen }: Props) => {
   const handleClick = () => {
+    console.log('handleClick');
     setIsModalOpen((prev) => !prev);
   };
 
