@@ -5,7 +5,7 @@ export const DetailTableNewRow = () => {
     <tr className="text-sm">
       <td width="25%" className="py-2 px-1">
         <div className="inline-block relative w-full">
-          <select className="block appearance-none w-full bg-gray-50 border-2 border-gray-400 p-1 rounded-sm leading-tight focus:outline-none">
+          <select className="block appearance-none w-full bg-gray-50 border-2 border-gray-400 p-1 rounded-sm leading-tight focus:outline-none cursor-pointer">
             <option></option>
             <option>食費</option>
             <option>雑費</option>
