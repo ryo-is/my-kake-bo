@@ -1,5 +1,4 @@
 import { IUseDate } from '@hooks/useDate';
-import { IUseModal } from '@hooks/useModal';
 import { PlusIcon } from '@heroicons/react/solid';
 import { Button } from '@atoms/Button';
 

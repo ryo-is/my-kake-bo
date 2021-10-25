@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import { useDate } from '@hooks/useDate';
-import { useModal } from '@hooks/useModal';
 import { Calendar } from '@templates/Calendar';
 import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';

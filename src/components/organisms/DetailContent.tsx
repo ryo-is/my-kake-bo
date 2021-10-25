@@ -1,5 +1,4 @@
 import { IUseDate } from '@hooks/useDate';
-import { IUseModal } from '@hooks/useModal';
 import { DetailHeader } from '@molecules/DetailHeader';
 import { DetailLogTable } from '@molecules/DetailLogTable';
 

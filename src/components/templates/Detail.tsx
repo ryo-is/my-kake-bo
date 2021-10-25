@@ -1,5 +1,4 @@
 import { IUseDate } from '@hooks/useDate';
-import { IUseModal } from '@hooks/useModal';
 import { DetailContent } from '@organisms/DetailContent';
 
 type Props = {
