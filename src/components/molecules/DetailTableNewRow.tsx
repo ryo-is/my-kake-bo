@@ -46,13 +46,14 @@ export const DetailTableNewRow = ({
           onChange={(e) => handleChangePlace(e)}
         />
       </td>
-      <td width="30%" className="py-2 px-1">
+      <td width="30%" className="py-2 px-1 flex items-center w-full">
         <input
           type="text"
           className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"
           value={money}
           onChange={(e) => handleChangeMoney(e)}
         />
+        <div className="ml-1">円</div>
       </td>
     </tr>
   );

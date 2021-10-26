@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import clsx from 'clsx';
 import { Button } from '@atoms/Button';
-import { PlusIcon } from '@heroicons/react/solid';
-import { SaveIcon } from '@heroicons/react/outline';
+import { PlusIcon, SaveIcon } from '@heroicons/react/solid';
 import { IUseDetailData } from '@hooks/useDetailData';
 
 type Props = {
@@ -26,7 +25,7 @@ export const DetailActions = ({
   };
 
   return (
-    <div className={clsx('flex', 'px-3', !isAddRowMode && 'pt-2')}>
+    <div className={clsx('flex', 'pl-3', 'pr-4', !isAddRowMode && 'pt-2')}>
       {!isAddRowMode && (
         <Button
           handleClick={handleAddRowClick}
