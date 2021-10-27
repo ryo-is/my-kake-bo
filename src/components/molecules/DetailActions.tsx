@@ -42,7 +42,7 @@ export const DetailActions = ({
           addClass="bg-blue-600 hover:bg-blue-800"
         >
           <SaveIcon className="w-4 h-4 mr-2" />
-          <span>保存</span>
+          <span>保存する</span>
         </Button>
       )}
     </div>
