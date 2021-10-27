@@ -13,6 +13,7 @@ export const DetailContent = ({ selectDate }: Props) => {
   const [isAddRowMode, setIsAddRowMode] = useState<boolean>(false);
 
   const {
+    logs,
     category,
     place,
     money,
@@ -25,6 +26,7 @@ export const DetailContent = ({ selectDate }: Props) => {
 
   useEffect(() => {
     getLogs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -32,6 +34,7 @@ export const DetailContent = ({ selectDate }: Props) => {
       <DetailHeader selectDate={selectDate} />
       <DetailLogTable
         isAddRowMode={isAddRowMode}
+        logs={logs}
         category={category}
         place={place}
         money={money}

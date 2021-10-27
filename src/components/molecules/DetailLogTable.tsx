@@ -4,6 +4,7 @@ import { IUseDetailData } from '@hooks/useDetailData';
 
 type Props = {
   isAddRowMode: boolean;
+  logs: IUseDetailData['logs'];
   category: IUseDetailData['category'];
   place: IUseDetailData['place'];
   money: IUseDetailData['money'];
@@ -14,6 +15,7 @@ type Props = {
 
 export const DetailLogTable = ({
   isAddRowMode,
+  logs,
   category,
   place,
   money,
@@ -27,6 +29,7 @@ export const DetailLogTable = ({
         <DetailTableHeader />
         <DetailTableBody
           isAddRowMode={isAddRowMode}
+          logs={logs}
           category={category}
           place={place}
           money={money}

@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { db } from '@infrastructures/db';
 
 type Log = {
-  log_uuid: string;
+  uuid: string;
   category: string;
   place: string;
   money: number;
@@ -16,7 +16,7 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
     ref.docs.map((doc) => {
       const data = doc.data();
       logs.push({
-        log_uuid: data.uuid,
+        uuid: data.uuid,
         category: data.category,
         place: data.place,
         money: data.money,

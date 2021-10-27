@@ -1,8 +1,8 @@
 import { useState, ChangeEvent } from 'react';
 import { apiHelper } from '@infrastructures/helper';
 
-type Log = {
-  log_uuid: string;
+export type Log = {
+  uuid: string;
   category: string;
   place: string;
   money: number;
