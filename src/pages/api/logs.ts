@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '@infrastructures/db';
+import { firestore } from '@infrastructures/firestore';
 
 type Log = {
   uuid: string;
@@ -9,10 +9,17 @@ type Log = {
   date: string;
 };
 
-export default async function handler(_: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
+    const query = req.query;
     const logs: Log[] = [];
-    const ref = await db.collection('logs').get();
+    const ref = await firestore
+      .collection('logs')
+      .where('date', '==', query.date)
+      .get();
     ref.docs.map((doc) => {
       const data = doc.data();
       logs.push({

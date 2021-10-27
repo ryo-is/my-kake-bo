@@ -18,7 +18,7 @@ export interface IUseDetailData {
   handleChangePlace: (event: ChangeEvent<HTMLInputElement>) => void;
   handleChangeMoney: (event: ChangeEvent<HTMLInputElement>) => void;
   submit: () => Promise<void>;
-  getLogs: () => Promise<void>;
+  getLogs: (date: string) => Promise<void>;
 }
 
 export const useDetailData = (): IUseDetailData => {
@@ -44,10 +44,10 @@ export const useDetailData = (): IUseDetailData => {
     return Promise.resolve();
   };
 
-  const getLogs = async () => {
+  const getLogs = async (date: string) => {
     try {
       const logs = await apiHelper.get<Log[]>({
-        path: '/api/logs',
+        path: `/api/logs?date=${date}`,
       });
       setLogs(logs);
     } catch (e) {

@@ -4,6 +4,7 @@ import { DetailHeader } from '@molecules/DetailHeader';
 import { DetailLogTable } from '@molecules/DetailLogTable';
 import { DetailActions } from '@molecules/DetailActions';
 import { useDetailData } from '@hooks/useDetailData';
+import dayjs from 'dayjs';
 
 type Props = {
   selectDate: IUseDate['selectDate'];
@@ -25,7 +26,8 @@ export const DetailContent = ({ selectDate }: Props) => {
   } = useDetailData();
 
   useEffect(() => {
-    getLogs();
+    const date = dayjs().format('YYYY-MM-DD');
+    getLogs(date);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
