@@ -1,10 +1,10 @@
-import type { NextPage } from 'next';
+import { VFC } from 'react';
 import { useDate } from '@hooks/useDate';
 import { Calendar } from '@templates/Calendar';
 import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';
 
-const Index: NextPage = () => {
+const Index: VFC<{}> = () => {
   const { selectMonth, selectDate, prevMonth, nextMonth, selectDetailDate } =
     useDate();
 

@@ -1,4 +1,3 @@
-import { ChangeEvent, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { IUseDetailData } from '@hooks/useDetailData';
 
@@ -21,7 +20,7 @@ export const DetailTableNewRow = ({
 }: Props) => {
   return (
     <tr className="text-sm">
-      <td width="25%" className="py-2 px-1">
+      <td width="25%" className="py-3 px-1">
         <div className="inline-block relative w-full">
           <select
             className="block appearance-none w-full bg-gray-50 border-2 border-gray-400 p-1 rounded-sm leading-tight focus:outline-none cursor-pointer"
@@ -38,7 +37,7 @@ export const DetailTableNewRow = ({
           </div>
         </div>
       </td>
-      <td width="45%" className="py-2 px-1">
+      <td width="45%" className="py-3 px-1">
         <input
           type="text"
           className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"
@@ -46,7 +45,7 @@ export const DetailTableNewRow = ({
           onChange={(e) => handleChangePlace(e)}
         />
       </td>
-      <td width="30%" className="py-2 px-1 flex items-center w-full">
+      <td width="30%" className="py-3 px-1 flex items-center w-full">
         <input
           type="text"
           className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"

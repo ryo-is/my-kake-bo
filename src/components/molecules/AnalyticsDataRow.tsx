@@ -13,7 +13,7 @@ export const AnalyticsDataRow = ({ category, value }: Props) => {
 
   return (
     <div className="p-2 flex text-lg">
-      <div className="mx-2">{categories[category]}</div>
+      <div className="mx-2 w-24">{categories[category]}</div>
       <div>{value.toLocaleString()}円</div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IUseDate } from '@hooks/useDate';
 import { DetailHeader } from '@molecules/DetailHeader';
 import { DetailLogTable } from '@molecules/DetailLogTable';
@@ -20,7 +20,12 @@ export const DetailContent = ({ selectDate }: Props) => {
     handleChangePlace,
     handleChangeMoney,
     submit,
+    getLogs,
   } = useDetailData();
+
+  useEffect(() => {
+    getLogs();
+  }, []);
 
   return (
     <div className="border border-gray-400 p-2 rounded h-full">

@@ -6,7 +6,7 @@ type Props = {
 
 export const TableCol = ({ width, text, addClass }: Props) => {
   return (
-    <td width={width} className={'py-2 px-1 ' + addClass}>
+    <td width={width} className={'py-3 px-1 ' + addClass}>
       {text}
     </td>
   );

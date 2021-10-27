@@ -1,6 +1,16 @@
 import { useState, ChangeEvent } from 'react';
+import { apiHelper } from '@infrastructures/helper';
+
+type Log = {
+  log_uuid: string;
+  category: string;
+  place: string;
+  money: number;
+  date: string;
+};
 
 export interface IUseDetailData {
+  logs: Log[];
   category: string;
   place: string;
   money: number;
@@ -8,9 +18,11 @@ export interface IUseDetailData {
   handleChangePlace: (event: ChangeEvent<HTMLInputElement>) => void;
   handleChangeMoney: (event: ChangeEvent<HTMLInputElement>) => void;
   submit: () => Promise<void>;
+  getLogs: () => Promise<void>;
 }
 
 export const useDetailData = (): IUseDetailData => {
+  const [logs, setLogs] = useState<Log[]>([]);
   const [category, setCategory] = useState<string>('');
   const [place, setPlace] = useState<string>('');
   const [money, setMoney] = useState<number>(0);
@@ -32,7 +44,19 @@ export const useDetailData = (): IUseDetailData => {
     return Promise.resolve();
   };
 
+  const getLogs = async () => {
+    try {
+      const logs = await apiHelper.get<Log[]>({
+        path: '/api/logs',
+      });
+      setLogs(logs);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return {
+    logs,
     category,
     place,
     money,
@@ -40,5 +64,6 @@ export const useDetailData = (): IUseDetailData => {
     handleChangePlace,
     handleChangeMoney,
     submit,
+    getLogs,
   };
 };
