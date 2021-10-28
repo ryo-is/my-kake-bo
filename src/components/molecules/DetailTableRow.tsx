@@ -1,5 +1,7 @@
 import { TableCol } from '@atoms/TableCol';
 import { Log } from '@hooks/useDetailData';
+import { PencilIcon } from '@heroicons/react/solid';
+import { Button } from '@atoms/Button';
 
 type Props = {
   log: Log;
@@ -20,11 +22,20 @@ export const DetailTableRow = ({ log }: Props) => {
     return log.money.toLocaleString() + '円';
   };
 
+  const handleClick = () => {
+    console.log('handleClick');
+  };
+
   return (
     <tr className="border-b border-gray-400 text-sm">
       <TableCol width="25%" text={getCategory()} />
-      <TableCol width="45%" text={log.place} />
-      <TableCol width="30%" text={getMoney()} />
+      <TableCol width="40%" text={log.place} />
+      <TableCol width="25%" text={getMoney()} />
+      <td>
+        <Button handleClick={handleClick} addClass="text-gray-700">
+          <PencilIcon className="fill-current w-6 h-6" />
+        </Button>
+      </td>
     </tr>
   );
 };

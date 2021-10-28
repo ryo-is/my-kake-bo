@@ -36,6 +36,7 @@ export const DetailContent = ({ selectDate }: Props) => {
       <DetailHeader selectDate={selectDate} />
       <DetailLogTable
         isAddRowMode={isAddRowMode}
+        setIsAddRowMode={setIsAddRowMode}
         logs={logs}
         category={category}
         place={place}
@@ -43,6 +44,7 @@ export const DetailContent = ({ selectDate }: Props) => {
         handleChangeCategory={handleChangeCategory}
         handleChangePlace={handleChangePlace}
         handleChangeMoney={handleChangeMoney}
+        submit={submit}
       />
       <DetailActions
         isAddRowMode={isAddRowMode}

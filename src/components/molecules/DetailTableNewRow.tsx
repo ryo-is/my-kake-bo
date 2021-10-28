@@ -1,23 +1,34 @@
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { Dispatch, SetStateAction } from 'react';
+import { ChevronDownIcon, SaveIcon } from '@heroicons/react/solid';
 import { IUseDetailData } from '@hooks/useDetailData';
+import { Button } from '@atoms/Button';
 
 type Props = {
+  setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
   category: IUseDetailData['category'];
   place: IUseDetailData['place'];
   money: IUseDetailData['money'];
   handleChangeCategory: IUseDetailData['handleChangeCategory'];
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
+  submit: IUseDetailData['submit'];
 };
 
 export const DetailTableNewRow = ({
+  setIsAddRowMode,
   category,
   place,
   money,
   handleChangeCategory,
   handleChangePlace,
   handleChangeMoney,
+  submit,
 }: Props) => {
+  const handleSaveClick = async () => {
+    await submit();
+    setIsAddRowMode(false);
+  };
+
   return (
     <tr className="text-sm">
       <td width="25%" className="py-3 px-1">
@@ -37,7 +48,7 @@ export const DetailTableNewRow = ({
           </div>
         </div>
       </td>
-      <td width="45%" className="py-3 px-1">
+      <td width="40%" className="py-3 px-1">
         <input
           type="text"
           className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"
@@ -45,14 +56,18 @@ export const DetailTableNewRow = ({
           onChange={(e) => handleChangePlace(e)}
         />
       </td>
-      <td width="30%" className="py-3 px-1 flex items-center w-full">
+      <td width="25%" className="py-3 px-1">
         <input
           type="text"
           className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"
           value={money}
           onChange={(e) => handleChangeMoney(e)}
         />
-        <div className="ml-1">円</div>
+      </td>
+      <td width="25%" className="py-3">
+        <Button handleClick={handleSaveClick} addClass="text-gray-700">
+          <SaveIcon className="w-6 h-6" />
+        </Button>
       </td>
     </tr>
   );

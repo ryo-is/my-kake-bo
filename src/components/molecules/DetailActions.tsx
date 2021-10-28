@@ -36,15 +36,6 @@ export const DetailActions = ({
         </Button>
       )}
       <div className="flex-grow" />
-      {isAddRowMode && (
-        <Button
-          handleClick={handleSaveClick}
-          addClass="bg-blue-600 hover:bg-blue-800"
-        >
-          <SaveIcon className="w-4 h-4 mr-2" />
-          <span>保存する</span>
-        </Button>
-      )}
     </div>
   );
 };
