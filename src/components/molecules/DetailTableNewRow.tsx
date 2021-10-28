@@ -1,7 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ChevronDownIcon, SaveIcon } from '@heroicons/react/solid';
+import { SaveIcon } from '@heroicons/react/solid';
 import { IUseDetailData } from '@hooks/useDetailData';
 import { Button } from '@atoms/Button';
+import { Select } from '@atoms/Select';
+import { Input } from '@atoms/Input';
 
 type Props = {
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
@@ -13,6 +15,13 @@ type Props = {
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
   submit: IUseDetailData['submit'];
 };
+
+const options = [
+  { value: '', text: '' },
+  { value: 'food', text: '食費' },
+  { value: 'miscellaneous', text: '雑費' },
+  { value: 'other', text: 'その他' },
+];
 
 export const DetailTableNewRow = ({
   setIsAddRowMode,
@@ -32,37 +41,17 @@ export const DetailTableNewRow = ({
   return (
     <tr className="text-sm">
       <td width="25%" className="py-2 px-1">
-        <div className="inline-block relative w-full">
-          <select
-            className="block appearance-none w-full bg-gray-50 border-2 border-gray-400 p-1 rounded-sm leading-tight focus:outline-none cursor-pointer"
-            value={category}
-            onChange={(e) => handleChangeCategory(e)}
-          >
-            <option value=""></option>
-            <option value="food">食費</option>
-            <option value="miscellaneous">雑費</option>
-            <option value="other">その他</option>
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1">
-            <ChevronDownIcon className="fill-current h-4 w-4" />
-          </div>
-        </div>
+        <Select
+          value={category}
+          onChange={handleChangeCategory}
+          options={options}
+        />
       </td>
       <td width="40%" className="py-2 px-1">
-        <input
-          type="text"
-          className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"
-          value={place}
-          onChange={(e) => handleChangePlace(e)}
-        />
+        <Input value={place} onChange={handleChangePlace} />
       </td>
       <td width="25%" className="py-2 px-1">
-        <input
-          type="text"
-          className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"
-          value={money}
-          onChange={(e) => handleChangeMoney(e)}
-        />
+        <Input value={money} onChange={handleChangeMoney} />
       </td>
       <td width="25%" className="py-2">
         <Button handleClick={handleSaveClick} addClass="text-gray-700">
