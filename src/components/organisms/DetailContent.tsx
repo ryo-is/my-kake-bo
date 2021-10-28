@@ -49,7 +49,6 @@ export const DetailContent = ({ selectDate }: Props) => {
       <DetailActions
         isAddRowMode={isAddRowMode}
         setIsAddRowMode={setIsAddRowMode}
-        submit={submit}
       />
     </div>
   );

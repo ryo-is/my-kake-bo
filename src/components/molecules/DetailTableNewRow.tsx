@@ -31,7 +31,7 @@ export const DetailTableNewRow = ({
 
   return (
     <tr className="text-sm">
-      <td width="25%" className="py-3 px-1">
+      <td width="25%" className="py-2 px-1">
         <div className="inline-block relative w-full">
           <select
             className="block appearance-none w-full bg-gray-50 border-2 border-gray-400 p-1 rounded-sm leading-tight focus:outline-none cursor-pointer"
@@ -48,7 +48,7 @@ export const DetailTableNewRow = ({
           </div>
         </div>
       </td>
-      <td width="40%" className="py-3 px-1">
+      <td width="40%" className="py-2 px-1">
         <input
           type="text"
           className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"
@@ -56,7 +56,7 @@ export const DetailTableNewRow = ({
           onChange={(e) => handleChangePlace(e)}
         />
       </td>
-      <td width="25%" className="py-3 px-1">
+      <td width="25%" className="py-2 px-1">
         <input
           type="text"
           className="w-full appearance-none leading-tight focus:outline-none p-1 bg-gray-50 border-2 border-gray-400 rounded-sm"
@@ -64,7 +64,7 @@ export const DetailTableNewRow = ({
           onChange={(e) => handleChangeMoney(e)}
         />
       </td>
-      <td width="25%" className="py-3">
+      <td width="25%" className="py-2">
         <Button handleClick={handleSaveClick} addClass="text-gray-700">
           <SaveIcon className="w-6 h-6" />
         </Button>

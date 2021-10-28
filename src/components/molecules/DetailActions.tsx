@@ -7,25 +7,16 @@ import { IUseDetailData } from '@hooks/useDetailData';
 type Props = {
   isAddRowMode: boolean;
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
-  submit: IUseDetailData['submit'];
 };
 
-export const DetailActions = ({
-  isAddRowMode,
-  setIsAddRowMode,
-  submit,
-}: Props) => {
+export const DetailActions = ({ isAddRowMode, setIsAddRowMode }: Props) => {
   const handleAddRowClick = () => {
     setIsAddRowMode(true);
   };
 
-  const handleSaveClick = async () => {
-    await submit();
-    setIsAddRowMode(false);
-  };
-
   return (
     <div className={clsx('flex', 'pl-3', 'pr-4', !isAddRowMode && 'pt-2')}>
+      <div className="flex-grow" />
       {!isAddRowMode && (
         <Button
           handleClick={handleAddRowClick}
@@ -35,7 +26,6 @@ export const DetailActions = ({
           <span>列を追加する</span>
         </Button>
       )}
-      <div className="flex-grow" />
     </div>
   );
 };
