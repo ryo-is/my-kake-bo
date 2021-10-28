@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,21 +19,54 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@atoms": ["src/components/atoms"],
-      "@molecules": ["src/components/molecules"],
-      "@organisms": ["src/components/organisms"],
-      "@templates": ["src/components/templates"],
-      "@hooks": ["src/hooks"],
-      "@atoms/*": ["src/components/atoms/*"],
-      "@molecules/*": ["src/components/molecules/*"],
-      "@organisms/*": ["src/components/organisms/*"],
-      "@templates/*": ["src/components/templates/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@pages/*": ["src/pages/*"],
-      "@mocks/*": ["src/mocks/*"],
-      "@infrastructures/*": ["src/infrastructures/*"]
-    }
+      "@atoms": [
+        "src/components/atoms"
+      ],
+      "@molecules": [
+        "src/components/molecules"
+      ],
+      "@organisms": [
+        "src/components/organisms"
+      ],
+      "@templates": [
+        "src/components/templates"
+      ],
+      "@hooks": [
+        "src/hooks"
+      ],
+      "@atoms/*": [
+        "src/components/atoms/*"
+      ],
+      "@molecules/*": [
+        "src/components/molecules/*"
+      ],
+      "@organisms/*": [
+        "src/components/organisms/*"
+      ],
+      "@templates/*": [
+        "src/components/templates/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@mocks/*": [
+        "src/mocks/*"
+      ],
+      "@infrastructures/*": [
+        "src/infrastructures/*"
+      ]
+    },
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
