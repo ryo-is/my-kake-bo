@@ -22,7 +22,7 @@ export const DetailTableRow = ({ log }: Props) => {
     return log.money.toLocaleString() + '円';
   };
 
-  const handleClick = () => {
+  const handleClickEdit = () => {
     console.log('handleClick');
   };
 
@@ -32,7 +32,7 @@ export const DetailTableRow = ({ log }: Props) => {
       <TableCol width="40%" text={log.place} />
       <TableCol width="25%" text={getMoney()} />
       <td>
-        <Button handleClick={handleClick} addClass="text-gray-700">
+        <Button handleClick={handleClickEdit} addClass="text-gray-700">
           <PencilIcon className="fill-current w-6 h-6" />
         </Button>
       </td>
