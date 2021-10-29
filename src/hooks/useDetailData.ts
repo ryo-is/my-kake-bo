@@ -1,5 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import { apiHelper } from '@infrastructures/helper';
+import { v4 as uuidv4 } from 'uuid';
+import dayjs from 'dayjs';
 
 export type Log = {
   uuid: string;
@@ -17,7 +19,7 @@ export interface IUseDetailData {
   handleChangeCategory: (event: ChangeEvent<HTMLSelectElement>) => void;
   handleChangePlace: (event: ChangeEvent<HTMLInputElement>) => void;
   handleChangeMoney: (event: ChangeEvent<HTMLInputElement>) => void;
-  submit: () => Promise<void>;
+  setLog: (date: string) => Promise<void>;
   getLogs: (date: string) => Promise<void>;
 }
 
@@ -39,17 +41,29 @@ export const useDetailData = (): IUseDetailData => {
     setMoney(Number(event.target.value));
   };
 
-  const submit = async () => {
-    console.log('submit', category, place, money);
-    return Promise.resolve();
-  };
-
   const getLogs = async (date: string) => {
     try {
       const logs = await apiHelper.get<Log[]>({
         path: `/api/logs?date=${date}`,
       });
       setLogs(logs);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const setLog = async (date: string) => {
+    try {
+      await apiHelper.put<Log>({
+        path: '/api/logs',
+        body: {
+          uuid: uuidv4(),
+          category,
+          place,
+          money,
+          date,
+        },
+      });
     } catch (e) {
       console.error(e);
     }
@@ -63,7 +77,7 @@ export const useDetailData = (): IUseDetailData => {
     handleChangeCategory,
     handleChangePlace,
     handleChangeMoney,
-    submit,
+    setLog,
     getLogs,
   };
 };

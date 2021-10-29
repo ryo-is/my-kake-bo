@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { DetailTableRow } from '@molecules/DetailTableRow';
 import { DetailTableNewRow } from '@molecules/DetailTableNewRow';
 import { IUseDetailData } from '@hooks/useDetailData';
+import { IUseDate } from '@hooks/useDate';
 
 type Props = {
   isAddRowMode: boolean;
@@ -13,7 +14,8 @@ type Props = {
   handleChangeCategory: IUseDetailData['handleChangeCategory'];
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
-  submit: IUseDetailData['submit'];
+  setLog: IUseDetailData['setLog'];
+  selectDate: IUseDate['selectDate'];
 };
 
 export const DetailTableBody = ({
@@ -26,7 +28,8 @@ export const DetailTableBody = ({
   handleChangeCategory,
   handleChangePlace,
   handleChangeMoney,
-  submit,
+  setLog,
+  selectDate,
 }: Props) => {
   return (
     <tbody>
@@ -42,7 +45,8 @@ export const DetailTableBody = ({
           handleChangeCategory={handleChangeCategory}
           handleChangePlace={handleChangePlace}
           handleChangeMoney={handleChangeMoney}
-          submit={submit}
+          setLog={setLog}
+          selectDate={selectDate}
         />
       )}
     </tbody>

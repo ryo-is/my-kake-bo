@@ -7,6 +7,19 @@ class ApiHelper {
     });
     return res.json();
   };
+
+  put = async <T extends {}>({
+    path,
+    body,
+  }: {
+    path: string;
+    body: T;
+  }): Promise<void> => {
+    await fetch(path, {
+      method: 'PUT',
+      body: JSON.stringify(body),
+    });
+  };
 }
 
 export const apiHelper = new ApiHelper();

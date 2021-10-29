@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import clsx from 'clsx';
 import { Button } from '@atoms/Button';
-import { PlusIcon, SaveIcon } from '@heroicons/react/solid';
-import { IUseDetailData } from '@hooks/useDetailData';
+import { PlusIcon } from '@heroicons/react/solid';
 
 type Props = {
   isAddRowMode: boolean;

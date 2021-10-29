@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { SaveIcon } from '@heroicons/react/solid';
 import { IUseDetailData } from '@hooks/useDetailData';
+import { IUseDate } from '@hooks/useDate';
 import { Button } from '@atoms/Button';
 import { Select } from '@atoms/Select';
 import { Input } from '@atoms/Input';
@@ -13,7 +14,8 @@ type Props = {
   handleChangeCategory: IUseDetailData['handleChangeCategory'];
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
-  submit: IUseDetailData['submit'];
+  setLog: IUseDetailData['setLog'];
+  selectDate: IUseDate['selectDate'];
 };
 
 const options = [
@@ -31,10 +33,11 @@ export const DetailTableNewRow = ({
   handleChangeCategory,
   handleChangePlace,
   handleChangeMoney,
-  submit,
+  setLog,
+  selectDate,
 }: Props) => {
   const handleSaveClick = async () => {
-    await submit();
+    await setLog(selectDate.format('YYYY-MM-DD'));
     setIsAddRowMode(false);
   };
 

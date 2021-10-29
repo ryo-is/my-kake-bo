@@ -13,25 +13,37 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  try {
-    const query = req.query;
-    const logs: Log[] = [];
-    const ref = await firestore
-      .collection('logs')
-      .where('date', '==', query.date)
-      .get();
-    ref.docs.map((doc) => {
-      const data = doc.data();
-      logs.push({
-        uuid: data.uuid,
-        category: data.category,
-        place: data.place,
-        money: data.money,
-        date: data.date,
+  if (req.method === 'GET') {
+    try {
+      const query = req.query;
+      const logs: Log[] = [];
+      const ref = await firestore
+        .collection('logs')
+        .where('date', '==', query.date)
+        .get();
+      ref.docs.map((doc) => {
+        const data = doc.data();
+        logs.push({
+          uuid: data.uuid,
+          category: data.category,
+          place: data.place,
+          money: data.money,
+          date: data.date,
+        });
       });
-    });
-    return res.status(200).json(logs);
-  } catch (e) {
-    return res.status(500).json(e);
+      return res.status(200).json(logs);
+    } catch (e) {
+      return res.status(500).json(e);
+    }
+  } else if (req.method === 'PUT') {
+    try {
+      const body = JSON.parse(req.body);
+      console.log(body);
+      const ref = await firestore.collection('logs').add(body);
+      console.log(ref);
+      return res.status(200).json({});
+    } catch (e) {
+      return res.status(500).json(e);
+    }
   }
 }
