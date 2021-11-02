@@ -15,6 +15,7 @@ type Props = {
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
   setLog: IUseDetailData['setLog'];
+  getLogs: IUseDetailData['getLogs'];
   selectDate: IUseDate['selectDate'];
 };
 
@@ -29,6 +30,7 @@ export const DetailTableBody = ({
   handleChangePlace,
   handleChangeMoney,
   setLog,
+  getLogs,
   selectDate,
 }: Props) => {
   return (
@@ -46,6 +48,7 @@ export const DetailTableBody = ({
           handleChangePlace={handleChangePlace}
           handleChangeMoney={handleChangeMoney}
           setLog={setLog}
+          getLogs={getLogs}
           selectDate={selectDate}
         />
       )}

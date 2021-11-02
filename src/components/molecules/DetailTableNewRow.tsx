@@ -15,6 +15,7 @@ type Props = {
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
   setLog: IUseDetailData['setLog'];
+  getLogs: IUseDetailData['getLogs'];
   selectDate: IUseDate['selectDate'];
 };
 
@@ -34,10 +35,12 @@ export const DetailTableNewRow = ({
   handleChangePlace,
   handleChangeMoney,
   setLog,
+  getLogs,
   selectDate,
 }: Props) => {
   const handleSaveClick = async () => {
     await setLog(selectDate.format('YYYY-MM-DD'));
+    await getLogs(selectDate.format('YYYY-MM-DD'));
     setIsAddRowMode(false);
   };
 
