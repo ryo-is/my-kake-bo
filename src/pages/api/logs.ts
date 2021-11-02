@@ -38,9 +38,7 @@ export default async function handler(
   } else if (req.method === 'PUT') {
     try {
       const body = JSON.parse(req.body);
-      console.log(body);
-      const ref = await firestore.collection('logs').add(body);
-      console.log(ref);
+      await firestore.collection('logs').add(body);
       return res.status(200).json({});
     } catch (e) {
       return res.status(500).json(e);
