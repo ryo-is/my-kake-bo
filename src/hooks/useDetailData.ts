@@ -54,7 +54,7 @@ export const useDetailData = (): IUseDetailData => {
 
   const setLog = async (date: string) => {
     try {
-      await apiHelper.put<Log>({
+      await apiHelper.post<Log>({
         path: '/api/logs',
         body: {
           uuid: uuidv4(),
@@ -64,6 +64,13 @@ export const useDetailData = (): IUseDetailData => {
           date,
         },
       });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const updateLog = async (log: Log) => {
+    try {
     } catch (e) {
       console.error(e);
     }
