@@ -64,6 +64,9 @@ export const useDetailData = (): IUseDetailData => {
           date,
         },
       });
+      setCategory('');
+      setPlace('');
+      setMoney(0);
     } catch (e) {
       console.error(e);
     }
