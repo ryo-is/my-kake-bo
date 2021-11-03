@@ -7,7 +7,7 @@ import { Input } from '@atoms/Input';
 
 type Props = {
   log: Log;
-  handleSaveClick: () => void;
+  handleUpdateClick: (log: Log) => void;
 };
 
 const options = [
@@ -17,7 +17,7 @@ const options = [
   { value: 'other', text: 'その他' },
 ];
 
-export const DetailTableEditRow = ({ log, handleSaveClick }: Props) => {
+export const DetailTableEditRow = ({ log, handleUpdateClick }: Props) => {
   const [category, setCategory] = useState<string>('');
   const [place, setPlace] = useState<string>('');
   const [money, setMoney] = useState<number>(0);
@@ -32,6 +32,15 @@ export const DetailTableEditRow = ({ log, handleSaveClick }: Props) => {
 
   const handleChangeMoney = (event: ChangeEvent<HTMLInputElement>) => {
     setMoney(Number(event.target.value));
+  };
+
+  const submit = () => {
+    handleUpdateClick({
+      ...log,
+      category,
+      place,
+      money,
+    });
   };
 
   useEffect(() => {
@@ -56,7 +65,7 @@ export const DetailTableEditRow = ({ log, handleSaveClick }: Props) => {
         <Input value={money} onChange={handleChangeMoney} />
       </td>
       <td width="25%" className="py-2">
-        <Button handleClick={handleSaveClick} addClass="text-gray-700">
+        <Button handleClick={submit} addClass="text-gray-700">
           <SaveIcon className="w-6 h-6" />
         </Button>
       </td>

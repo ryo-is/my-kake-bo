@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { TableCol } from '@atoms/TableCol';
-import { Log } from '@hooks/useDetailData';
+import { Log, useDetailData, IUseDetailData } from '@hooks/useDetailData';
+import { IUseDate } from '@hooks/useDate';
 import { PencilIcon } from '@heroicons/react/solid';
 import { Button } from '@atoms/Button';
 import { DetailTableEditRow } from '@molecules/DetailTableEditRow';
 
 type Props = {
   log: Log;
+  getLogs: IUseDetailData['getLogs'];
+  selectDate: IUseDate['selectDate'];
 };
 
-export const DetailTableRow = ({ log }: Props) => {
+export const DetailTableRow = ({ log, getLogs, selectDate }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
+  const { updateLog } = useDetailData();
 
   const getCategory = () => {
     const categories: { [k: string]: string } = {
@@ -30,7 +34,9 @@ export const DetailTableRow = ({ log }: Props) => {
     setIsEdit(true);
   };
 
-  const handleSaveClick = () => {
+  const handleUpdateClick = async (log: Log) => {
+    await updateLog(log);
+    await getLogs(selectDate.format('YYYY-MM-DD'));
     setIsEdit(false);
   };
 
@@ -48,7 +54,7 @@ export const DetailTableRow = ({ log }: Props) => {
           </td>
         </tr>
       ) : (
-        <DetailTableEditRow log={log} handleSaveClick={handleSaveClick} />
+        <DetailTableEditRow log={log} handleUpdateClick={handleUpdateClick} />
       )}
     </>
   );

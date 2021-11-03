@@ -36,7 +36,12 @@ export const DetailTableBody = ({
   return (
     <tbody>
       {logs.map((l) => (
-        <DetailTableRow key={l.uuid} log={l} />
+        <DetailTableRow
+          key={l.uuid}
+          log={l}
+          getLogs={getLogs}
+          selectDate={selectDate}
+        />
       ))}
       {isAddRowMode && (
         <DetailTableNewRow

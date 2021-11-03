@@ -3,6 +3,7 @@ import { apiHelper } from '@infrastructures/helper';
 import { v4 as uuidv4 } from 'uuid';
 
 export type Log = {
+  docID?: string;
   uuid: string;
   category: string;
   place: string;
@@ -21,6 +22,7 @@ export interface IUseDetailData {
   clearValues: () => void;
   setLog: (date: string) => Promise<void>;
   getLogs: (date: string) => Promise<void>;
+  updateLog: (log: Log) => Promise<void>;
 }
 
 export const useDetailData = (): IUseDetailData => {
@@ -77,6 +79,10 @@ export const useDetailData = (): IUseDetailData => {
 
   const updateLog = async (log: Log) => {
     try {
+      await apiHelper.put<Log>({
+        path: '/api/logs',
+        body: log,
+      });
     } catch (e) {
       console.error(e);
     }
@@ -93,5 +99,6 @@ export const useDetailData = (): IUseDetailData => {
     clearValues,
     setLog,
     getLogs,
+    updateLog,
   };
 };
