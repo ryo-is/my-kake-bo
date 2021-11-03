@@ -1,7 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import { apiHelper } from '@infrastructures/helper';
 import { v4 as uuidv4 } from 'uuid';
-import dayjs from 'dayjs';
 
 export type Log = {
   uuid: string;
@@ -19,6 +18,7 @@ export interface IUseDetailData {
   handleChangeCategory: (event: ChangeEvent<HTMLSelectElement>) => void;
   handleChangePlace: (event: ChangeEvent<HTMLInputElement>) => void;
   handleChangeMoney: (event: ChangeEvent<HTMLInputElement>) => void;
+  clearValues: () => void;
   setLog: (date: string) => Promise<void>;
   getLogs: (date: string) => Promise<void>;
 }
@@ -39,6 +39,12 @@ export const useDetailData = (): IUseDetailData => {
 
   const handleChangeMoney = (event: ChangeEvent<HTMLInputElement>) => {
     setMoney(Number(event.target.value));
+  };
+
+  const clearValues = () => {
+    setCategory('');
+    setPlace('');
+    setMoney(0);
   };
 
   const getLogs = async (date: string) => {
@@ -64,9 +70,6 @@ export const useDetailData = (): IUseDetailData => {
           date,
         },
       });
-      setCategory('');
-      setPlace('');
-      setMoney(0);
     } catch (e) {
       console.error(e);
     }
@@ -87,6 +90,7 @@ export const useDetailData = (): IUseDetailData => {
     handleChangeCategory,
     handleChangePlace,
     handleChangeMoney,
+    clearValues,
     setLog,
     getLogs,
   };

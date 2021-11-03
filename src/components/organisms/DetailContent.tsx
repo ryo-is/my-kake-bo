@@ -21,6 +21,7 @@ export const DetailContent = ({ selectDate }: Props) => {
     handleChangeCategory,
     handleChangePlace,
     handleChangeMoney,
+    clearValues,
     setLog,
     getLogs,
   } = useDetailData();
@@ -51,6 +52,7 @@ export const DetailContent = ({ selectDate }: Props) => {
       <DetailActions
         isAddRowMode={isAddRowMode}
         setIsAddRowMode={setIsAddRowMode}
+        clearValues={clearValues}
       />
     </div>
   );
