@@ -10,15 +10,19 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const query = req.query;
-        const logs: Log[] = [];
+        const { start, end } = req.query;
         const ref = await firestore
           .collection('logs')
-          .where('date', '==', query.date)
+          .where('date', '>=', start)
+          .where('date', '<=', end)
           .get();
-        ref.docs.map((doc) => {
+        const logs: { [date: string]: Log[] } = {};
+        ref.docs.forEach((doc) => {
           const data = doc.data();
-          logs.push({
+          if (!logs[data.date]) {
+            logs[data.date] = [];
+          }
+          logs[data.date].push({
             docID: doc.id,
             uuid: data.uuid,
             category: data.category,
@@ -55,6 +59,6 @@ export default async function handler(
         return res.status(500).json(e);
       }
     default:
-      return;
+      return res.status(405).json({ message: '' });
   }
 }

@@ -22,8 +22,8 @@ export const DetailContent = ({ selectDate }: Props) => {
     handleChangePlace,
     handleChangeMoney,
     clearValues,
-    setLog,
     getLogs,
+    setLog,
   } = useDetailData();
 
   useEffect(() => {

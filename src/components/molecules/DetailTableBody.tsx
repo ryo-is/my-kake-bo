@@ -3,6 +3,7 @@ import { DetailTableRow } from '@molecules/DetailTableRow';
 import { DetailTableNewRow } from '@molecules/DetailTableNewRow';
 import { IUseDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
+import dayjs from 'dayjs';
 
 type Props = {
   isAddRowMode: boolean;
@@ -33,9 +34,13 @@ export const DetailTableBody = ({
   getLogs,
   selectDate,
 }: Props) => {
+  const getSelectDateLogs = () => {
+    return logs[dayjs(selectDate).format('YYYY-MM-DD')] || [];
+  };
+
   return (
     <tbody>
-      {logs.map((l) => (
+      {getSelectDateLogs().map((l) => (
         <DetailTableRow
           key={l.uuid}
           log={l}
