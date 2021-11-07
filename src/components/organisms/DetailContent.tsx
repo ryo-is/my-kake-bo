@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
 import { IUseDate } from '@hooks/useDate';
+import { useLogs } from '@hooks/useLogs';
 import { DetailHeader } from '@molecules/DetailHeader';
 import { DetailLogTable } from '@molecules/DetailLogTable';
 import { DetailActions } from '@molecules/DetailActions';
 import { useDetailData } from '@hooks/useDetailData';
-import dayjs from 'dayjs';
 
 type Props = {
   selectDate: IUseDate['selectDate'];
@@ -14,7 +15,6 @@ export const DetailContent = ({ selectDate }: Props) => {
   const [isAddRowMode, setIsAddRowMode] = useState<boolean>(false);
 
   const {
-    logs,
     category,
     place,
     money,
@@ -22,13 +22,12 @@ export const DetailContent = ({ selectDate }: Props) => {
     handleChangePlace,
     handleChangeMoney,
     clearValues,
-    getLogs,
     setLog,
   } = useDetailData();
+  const { getLogs } = useLogs();
 
   useEffect(() => {
-    const date = dayjs(selectDate).format('YYYY-MM-DD');
-    getLogs(date);
+    getLogs(dayjs(selectDate).format('YYYY-MM-DD'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectDate]);
 
@@ -38,7 +37,6 @@ export const DetailContent = ({ selectDate }: Props) => {
       <DetailLogTable
         isAddRowMode={isAddRowMode}
         setIsAddRowMode={setIsAddRowMode}
-        logs={logs}
         category={category}
         place={place}
         money={money}
@@ -46,7 +44,6 @@ export const DetailContent = ({ selectDate }: Props) => {
         handleChangePlace={handleChangePlace}
         handleChangeMoney={handleChangeMoney}
         setLog={setLog}
-        getLogs={getLogs}
         selectDate={selectDate}
       />
       <DetailActions

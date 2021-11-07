@@ -4,11 +4,12 @@ import { DetailTableNewRow } from '@molecules/DetailTableNewRow';
 import { IUseDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
 import dayjs from 'dayjs';
+import { useSelector } from 'react-redux';
+import { RootState } from '@store';
 
 type Props = {
   isAddRowMode: boolean;
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
-  logs: IUseDetailData['logs'];
   category: IUseDetailData['category'];
   place: IUseDetailData['place'];
   money: IUseDetailData['money'];
@@ -16,14 +17,12 @@ type Props = {
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
   setLog: IUseDetailData['setLog'];
-  getLogs: IUseDetailData['getLogs'];
   selectDate: IUseDate['selectDate'];
 };
 
 export const DetailTableBody = ({
   isAddRowMode,
   setIsAddRowMode,
-  logs,
   category,
   place,
   money,
@@ -31,9 +30,10 @@ export const DetailTableBody = ({
   handleChangePlace,
   handleChangeMoney,
   setLog,
-  getLogs,
   selectDate,
 }: Props) => {
+  const { logs } = useSelector((state: RootState) => state.logs);
+
   const getSelectDateLogs = () => {
     return logs[dayjs(selectDate).format('YYYY-MM-DD')] || [];
   };
@@ -41,12 +41,7 @@ export const DetailTableBody = ({
   return (
     <tbody>
       {getSelectDateLogs().map((l) => (
-        <DetailTableRow
-          key={l.uuid}
-          log={l}
-          getLogs={getLogs}
-          selectDate={selectDate}
-        />
+        <DetailTableRow key={l.uuid} log={l} selectDate={selectDate} />
       ))}
       {isAddRowMode && (
         <DetailTableNewRow
@@ -58,7 +53,6 @@ export const DetailTableBody = ({
           handleChangePlace={handleChangePlace}
           handleChangeMoney={handleChangeMoney}
           setLog={setLog}
-          getLogs={getLogs}
           selectDate={selectDate}
         />
       )}

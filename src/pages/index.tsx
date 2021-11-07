@@ -1,5 +1,6 @@
 import { VFC } from 'react';
 import { useDate } from '@hooks/useDate';
+import { useLogs } from '@hooks/useLogs';
 import { Calendar } from '@templates/Calendar';
 import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';

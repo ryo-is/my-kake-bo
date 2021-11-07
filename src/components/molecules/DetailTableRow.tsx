@@ -5,16 +5,17 @@ import { IUseDate } from '@hooks/useDate';
 import { PencilIcon } from '@heroicons/react/solid';
 import { Button } from '@atoms/Button';
 import { DetailTableEditRow } from '@molecules/DetailTableEditRow';
+import { useLogs } from '@hooks/useLogs';
 
 type Props = {
   log: Log;
-  getLogs: IUseDetailData['getLogs'];
   selectDate: IUseDate['selectDate'];
 };
 
-export const DetailTableRow = ({ log, getLogs, selectDate }: Props) => {
+export const DetailTableRow = ({ log, selectDate }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const { updateLog } = useDetailData();
+  const { getLogs } = useLogs();
 
   const getCategory = () => {
     const categories: { [k: string]: string } = {

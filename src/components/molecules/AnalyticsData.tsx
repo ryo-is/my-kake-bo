@@ -1,21 +1,24 @@
 import { AnalyticsDataRow } from '@molecules/AnalyticsDataRow';
-import { IUseAnalyticsData } from '@hooks/useAnalyticsData';
+import { useSelector } from 'react-redux';
+import { RootState } from '@store';
 
-type Props = {
-  analyticsData: IUseAnalyticsData['analyticsData'];
-};
+export const AnalyticsData = () => {
+  const { analyticsData } = useSelector((state: RootState) => state.logs);
 
-export const AnalyticsData = ({ analyticsData }: Props) => {
   return (
     <>
-      <AnalyticsDataRow category="food" value={analyticsData.food} />
-      <AnalyticsDataRow
-        category="miscellaneous"
-        value={analyticsData.miscellaneous}
-      />
-      <AnalyticsDataRow category="other" value={analyticsData.other} />
-      <div className="w-full border-b-2 border-gray-400" />
-      <AnalyticsDataRow category="total" value={analyticsData.total} />
+      {analyticsData && (
+        <>
+          <AnalyticsDataRow category="food" value={analyticsData.food} />
+          <AnalyticsDataRow
+            category="miscellaneous"
+            value={analyticsData.miscellaneous}
+          />
+          <AnalyticsDataRow category="other" value={analyticsData.other} />
+          <div className="w-full border-b-2 border-gray-400" />
+          <AnalyticsDataRow category="total" value={analyticsData.total} />
+        </>
+      )}
     </>
   );
 };

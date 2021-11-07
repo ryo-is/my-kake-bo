@@ -5,6 +5,7 @@ import { IUseDate } from '@hooks/useDate';
 import { Button } from '@atoms/Button';
 import { Select } from '@atoms/Select';
 import { Input } from '@atoms/Input';
+import { useLogs } from '@hooks/useLogs';
 
 type Props = {
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
@@ -15,7 +16,6 @@ type Props = {
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
   setLog: IUseDetailData['setLog'];
-  getLogs: IUseDetailData['getLogs'];
   selectDate: IUseDate['selectDate'];
 };
 
@@ -35,9 +35,10 @@ export const DetailTableNewRow = ({
   handleChangePlace,
   handleChangeMoney,
   setLog,
-  getLogs,
   selectDate,
 }: Props) => {
+  const { getLogs } = useLogs();
+
   const handleSaveClick = async () => {
     await setLog(selectDate.format('YYYY-MM-DD'));
     await getLogs(selectDate.format('YYYY-MM-DD'));
