@@ -1,13 +1,21 @@
 import { AnalyticsDataRow } from '@molecules/AnalyticsDataRow';
+import { IUseAnalyticsData } from '@hooks/useAnalyticsData';
 
-export const AnalyticsData = () => {
+type Props = {
+  analyticsData: IUseAnalyticsData['analyticsData'];
+};
+
+export const AnalyticsData = ({ analyticsData }: Props) => {
   return (
     <>
-      <AnalyticsDataRow category="food" value={10000} />
-      <AnalyticsDataRow category="miscellaneous" value={5000} />
-      <AnalyticsDataRow category="other" value={20000} />
+      <AnalyticsDataRow category="food" value={analyticsData.food} />
+      <AnalyticsDataRow
+        category="miscellaneous"
+        value={analyticsData.miscellaneous}
+      />
+      <AnalyticsDataRow category="other" value={analyticsData.other} />
       <div className="w-full border-b-2 border-gray-400" />
-      <AnalyticsDataRow category="total" value={35000} />
+      <AnalyticsDataRow category="total" value={analyticsData.total} />
     </>
   );
 };
