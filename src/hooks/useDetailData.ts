@@ -1,7 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import { apiHelper } from '@infrastructures/helper';
 import { v4 as uuidv4 } from 'uuid';
-import dayjs from 'dayjs';
 
 export type Log = {
   docID?: string;
@@ -13,7 +12,6 @@ export type Log = {
 };
 
 export interface IUseDetailData {
-  logs: { [date: string]: Log[] };
   category: string;
   place: string;
   money: number;
@@ -21,15 +19,11 @@ export interface IUseDetailData {
   handleChangePlace: (event: ChangeEvent<HTMLInputElement>) => void;
   handleChangeMoney: (event: ChangeEvent<HTMLInputElement>) => void;
   clearValues: () => void;
-  getLogs: (date: string) => Promise<void>;
   setLog: (date: string) => Promise<void>;
   updateLog: (log: Log) => Promise<void>;
 }
 
 export const useDetailData = (): IUseDetailData => {
-  const [logs, setLogs] = useState<{
-    [date: string]: Log[];
-  }>({});
   const [category, setCategory] = useState<string>('');
   const [place, setPlace] = useState<string>('');
   const [money, setMoney] = useState<number>(0);
@@ -50,21 +44,6 @@ export const useDetailData = (): IUseDetailData => {
     setCategory('');
     setPlace('');
     setMoney(0);
-  };
-
-  const getLogs = async (date: string) => {
-    try {
-      const res = await apiHelper.get<{ [date: string]: Log[] }>({
-        path: `/api/logs?start=${dayjs(date)
-          .startOf('M')
-          .format('YYYY-MM-DD')}&end=${dayjs(date)
-          .endOf('M')
-          .format('YYYY-MM-DD')}`,
-      });
-      setLogs(res);
-    } catch (e) {
-      console.error(e);
-    }
   };
 
   const setLog = async (date: string) => {
@@ -96,7 +75,6 @@ export const useDetailData = (): IUseDetailData => {
   };
 
   return {
-    logs,
     category,
     place,
     money,
@@ -104,7 +82,6 @@ export const useDetailData = (): IUseDetailData => {
     handleChangePlace,
     handleChangeMoney,
     clearValues,
-    getLogs,
     setLog,
     updateLog,
   };

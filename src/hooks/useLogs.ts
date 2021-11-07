@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store';
+import { useDispatch } from 'react-redux';
 import { logsSlice, Log } from '@store/logs';
 import { apiHelper } from '@infrastructures/helper';
 import dayjs from 'dayjs';
@@ -10,7 +9,6 @@ export interface IUseLogs {
 
 export const useLogs = (): IUseLogs => {
   const dispatch = useDispatch();
-  const logs = useSelector((state: RootState) => state.logs);
 
   const getLogs = async (date: string) => {
     try {

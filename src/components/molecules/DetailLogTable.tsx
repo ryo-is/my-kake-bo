@@ -7,7 +7,6 @@ import { IUseDate } from '@hooks/useDate';
 type Props = {
   isAddRowMode: boolean;
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
-  logs: IUseDetailData['logs'];
   category: IUseDetailData['category'];
   place: IUseDetailData['place'];
   money: IUseDetailData['money'];
@@ -15,14 +14,12 @@ type Props = {
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
   setLog: IUseDetailData['setLog'];
-  getLogs: IUseDetailData['getLogs'];
   selectDate: IUseDate['selectDate'];
 };
 
 export const DetailLogTable = ({
   isAddRowMode,
   setIsAddRowMode,
-  logs,
   category,
   place,
   money,
@@ -30,7 +27,6 @@ export const DetailLogTable = ({
   handleChangePlace,
   handleChangeMoney,
   setLog,
-  getLogs,
   selectDate,
 }: Props) => {
   return (
@@ -40,7 +36,6 @@ export const DetailLogTable = ({
         <DetailTableBody
           isAddRowMode={isAddRowMode}
           setIsAddRowMode={setIsAddRowMode}
-          logs={logs}
           category={category}
           place={place}
           money={money}
@@ -48,7 +43,6 @@ export const DetailLogTable = ({
           handleChangePlace={handleChangePlace}
           handleChangeMoney={handleChangeMoney}
           setLog={setLog}
-          getLogs={getLogs}
           selectDate={selectDate}
         />
       </table>
