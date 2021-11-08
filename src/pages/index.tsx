@@ -14,6 +14,7 @@ const Index: VFC<{}> = () => {
       <div className="w-2/3 py-6 pl-6 pr-0">
         <Calendar
           selectMonth={selectMonth}
+          selectDate={selectDate}
           prevMonth={prevMonth}
           nextMonth={nextMonth}
           selectDetailDate={selectDetailDate}

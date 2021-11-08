@@ -23,6 +23,7 @@ export const useDate = (): IUseDate => {
 
   const selectDetailDate = (date: Dayjs) => {
     setSelectDate(date);
+    setSelectMonth(date);
   };
 
   return { selectMonth, selectDate, prevMonth, nextMonth, selectDetailDate };

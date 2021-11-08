@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
-import { IUseDate } from '@hooks/useDate';
-import clsx from 'clsx';
 import dayjs from 'dayjs';
-import { CalendarDayBox } from '@atoms/CalendarDayBox';
+import { IUseDate } from '@hooks/useDate';
+import { CalendarDate } from '@molecules/CalendarDate';
 
-type Props = Pick<IUseDate, 'selectMonth' | 'selectDetailDate'>;
+type Props = Pick<IUseDate, 'selectMonth' | 'selectDate' | 'selectDetailDate'>;
 
-export const CalendarDays = ({ selectMonth, selectDetailDate }: Props) => {
+export const CalendarDays = ({
+  selectMonth,
+  selectDate,
+  selectDetailDate,
+}: Props) => {
   const [days, setDays] = useState<Array<dayjs.Dayjs>>([]);
 
   useEffect(() => {
@@ -26,29 +29,18 @@ export const CalendarDays = ({ selectMonth, selectDetailDate }: Props) => {
       dateValues.push(endMonthDay.add(i, 'd'));
     }
     setDays([...dateValues]);
-  }, [selectMonth]);
+  }, [selectMonth, selectDate]);
 
   return (
     <div className="flex flex-wrap border-r border-gray-400">
       {days.map((day) => (
-        <CalendarDayBox key={`day-${day.format('YYYY-MM-DD')}`}>
-          <div
-            className={clsx(
-              'w-full',
-              'flex',
-              'justify-center',
-              'items-center',
-              'cursor-pointer',
-              'hover:bg-blue-100',
-              'p-8',
-              day.format('MM') !== dayjs(selectMonth).format('MM') &&
-                'opacity-40'
-            )}
-            onClick={() => selectDetailDate(day)}
-          >
-            {day.format('D')}
-          </div>
-        </CalendarDayBox>
+        <CalendarDate
+          key={`day-${day.format('YYYY-MM-DD')}`}
+          day={day}
+          selectMonth={selectMonth}
+          selectDate={selectDate}
+          selectDetailDate={selectDetailDate}
+        />
       ))}
     </div>
   );

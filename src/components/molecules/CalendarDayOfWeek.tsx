@@ -1,29 +1,29 @@
-import { CalendarDayBox } from '@atoms/CalendarDayBox';
+import { CalendarCellBox } from '@atoms/CalendarCellBox';
 
 export const CalendarDayOfWeek = () => {
   return (
     <div className="flex border-r border-gray-400">
-      <CalendarDayBox>
+      <CalendarCellBox>
         <div className="text-red-500 p-2">Sun</div>
-      </CalendarDayBox>
-      <CalendarDayBox>
+      </CalendarCellBox>
+      <CalendarCellBox>
         <div className="p-2">Mon</div>
-      </CalendarDayBox>
-      <CalendarDayBox>
+      </CalendarCellBox>
+      <CalendarCellBox>
         <div className="p-2">Tue</div>
-      </CalendarDayBox>
-      <CalendarDayBox>
+      </CalendarCellBox>
+      <CalendarCellBox>
         <div className="p-2">Wed</div>
-      </CalendarDayBox>
-      <CalendarDayBox>
+      </CalendarCellBox>
+      <CalendarCellBox>
         <div className="p-2">Thu</div>
-      </CalendarDayBox>
-      <CalendarDayBox>
+      </CalendarCellBox>
+      <CalendarCellBox>
         <div className="p-2">Fri</div>
-      </CalendarDayBox>
-      <CalendarDayBox>
+      </CalendarCellBox>
+      <CalendarCellBox>
         <div className="text-blue-500 p-2">Sat</div>
-      </CalendarDayBox>
+      </CalendarCellBox>
     </div>
   );
 };

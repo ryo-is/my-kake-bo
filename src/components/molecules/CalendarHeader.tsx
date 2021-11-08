@@ -10,11 +10,11 @@ export const CalendarHeader = ({
   nextMonth,
 }: Props) => {
   return (
-    <div className="border border-gray-400 flex py-2 px-4">
+    <div className="border border-gray-400 flex py-2 px-4 items-center">
       <div className="cursor-pointer w-icon" onClick={prevMonth}>
         <ChevronLeftIcon />
       </div>
-      <div className="flex-1 text-center font-bold">
+      <div className="flex-1 text-center font-bold text-lg">
         {dayjs(selectMonth).get('y')} / {dayjs(selectMonth).get('M') + 1}
       </div>
       <div className="cursor-pointer w-icon" onClick={nextMonth}>

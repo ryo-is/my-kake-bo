@@ -2,14 +2,13 @@ import { IUseDate } from '@hooks/useDate';
 import { CalendarHeader } from '@molecules/CalendarHeader';
 import { CalendarDayOfWeek } from '@molecules/CalendarDayOfWeek';
 import { CalendarDays } from '@molecules/CalendarDays';
+import { CalendarFooter } from '@molecules/CalendarFooter';
 
-type Props = Pick<
-  IUseDate,
-  'selectMonth' | 'prevMonth' | 'nextMonth' | 'selectDetailDate'
->;
+type Props = IUseDate;
 
 export const CalendarContent = ({
   selectMonth,
+  selectDate,
   prevMonth,
   nextMonth,
   selectDetailDate,
@@ -24,8 +23,10 @@ export const CalendarContent = ({
       <CalendarDayOfWeek />
       <CalendarDays
         selectMonth={selectMonth}
+        selectDate={selectDate}
         selectDetailDate={selectDetailDate}
       />
+      <CalendarFooter selectDetailDate={selectDetailDate} />
     </>
   );
 };
