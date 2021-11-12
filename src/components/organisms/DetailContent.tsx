@@ -44,6 +44,7 @@ export const DetailContent = ({ selectDate }: Props) => {
         handleChangePlace={handleChangePlace}
         handleChangeMoney={handleChangeMoney}
         setLog={setLog}
+        clearValues={clearValues}
         selectDate={selectDate}
       />
       <DetailActions

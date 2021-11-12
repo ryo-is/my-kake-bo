@@ -3,6 +3,7 @@ import { TableCol } from '@atoms/TableCol';
 import { Log, useDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
 import { PencilIcon } from '@heroicons/react/solid';
+import { TrashIcon } from '@heroicons/react/outline';
 import { Button } from '@atoms/Button';
 import { DetailTableEditRow } from '@molecules/DetailTableEditRow';
 import { useLogs } from '@hooks/useLogs';
@@ -41,21 +42,32 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
     setIsEdit(false);
   };
 
+  const handleCancel = () => {
+    setIsEdit(false);
+  };
+
   return (
     <>
       {!isEdit ? (
         <tr className="border-b border-gray-400 text-sm">
           <TableCol width="25%" text={getCategory()} />
-          <TableCol width="40%" text={log.place} />
-          <TableCol width="25%" text={getMoney()} />
-          <td>
+          <TableCol width="35%" text={log.place} />
+          <TableCol width="20%" text={getMoney()} />
+          <td className="flex">
             <Button handleClick={handleClickEdit} addClass="text-gray-700">
               <PencilIcon className="fill-current w-6 h-6" />
+            </Button>
+            <Button handleClick={handleClickEdit} addClass="text-red-700">
+              <TrashIcon className="w-6 h-6" />
             </Button>
           </td>
         </tr>
       ) : (
-        <DetailTableEditRow log={log} handleUpdateClick={handleUpdateClick} />
+        <DetailTableEditRow
+          log={log}
+          handleUpdateClick={handleUpdateClick}
+          handleCancel={handleCancel}
+        />
       )}
     </>
   );

@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { SaveIcon } from '@heroicons/react/solid';
+import { XCircleIcon } from '@heroicons/react/outline';
 import { Log } from '@hooks/useDetailData';
 import { Button } from '@atoms/Button';
 import { Select } from '@atoms/Select';
@@ -8,6 +9,7 @@ import { Input } from '@atoms/Input';
 type Props = {
   log: Log;
   handleUpdateClick: (log: Log) => void;
+  handleCancel: () => void;
 };
 
 const options = [
@@ -17,7 +19,11 @@ const options = [
   { value: 'other', text: 'その他' },
 ];
 
-export const DetailTableEditRow = ({ log, handleUpdateClick }: Props) => {
+export const DetailTableEditRow = ({
+  log,
+  handleUpdateClick,
+  handleCancel,
+}: Props) => {
   const [category, setCategory] = useState<string>('');
   const [place, setPlace] = useState<string>('');
   const [money, setMoney] = useState<number>(0);
@@ -64,9 +70,12 @@ export const DetailTableEditRow = ({ log, handleUpdateClick }: Props) => {
       <td width="25%" className="py-2 px-1">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td width="25%" className="py-2">
+      <td width="25%" className="py-2 flex">
         <Button handleClick={submit} addClass="text-gray-700">
           <SaveIcon className="w-6 h-6" />
+        </Button>
+        <Button handleClick={handleCancel} addClass="text-gray-700">
+          <XCircleIcon className="w-6 h-6" />
         </Button>
       </td>
     </tr>

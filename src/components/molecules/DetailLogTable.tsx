@@ -14,6 +14,7 @@ type Props = {
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
   setLog: IUseDetailData['setLog'];
+  clearValues: IUseDetailData['clearValues'];
   selectDate: IUseDate['selectDate'];
 };
 
@@ -27,6 +28,7 @@ export const DetailLogTable = ({
   handleChangePlace,
   handleChangeMoney,
   setLog,
+  clearValues,
   selectDate,
 }: Props) => {
   return (
@@ -43,6 +45,7 @@ export const DetailLogTable = ({
           handleChangePlace={handleChangePlace}
           handleChangeMoney={handleChangeMoney}
           setLog={setLog}
+          clearValues={clearValues}
           selectDate={selectDate}
         />
       </table>

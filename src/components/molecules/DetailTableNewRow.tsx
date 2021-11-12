@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import { SaveIcon } from '@heroicons/react/solid';
+import { XCircleIcon } from '@heroicons/react/outline';
 import { IUseDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
 import { Button } from '@atoms/Button';
@@ -16,6 +17,7 @@ type Props = {
   handleChangePlace: IUseDetailData['handleChangePlace'];
   handleChangeMoney: IUseDetailData['handleChangeMoney'];
   setLog: IUseDetailData['setLog'];
+  clearValues: IUseDetailData['clearValues'];
   selectDate: IUseDate['selectDate'];
 };
 
@@ -35,6 +37,7 @@ export const DetailTableNewRow = ({
   handleChangePlace,
   handleChangeMoney,
   setLog,
+  clearValues,
   selectDate,
 }: Props) => {
   const { getLogs } = useLogs();
@@ -43,6 +46,11 @@ export const DetailTableNewRow = ({
     await setLog(selectDate.format('YYYY-MM-DD'));
     await getLogs(selectDate.format('YYYY-MM-DD'));
     setIsAddRowMode(false);
+  };
+
+  const handleCancel = () => {
+    setIsAddRowMode(false);
+    clearValues();
   };
 
   return (
@@ -60,9 +68,12 @@ export const DetailTableNewRow = ({
       <td width="25%" className="py-2 px-1">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td width="25%" className="py-2">
+      <td width="25%" className="py-2 flex">
         <Button handleClick={handleSaveClick} addClass="text-gray-700">
           <SaveIcon className="w-6 h-6" />
+        </Button>
+        <Button handleClick={handleCancel} addClass="text-gray-700">
+          <XCircleIcon className="w-6 h-6" />
         </Button>
       </td>
     </tr>

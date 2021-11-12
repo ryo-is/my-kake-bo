@@ -5,9 +5,9 @@ export const DetailTableHeader = () => {
     <thead>
       <tr className="border-b border-gray-400 text-sm">
         <TableCol width="25%" text="カテゴリー" />
-        <TableCol width="40%" text="場所" />
-        <TableCol width="25%" text="金額" />
-        <TableCol width="10%" text="" />
+        <TableCol width="35%" text="場所" />
+        <TableCol width="20%" text="金額" />
+        <TableCol width="20%" text="" />
       </tr>
     </thead>
   );
