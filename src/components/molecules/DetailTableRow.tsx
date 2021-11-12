@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TableCol } from '@atoms/TableCol';
-import { Log, useDetailData, IUseDetailData } from '@hooks/useDetailData';
+import { Log, useDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
 import { PencilIcon } from '@heroicons/react/solid';
 import { Button } from '@atoms/Button';

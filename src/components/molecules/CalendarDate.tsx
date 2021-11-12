@@ -4,12 +4,14 @@ import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { CalendarCellBox } from '@atoms/CalendarCellBox';
 import { IUseDate } from '@hooks/useDate';
+import { Log } from '@hooks/useDetailData';
 
 type Props = {
   day: dayjs.Dayjs;
   selectMonth: IUseDate['selectMonth'];
   selectDate: IUseDate['selectDate'];
   selectDetailDate: IUseDate['selectDetailDate'];
+  log: Log[];
 };
 
 export const CalendarDate = ({
@@ -17,8 +19,18 @@ export const CalendarDate = ({
   selectMonth,
   selectDate,
   selectDetailDate,
+  log,
 }: Props) => {
   const [bindStyles, setBindStyles] = useState<string[]>([]);
+
+  const totalMoney = () => {
+    if (!log) {
+      return '0円';
+    }
+    let total = 0;
+    log.forEach((l) => (total += l.money));
+    return `${total.toLocaleString()}円`;
+  };
 
   useEffect(() => {
     const newStyles = [];
@@ -35,17 +47,16 @@ export const CalendarDate = ({
       <div
         className={clsx(
           'w-full',
-          'flex',
-          'justify-center',
-          'items-center',
           'cursor-pointer',
-          'p-8',
+          'relative',
+          'p-12',
           day.format('MM') !== dayjs(selectMonth).format('MM') && 'opacity-40',
           ...bindStyles
         )}
         onClick={() => selectDetailDate(day)}
       >
-        {day.format('D')}
+        <div className="absolute top-2 left-2">{day.format('D')}</div>
+        <div className="absolute bottom-2 right-2">{totalMoney()}</div>
       </div>
     </CalendarCellBox>
   );
