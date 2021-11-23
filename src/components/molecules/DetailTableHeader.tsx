@@ -7,7 +7,7 @@ export const DetailTableHeader = () => {
         <TableCol width="25%" text="カテゴリー" />
         <TableCol width="35%" text="場所" />
         <TableCol width="20%" text="金額" />
-        <TableCol width="20%" text="" />
+        <TableCol width="20%" text="編集・削除" />
       </tr>
     </thead>
   );
