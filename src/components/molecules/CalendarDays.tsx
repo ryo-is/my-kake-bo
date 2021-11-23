@@ -16,16 +16,19 @@ export const CalendarDays = ({
   const { logs } = useSelector((state: RootState) => state.logs);
 
   useEffect(() => {
-    const startMonthDay = selectMonth.startOf('M');
-    const endMonthDay = selectMonth.endOf('M');
+    const startMonthDay = selectMonth.subtract(1, 'M').set('date', 25);
+    const endMonthDay = selectMonth.set('date', 24);
     const startMonthDayOfWeek = startMonthDay.get('day');
     const endMonthDayOfWeek = endMonthDay.get('day');
-    const nowMonthDayCount = endMonthDay.get('date');
+    const nowMonthDayCount =
+      endMonthDay.get('date') +
+      (selectMonth.subtract(1, 'M').endOf('M').get('date') -
+        startMonthDay.get('date'));
     const dateValues = [];
     for (let i = 0; i < startMonthDayOfWeek; i++) {
       dateValues.push(startMonthDay.subtract(startMonthDayOfWeek - i, 'd'));
     }
-    for (let i = 0; i < nowMonthDayCount; i++) {
+    for (let i = 0; i <= nowMonthDayCount; i++) {
       dateValues.push(startMonthDay.add(i, 'd'));
     }
     for (let i = 1; i <= 6 - endMonthDayOfWeek; i++) {

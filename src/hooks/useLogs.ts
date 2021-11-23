@@ -12,12 +12,10 @@ export const useLogs = (): IUseLogs => {
 
   const getLogs = async (date: string) => {
     try {
+      const start = dayjs(date).subtract(1, 'M').format('YYYY-MM-25');
+      const end = dayjs(date).format('YYYY-MM-24');
       const res = await apiHelper.get<{ [date: string]: Log[] }>({
-        path: `/api/logs?start=${dayjs(date)
-          .startOf('M')
-          .format('YYYY-MM-DD')}&end=${dayjs(date)
-          .endOf('M')
-          .format('YYYY-MM-DD')}`,
+        path: `/api/logs?start=${start}&end=${end}`,
       });
       dispatch(logsSlice.actions.update(res));
     } catch (e) {

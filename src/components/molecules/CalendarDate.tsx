@@ -2,9 +2,12 @@
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
 import { CalendarCellBox } from '@atoms/CalendarCellBox';
 import { IUseDate } from '@hooks/useDate';
 import { Log } from '@hooks/useDetailData';
+
+dayjs.extend(isBetween);
 
 type Props = {
   day: dayjs.Dayjs;
@@ -32,6 +35,15 @@ export const CalendarDate = ({
     return `${total.toLocaleString()}円`;
   };
 
+  const isBetweenDate = (day: dayjs.Dayjs) => {
+    const start = selectMonth.subtract(1, 'M').set('date', 24);
+    const end = selectMonth.set('date', 25);
+    if (!day.isBetween(start, end)) {
+      console.log(day.format(), day.isBetween(start, end));
+      return 'opacity-40';
+    }
+  };
+
   useEffect(() => {
     const newStyles = [];
     if (day.format('YYYY-MM-DD') === selectDate.format('YYYY-MM-DD')) {
@@ -50,7 +62,7 @@ export const CalendarDate = ({
           'cursor-pointer',
           'relative',
           'p-12',
-          day.format('MM') !== dayjs(selectMonth).format('MM') && 'opacity-40',
+          isBetweenDate(day),
           ...bindStyles
         )}
         onClick={() => selectDetailDate(day)}
