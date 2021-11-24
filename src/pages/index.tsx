@@ -26,7 +26,7 @@ const Index: VFC<{}> = () => {
           selectDetailDate={selectDetailDate}
           selectToday={selectToday}
         />
-        <Analytics selectDate={selectDate} />
+        <Analytics selectMonth={selectMonth} />
       </div>
       <Detail selectDate={selectDate} />
     </div>

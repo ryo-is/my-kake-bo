@@ -12,8 +12,15 @@ export const useLogs = (): IUseLogs => {
 
   const getLogs = async (date: string) => {
     try {
-      const start = dayjs(date).subtract(1, 'M').format('YYYY-MM-25');
-      const end = dayjs(date).format('YYYY-MM-24');
+      const dateNumber = dayjs(date).get('date');
+      const start =
+        dateNumber < 25
+          ? dayjs(date).subtract(1, 'M').format('YYYY-MM-25')
+          : dayjs(date).format('YYYY-MM-25');
+      const end =
+        dateNumber < 25
+          ? dayjs(date).format('YYYY-MM-24')
+          : dayjs(date).add(1, 'M').format('YYYY-MM-24');
       const res = await apiHelper.get<{ [date: string]: Log[] }>({
         path: `/api/logs?start=${start}&end=${end}`,
       });

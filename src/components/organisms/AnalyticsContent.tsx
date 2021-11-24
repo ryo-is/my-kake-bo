@@ -6,16 +6,16 @@ import dayjs from 'dayjs';
 import { useLogs } from '@hooks/useLogs';
 
 type Props = {
-  selectDate: IUseDate['selectDate'];
+  selectMonth: IUseDate['selectMonth'];
 };
 
-export const AnalyticsContent = ({ selectDate }: Props) => {
+export const AnalyticsContent = ({ selectMonth }: Props) => {
   const { getLogs } = useLogs();
 
   useEffect(() => {
-    getLogs(dayjs(selectDate).format('YYYY-MM-DD'));
+    getLogs(dayjs(selectMonth).format('YYYY-MM-DD'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectDate]);
+  }, [selectMonth]);
 
   return (
     <div className="border border-gray-400 p-4 rounded h-full">

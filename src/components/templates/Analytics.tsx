@@ -2,13 +2,13 @@ import { AnalyticsContent } from '@organisms/AnalyticsContent';
 import { IUseDate } from '@hooks/useDate';
 
 type Props = {
-  selectDate: IUseDate['selectDate'];
+  selectMonth: IUseDate['selectMonth'];
 };
 
-export const Analytics = ({ selectDate }: Props) => {
+export const Analytics = ({ selectMonth }: Props) => {
   return (
     <div className="w-full mt-6">
-      <AnalyticsContent selectDate={selectDate} />
+      <AnalyticsContent selectMonth={selectMonth} />
     </div>
   );
 };
