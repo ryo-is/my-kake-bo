@@ -6,8 +6,14 @@ import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';
 
 const Index: VFC<{}> = () => {
-  const { selectMonth, selectDate, prevMonth, nextMonth, selectDetailDate } =
-    useDate();
+  const {
+    selectMonth,
+    selectDate,
+    prevMonth,
+    nextMonth,
+    selectDetailDate,
+    selectToday,
+  } = useDate();
 
   return (
     <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen bg-gray-100">
@@ -18,6 +24,7 @@ const Index: VFC<{}> = () => {
           prevMonth={prevMonth}
           nextMonth={nextMonth}
           selectDetailDate={selectDetailDate}
+          selectToday={selectToday}
         />
         <Analytics selectDate={selectDate} />
       </div>

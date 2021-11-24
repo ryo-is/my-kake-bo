@@ -7,6 +7,7 @@ export interface IUseDate {
   prevMonth: () => void;
   nextMonth: () => void;
   selectDetailDate: (date: Dayjs) => void;
+  selectToday: (date: Dayjs) => void;
 }
 
 export const useDate = (): IUseDate => {
@@ -23,8 +24,19 @@ export const useDate = (): IUseDate => {
 
   const selectDetailDate = (date: Dayjs) => {
     setSelectDate(date);
+  };
+
+  const selectToday = (date: Dayjs) => {
+    setSelectDate(date);
     setSelectMonth(date);
   };
 
-  return { selectMonth, selectDate, prevMonth, nextMonth, selectDetailDate };
+  return {
+    selectMonth,
+    selectDate,
+    prevMonth,
+    nextMonth,
+    selectDetailDate,
+    selectToday,
+  };
 };

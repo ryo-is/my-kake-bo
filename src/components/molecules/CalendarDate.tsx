@@ -39,7 +39,6 @@ export const CalendarDate = ({
     const start = selectMonth.subtract(1, 'M').set('date', 24);
     const end = selectMonth.set('date', 25);
     if (!day.isBetween(start, end)) {
-      console.log(day.format(), day.isBetween(start, end));
       return 'opacity-40';
     }
   };

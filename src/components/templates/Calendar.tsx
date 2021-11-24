@@ -9,6 +9,7 @@ export const Calendar = ({
   prevMonth,
   nextMonth,
   selectDetailDate,
+  selectToday,
 }: Props) => {
   return (
     <div>
@@ -18,6 +19,7 @@ export const Calendar = ({
         prevMonth={prevMonth}
         nextMonth={nextMonth}
         selectDetailDate={selectDetailDate}
+        selectToday={selectToday}
       />
     </div>
   );

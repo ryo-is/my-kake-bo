@@ -4,12 +4,12 @@ import { CalendarIcon } from '@heroicons/react/solid';
 import { IUseDate } from '@hooks/useDate';
 
 type Props = {
-  selectDetailDate: IUseDate['selectDetailDate'];
+  selectToday: IUseDate['selectToday'];
 };
 
-export const CalendarFooter = ({ selectDetailDate }: Props) => {
+export const CalendarFooter = ({ selectToday }: Props) => {
   const handleClick = () => {
-    selectDetailDate(dayjs());
+    selectToday(dayjs());
   };
 
   return (
