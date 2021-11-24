@@ -22,6 +22,7 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
     const categories: { [k: string]: string } = {
       food: '食費',
       miscellaneous: '雑費',
+      eatingout: '外食',
       other: 'その他',
       total: '合計',
     };

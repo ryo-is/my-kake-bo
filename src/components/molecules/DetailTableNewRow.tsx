@@ -25,6 +25,7 @@ const options = [
   { value: '', text: '' },
   { value: 'food', text: '食費' },
   { value: 'miscellaneous', text: '雑費' },
+  { value: 'eatingout', text: '外食' },
   { value: 'other', text: 'その他' },
 ];
 
