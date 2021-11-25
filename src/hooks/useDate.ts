@@ -11,7 +11,11 @@ export interface IUseDate {
 }
 
 export const useDate = (): IUseDate => {
-  const [selectMonth, setSelectMonth] = useState(dayjs());
+  const dateNumber = dayjs().get('date');
+
+  const [selectMonth, setSelectMonth] = useState(
+    dateNumber >= 25 ? dayjs().add(1, 'M').startOf('M') : dayjs().startOf('M')
+  );
   const [selectDate, setSelectDate] = useState(dayjs());
 
   const prevMonth = () => {
