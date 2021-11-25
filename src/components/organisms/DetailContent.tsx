@@ -29,7 +29,7 @@ export const DetailContent = ({ selectDate }: Props) => {
   useEffect(() => {
     getLogs(dayjs(selectDate).format('YYYY-MM-DD'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectDate]);
+  }, []);
 
   return (
     <div className="border border-gray-400 p-2 rounded h-full">
