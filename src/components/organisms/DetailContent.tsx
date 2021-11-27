@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-import dayjs from 'dayjs';
+import { useState } from 'react';
 import { IUseDate } from '@hooks/useDate';
-import { useLogs } from '@hooks/useLogs';
 import { DetailHeader } from '@molecules/DetailHeader';
 import { DetailLogTable } from '@molecules/DetailLogTable';
 import { DetailActions } from '@molecules/DetailActions';
@@ -24,12 +22,6 @@ export const DetailContent = ({ selectDate }: Props) => {
     clearValues,
     setLog,
   } = useDetailData();
-  const { getLogs } = useLogs();
-
-  useEffect(() => {
-    getLogs(dayjs(selectDate).format('YYYY-MM-DD'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className="border border-gray-400 p-2 rounded h-full">

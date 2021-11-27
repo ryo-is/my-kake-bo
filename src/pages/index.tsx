@@ -1,9 +1,10 @@
-import { VFC } from 'react';
+import { VFC, useEffect } from 'react';
 import { useDate } from '@hooks/useDate';
 import { useLogs } from '@hooks/useLogs';
 import { Calendar } from '@templates/Calendar';
 import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';
+import dayjs from 'dayjs';
 
 const Index: VFC<{}> = () => {
   const {
@@ -14,6 +15,12 @@ const Index: VFC<{}> = () => {
     selectDetailDate,
     selectToday,
   } = useDate();
+  const { getLogs } = useLogs();
+
+  useEffect(() => {
+    getLogs(dayjs(selectMonth).format('YYYY-MM-DD'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen bg-gray-100">
@@ -26,7 +33,7 @@ const Index: VFC<{}> = () => {
           selectDetailDate={selectDetailDate}
           selectToday={selectToday}
         />
-        <Analytics selectMonth={selectMonth} />
+        <Analytics />
       </div>
       <Detail selectDate={selectDate} />
     </div>

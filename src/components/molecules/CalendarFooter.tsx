@@ -2,14 +2,18 @@ import dayjs from 'dayjs';
 import { Button } from '@atoms/Button';
 import { CalendarIcon } from '@heroicons/react/solid';
 import { IUseDate } from '@hooks/useDate';
+import { useLogs } from '@hooks/useLogs';
 
 type Props = {
   selectToday: IUseDate['selectToday'];
 };
 
 export const CalendarFooter = ({ selectToday }: Props) => {
+  const { getLogs } = useLogs();
+
   const handleClick = () => {
     selectToday(dayjs());
+    getLogs(dayjs().format('YYYY-MM-DD'));
   };
 
   return (
