@@ -26,6 +26,7 @@ export default async function handler(
             date,
           });
         });
+        return res.status(200).json({ incomes });
       } catch (e) {
         return res.status(500).json(e);
       }

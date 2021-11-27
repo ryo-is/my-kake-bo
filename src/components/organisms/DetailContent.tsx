@@ -24,26 +24,28 @@ export const DetailContent = ({ selectDate }: Props) => {
   } = useDetailData();
 
   return (
-    <div className="border border-gray-400 p-2 rounded h-full">
-      <DetailHeader selectDate={selectDate} />
-      <DetailLogTable
-        isAddRowMode={isAddRowMode}
-        setIsAddRowMode={setIsAddRowMode}
-        category={category}
-        place={place}
-        money={money}
-        handleChangeCategory={handleChangeCategory}
-        handleChangePlace={handleChangePlace}
-        handleChangeMoney={handleChangeMoney}
-        setLog={setLog}
-        clearValues={clearValues}
-        selectDate={selectDate}
-      />
-      <DetailActions
-        isAddRowMode={isAddRowMode}
-        setIsAddRowMode={setIsAddRowMode}
-        clearValues={clearValues}
-      />
+    <div className="h-1/2 pb-3">
+      <div className="border border-gray-400 rounded h-full p-2">
+        <DetailHeader selectDate={selectDate} />
+        <DetailLogTable
+          isAddRowMode={isAddRowMode}
+          setIsAddRowMode={setIsAddRowMode}
+          category={category}
+          place={place}
+          money={money}
+          handleChangeCategory={handleChangeCategory}
+          handleChangePlace={handleChangePlace}
+          handleChangeMoney={handleChangeMoney}
+          setLog={setLog}
+          clearValues={clearValues}
+          selectDate={selectDate}
+        />
+        <DetailActions
+          isAddRowMode={isAddRowMode}
+          setIsAddRowMode={setIsAddRowMode}
+          clearValues={clearValues}
+        />
+      </div>
     </div>
   );
 };

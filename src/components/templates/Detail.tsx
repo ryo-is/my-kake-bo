@@ -6,9 +6,5 @@ type Props = {
 };
 
 export const Detail = ({ selectDate }: Props) => {
-  return (
-    <div className="w-1/3 p-6">
-      <DetailContent selectDate={selectDate} />
-    </div>
-  );
+  return <DetailContent selectDate={selectDate} />;
 };

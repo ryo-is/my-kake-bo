@@ -21,6 +21,7 @@ export const useIncomes = (): IUseIncomes => {
         dateNumber < 25
           ? dayjs(date).format('YYYY-MM-24')
           : dayjs(date).add(1, 'M').format('YYYY-MM-24');
+      console.log('getIncomes');
       const { incomes } = await apiHelper.get<{ incomes: Income[] }>({
         path: `/api/incomes?start=${start}&end=${end}`,
       });
