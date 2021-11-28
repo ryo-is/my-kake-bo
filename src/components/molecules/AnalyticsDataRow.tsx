@@ -1,5 +1,5 @@
 type Props = {
-  category: 'food' | 'miscellaneous' | 'other' | 'total';
+  category: 'food' | 'miscellaneous' | 'eatingout' | 'other' | 'total';
   value: number;
 };
 
@@ -7,6 +7,7 @@ export const AnalyticsDataRow = ({ category, value }: Props) => {
   const categories = {
     food: '食費',
     miscellaneous: '雑費',
+    eatingout: '外食',
     other: 'その他',
     total: '合計',
   };

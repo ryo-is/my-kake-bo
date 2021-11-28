@@ -14,6 +14,10 @@ export const AnalyticsData = () => {
             category="miscellaneous"
             value={analyticsData.miscellaneous}
           />
+          <AnalyticsDataRow
+            category="eatingout"
+            value={analyticsData.eatingout}
+          />
           <AnalyticsDataRow category="other" value={analyticsData.other} />
           <div className="w-full border-b-2 border-gray-400" />
           <AnalyticsDataRow category="total" value={analyticsData.total} />
