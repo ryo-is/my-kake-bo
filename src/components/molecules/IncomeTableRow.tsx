@@ -18,10 +18,16 @@ export const IncomeTableRow = ({ income }: Props) => {
       <TableCol width="" text={income.label} />
       <TableCol width="" text={`${income.value.toLocaleString()}円`} />
       <td className="flex justify-center">
-        <Button handleClick={handleClickEdit} addClass="text-gray-700">
+        <Button
+          handleClick={handleClickEdit}
+          addClass="text-gray-700 hover:bg-gray-200 rounded-full"
+        >
           <PencilIcon className="fill-current w-6 h-6" />
         </Button>
-        <Button handleClick={handleClickEdit} addClass="text-red-700">
+        <Button
+          handleClick={handleClickEdit}
+          addClass="text-red-700 hover:bg-gray-200 rounded-full"
+        >
           <TrashIcon className="w-6 h-6" />
         </Button>
       </td>

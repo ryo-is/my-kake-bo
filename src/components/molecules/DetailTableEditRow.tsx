@@ -70,11 +70,17 @@ export const DetailTableEditRow = ({
       <td width="25%" className="py-2 px-1">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td width="25%" className="py-2 flex">
-        <Button handleClick={submit} addClass="text-gray-700">
+      <td className="py-2 flex justify-center">
+        <Button
+          handleClick={submit}
+          addClass="text-gray-700 hover:bg-gray-200 rounded-full"
+        >
           <SaveIcon className="w-6 h-6" />
         </Button>
-        <Button handleClick={handleCancel} addClass="text-gray-700">
+        <Button
+          handleClick={handleCancel}
+          addClass="text-gray-700 hover:bg-gray-200 rounded-full"
+        >
           <XCircleIcon className="w-6 h-6" />
         </Button>
       </td>

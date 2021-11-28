@@ -66,10 +66,16 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
           <TableCol width="35%" text={log.place} />
           <TableCol width="20%" text={getMoney()} />
           <td className="flex justify-center">
-            <Button handleClick={handleClickEdit} addClass="text-gray-700">
+            <Button
+              handleClick={handleClickEdit}
+              addClass="text-gray-700 hover:bg-gray-200 rounded-full"
+            >
               <PencilIcon className="fill-current w-6 h-6" />
             </Button>
-            <Button handleClick={handleDeleteClick} addClass="text-red-700">
+            <Button
+              handleClick={handleDeleteClick}
+              addClass="text-red-700 hover:bg-gray-200 rounded-full"
+            >
               <TrashIcon className="w-6 h-6" />
             </Button>
           </td>
