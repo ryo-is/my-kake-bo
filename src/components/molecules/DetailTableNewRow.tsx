@@ -69,7 +69,7 @@ export const DetailTableNewRow = ({
       <td width="25%" className="py-2 px-1">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td width="25%" className="py-2 flex">
+      <td className="py-2 flex justify-center">
         <Button handleClick={handleSaveClick} addClass="text-gray-700">
           <SaveIcon className="w-6 h-6" />
         </Button>

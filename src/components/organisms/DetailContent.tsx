@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { IUseDate } from '@hooks/useDate';
 import { DetailHeader } from '@molecules/DetailHeader';
 import { DetailLogTable } from '@molecules/DetailLogTable';
-import { DetailActions } from '@molecules/DetailActions';
 import { useDetailData } from '@hooks/useDetailData';
 
 type Props = {
@@ -39,11 +38,6 @@ export const DetailContent = ({ selectDate }: Props) => {
           setLog={setLog}
           clearValues={clearValues}
           selectDate={selectDate}
-        />
-        <DetailActions
-          isAddRowMode={isAddRowMode}
-          setIsAddRowMode={setIsAddRowMode}
-          clearValues={clearValues}
         />
       </div>
     </div>

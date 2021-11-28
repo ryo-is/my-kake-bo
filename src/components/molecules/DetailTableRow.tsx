@@ -54,7 +54,7 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
           <TableCol width="25%" text={getCategory()} />
           <TableCol width="35%" text={log.place} />
           <TableCol width="20%" text={getMoney()} />
-          <td className="flex">
+          <td className="flex justify-center">
             <Button handleClick={handleClickEdit} addClass="text-gray-700">
               <PencilIcon className="fill-current w-6 h-6" />
             </Button>
