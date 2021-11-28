@@ -15,7 +15,7 @@ type Props = {
 
 export const DetailTableRow = ({ log, selectDate }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const { updateLog } = useDetailData();
+  const { updateLog, deleteLog } = useDetailData();
   const { getLogs } = useLogs();
 
   const getCategory = () => {
@@ -43,6 +43,17 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
     setIsEdit(false);
   };
 
+  const handleDeleteClick = async () => {
+    if (log.docID) {
+      const result = window.confirm('削除しますか？');
+      if (result) {
+        await deleteLog(log.docID);
+        await getLogs(selectDate.format('YYYY-MM-DD'));
+      }
+    }
+    setIsEdit(false);
+  };
+
   const handleCancel = () => {
     setIsEdit(false);
   };
@@ -58,7 +69,7 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
             <Button handleClick={handleClickEdit} addClass="text-gray-700">
               <PencilIcon className="fill-current w-6 h-6" />
             </Button>
-            <Button handleClick={handleClickEdit} addClass="text-red-700">
+            <Button handleClick={handleDeleteClick} addClass="text-red-700">
               <TrashIcon className="w-6 h-6" />
             </Button>
           </td>
