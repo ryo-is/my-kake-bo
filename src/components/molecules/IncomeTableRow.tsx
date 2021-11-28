@@ -1,6 +1,6 @@
 import { Income } from '@store/incomes';
 import { TableCol } from '@atoms/TableCol';
-import { Button } from '@atoms/Button';
+import { IconButton } from '@atoms/IconButton';
 import { PencilIcon } from '@heroicons/react/solid';
 import { TrashIcon } from '@heroicons/react/outline';
 
@@ -18,18 +18,20 @@ export const IncomeTableRow = ({ income }: Props) => {
       <TableCol width="" text={income.label} />
       <TableCol width="" text={`${income.value.toLocaleString()}円`} />
       <td className="flex justify-center">
-        <Button
+        <IconButton
           handleClick={handleClickEdit}
-          addClass="text-gray-700 hover:bg-gray-200 rounded-full"
+          addClass="text-gray-700"
+          tipText="編集"
         >
           <PencilIcon className="fill-current w-6 h-6" />
-        </Button>
-        <Button
+        </IconButton>
+        <IconButton
           handleClick={handleClickEdit}
-          addClass="text-red-700 hover:bg-gray-200 rounded-full"
+          addClass="text-red-700"
+          tipText="削除"
         >
           <TrashIcon className="w-6 h-6" />
-        </Button>
+        </IconButton>
       </td>
     </tr>
   );

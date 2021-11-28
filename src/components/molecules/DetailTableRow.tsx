@@ -4,7 +4,7 @@ import { Log, useDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
 import { PencilIcon } from '@heroicons/react/solid';
 import { TrashIcon } from '@heroicons/react/outline';
-import { Button } from '@atoms/Button';
+import { IconButton } from '@atoms/IconButton';
 import { DetailTableEditRow } from '@molecules/DetailTableEditRow';
 import { useLogs } from '@hooks/useLogs';
 
@@ -66,18 +66,20 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
           <TableCol width="35%" text={log.place} />
           <TableCol width="20%" text={getMoney()} />
           <td className="flex justify-center">
-            <Button
+            <IconButton
               handleClick={handleClickEdit}
-              addClass="text-gray-700 hover:bg-gray-200 rounded-full"
+              addClass="text-gray-700"
+              tipText="編集"
             >
               <PencilIcon className="fill-current w-6 h-6" />
-            </Button>
-            <Button
+            </IconButton>
+            <IconButton
               handleClick={handleDeleteClick}
-              addClass="text-red-700 hover:bg-gray-200 rounded-full"
+              addClass="text-red-700"
+              tipText="削除"
             >
               <TrashIcon className="w-6 h-6" />
-            </Button>
+            </IconButton>
           </td>
         </tr>
       ) : (
