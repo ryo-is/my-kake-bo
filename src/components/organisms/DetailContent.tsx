@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IUseDate } from '@hooks/useDate';
 import { DetailHeader } from '@molecules/DetailHeader';
 import { DetailLogTable } from '@molecules/DetailLogTable';
+import { DetailTotalArea } from '@molecules/DetailTotalArea';
 import { useDetailData } from '@hooks/useDetailData';
 
 type Props = {
@@ -24,7 +25,7 @@ export const DetailContent = ({ selectDate }: Props) => {
 
   return (
     <div className="h-1/2 pb-3">
-      <div className="border border-gray-400 rounded h-full p-2">
+      <div className="border border-gray-400 rounded h-full p-2 relative">
         <DetailHeader selectDate={selectDate} />
         <DetailLogTable
           isAddRowMode={isAddRowMode}
@@ -39,6 +40,7 @@ export const DetailContent = ({ selectDate }: Props) => {
           clearValues={clearValues}
           selectDate={selectDate}
         />
+        <DetailTotalArea selectDate={selectDate} />
       </div>
     </div>
   );
