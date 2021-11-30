@@ -3,6 +3,7 @@ import { Button } from '@atoms/Button';
 import { CalendarIcon } from '@heroicons/react/solid';
 import { IUseDate } from '@hooks/useDate';
 import { useLogs } from '@hooks/useLogs';
+import { useIncomes } from '@hooks/useIncomes';
 
 type Props = {
   selectToday: IUseDate['selectToday'];
@@ -10,10 +11,12 @@ type Props = {
 
 export const CalendarFooter = ({ selectToday }: Props) => {
   const { getLogs } = useLogs();
+  const { getIncomes } = useIncomes();
 
   const handleClick = () => {
     selectToday(dayjs());
     getLogs(dayjs().format('YYYY-MM-DD'));
+    getIncomes(dayjs().format('YYYY-MM-DD'));
   };
 
   return (
