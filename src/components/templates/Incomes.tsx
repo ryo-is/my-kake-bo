@@ -1,5 +1,5 @@
-import { IncomesContents } from '@organisms/IncomesContent';
+import { IncomesContent } from '@organisms/IncomesContent';
 
 export const Incomes = () => {
-  return <IncomesContents />;
+  return <IncomesContent />;
 };

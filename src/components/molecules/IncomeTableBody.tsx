@@ -1,8 +1,14 @@
+import { Dispatch, SetStateAction } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@store';
 import { IncomeTableRow } from '@molecules/IncomeTableRow';
 
-export const IncomeTableBody = () => {
+type Props = {
+  isAddRowMode: boolean;
+  setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
+};
+
+export const IncomeTableBody = ({}: Props) => {
   const { incomes } = useSelector((state: RootState) => state.incomes);
 
   return (

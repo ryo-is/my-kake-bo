@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type Income = {
-  docID: string;
+  docID?: string;
   label: string;
   value: number;
   date: string;

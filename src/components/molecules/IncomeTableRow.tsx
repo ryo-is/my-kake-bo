@@ -14,7 +14,7 @@ export const IncomeTableRow = ({ income }: Props) => {
   };
 
   return (
-    <tr>
+    <tr className="border-b border-gray-400 text-sm">
       <TableCol width="" text={income.label} />
       <TableCol width="" text={`${income.value.toLocaleString()}円`} />
       <td className="flex justify-center">
