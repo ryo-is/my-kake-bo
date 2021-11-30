@@ -1,6 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { IUseDate } from '@hooks/useDate';
 import { useLogs } from '@hooks/useLogs';
+import { useIncomes } from '@hooks/useIncomes';
 import dayjs from 'dayjs';
 
 type Props = Pick<IUseDate, 'selectMonth' | 'prevMonth' | 'nextMonth'>;
@@ -11,14 +12,17 @@ export const CalendarHeader = ({
   nextMonth,
 }: Props) => {
   const { getLogs } = useLogs();
+  const { getIncomes } = useIncomes();
 
   const handlePrevMonth = () => {
     getLogs(selectMonth.subtract(1, 'M').format('YYYY-MM-DD'));
+    getIncomes(selectMonth.subtract(1, 'M').format('YYYY-MM-DD'));
     prevMonth();
   };
 
   const handleNextMonth = () => {
     getLogs(selectMonth.add(1, 'M').format('YYYY-MM-DD'));
+    getIncomes(selectMonth.add(1, 'M').format('YYYY-MM-DD'));
     nextMonth();
   };
 
