@@ -5,6 +5,7 @@ import { apiHelper } from '@infrastructures/helper';
 
 export interface IUseIncomes {
   getIncomes: (date: string) => Promise<void>;
+  setIncome: (p: { label: string; value: number }) => Promise<void>;
 }
 
 export const useIncomes = (): IUseIncomes => {
@@ -30,5 +31,22 @@ export const useIncomes = (): IUseIncomes => {
     }
   };
 
-  return { getIncomes };
+  const setIncome = async ({
+    label,
+    value,
+  }: {
+    label: string;
+    value: number;
+  }) => {
+    try {
+      await apiHelper.post<Income>({
+        path: '/api/incomes',
+        body: { label, value, date: dayjs().format('YYYY-MM-DD') },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return { getIncomes, setIncome };
 };

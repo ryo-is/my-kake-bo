@@ -11,7 +11,7 @@ export const IncomeTable = ({ isAddRowMode, setIsAddRowMode }: Props) => {
   return (
     <div className="px-3 pt-5">
       <table className="w-full table-fixed">
-        <IncomeTableHeader />
+        <IncomeTableHeader setIsAddRowMode={setIsAddRowMode} />
         <IncomeTableBody
           isAddRowMode={isAddRowMode}
           setIsAddRowMode={setIsAddRowMode}

@@ -1,10 +1,15 @@
+import { Dispatch, SetStateAction } from 'react';
 import { Button } from '@atoms/Button';
 import { TableCol } from '@atoms/TableCol';
 import { PlusIcon } from '@heroicons/react/solid';
 
-export const IncomeTableHeader = () => {
+type Props = {
+  setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
+};
+
+export const IncomeTableHeader = ({ setIsAddRowMode }: Props) => {
   const handleAddRowClick = () => {
-    return;
+    setIsAddRowMode(true);
   };
 
   return (

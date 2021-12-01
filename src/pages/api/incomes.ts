@@ -30,6 +30,14 @@ export default async function handler(
       } catch (e) {
         return res.status(500).json(e);
       }
+    case 'POST':
+      try {
+        const body = JSON.parse(req.body);
+        await firestore.collection('incomes').add(body);
+        return res.status(200).json({});
+      } catch (e) {
+        return res.status(500).json(e);
+      }
     default:
       return res.status(405).json({ message: '' });
   }
