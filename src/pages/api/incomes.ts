@@ -38,6 +38,31 @@ export default async function handler(
       } catch (e) {
         return res.status(500).json(e);
       }
+    case 'PUT':
+      try {
+        const body = JSON.parse(req.body) as Income;
+        if (!body.docID) {
+          return res.status(404).json({ message: 'docIDがありません' });
+        }
+        await firestore.collection('incomes').doc(body.docID).update({
+          label: body.label,
+          value: body.value,
+        });
+        return res.status(200).json({});
+      } catch (e) {
+        return res.status(500).json(e);
+      }
+    case 'DELETE':
+      try {
+        const { docID } = req.query;
+        if (!docID) {
+          return res.status(404).json({ message: 'docIDがありません' });
+        }
+        await firestore.collection('incomes').doc(String(docID)).delete();
+        return res.status(200).json({});
+      } catch (e) {
+        return res.status(500).json(e);
+      }
     default:
       return res.status(405).json({ message: '' });
   }

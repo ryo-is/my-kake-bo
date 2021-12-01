@@ -6,6 +6,8 @@ import { apiHelper } from '@infrastructures/helper';
 export interface IUseIncomes {
   getIncomes: (date: string) => Promise<void>;
   setIncome: (p: { label: string; value: number }) => Promise<void>;
+  updateIncome: (p: Income) => Promise<void>;
+  deleteIncome: (docID: string) => Promise<void>;
 }
 
 export const useIncomes = (): IUseIncomes => {
@@ -48,5 +50,26 @@ export const useIncomes = (): IUseIncomes => {
     }
   };
 
-  return { getIncomes, setIncome };
+  const updateIncome = async (income: Income) => {
+    try {
+      await apiHelper.put<Income>({
+        path: '/api/incomes',
+        body: income,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const deleteIncome = async (docID: string) => {
+    try {
+      await apiHelper.delete({
+        path: `/api/incomes?docID=${docID}`,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return { getIncomes, setIncome, updateIncome, deleteIncome };
 };
