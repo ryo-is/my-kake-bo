@@ -33,6 +33,12 @@ class ApiHelper {
       body: JSON.stringify(body),
     });
   };
+
+  delete = async ({ path }: { path: string }): Promise<void> => {
+    await fetch(path, {
+      method: 'DELETE',
+    });
+  };
 }
 
 export const apiHelper = new ApiHelper();

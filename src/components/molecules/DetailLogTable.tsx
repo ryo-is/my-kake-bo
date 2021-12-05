@@ -34,7 +34,11 @@ export const DetailLogTable = ({
   return (
     <div className="px-3 pt-5">
       <table className="w-full table-fixed">
-        <DetailTableHeader />
+        <DetailTableHeader
+          isAddRowMode={isAddRowMode}
+          setIsAddRowMode={setIsAddRowMode}
+          clearValues={clearValues}
+        />
         <DetailTableBody
           isAddRowMode={isAddRowMode}
           setIsAddRowMode={setIsAddRowMode}

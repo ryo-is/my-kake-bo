@@ -3,7 +3,7 @@ import { SaveIcon } from '@heroicons/react/solid';
 import { XCircleIcon } from '@heroicons/react/outline';
 import { IUseDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
-import { Button } from '@atoms/Button';
+import { IconButton } from '@atoms/IconButton';
 import { Select } from '@atoms/Select';
 import { Input } from '@atoms/Input';
 import { useLogs } from '@hooks/useLogs';
@@ -69,13 +69,21 @@ export const DetailTableNewRow = ({
       <td width="25%" className="py-2 px-1">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td width="25%" className="py-2 flex">
-        <Button handleClick={handleSaveClick} addClass="text-gray-700">
+      <td className="py-2 flex justify-center">
+        <IconButton
+          handleClick={handleSaveClick}
+          addClass="text-gray-700"
+          tipText="保存"
+        >
           <SaveIcon className="w-6 h-6" />
-        </Button>
-        <Button handleClick={handleCancel} addClass="text-gray-700">
+        </IconButton>
+        <IconButton
+          handleClick={handleCancel}
+          addClass="text-gray-700"
+          tipText="キャンセル"
+        >
           <XCircleIcon className="w-6 h-6" />
-        </Button>
+        </IconButton>
       </td>
     </tr>
   );

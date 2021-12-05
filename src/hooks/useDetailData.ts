@@ -21,6 +21,7 @@ export interface IUseDetailData {
   clearValues: () => void;
   setLog: (date: string) => Promise<void>;
   updateLog: (log: Log) => Promise<void>;
+  deleteLog: (docID: string) => Promise<void>;
 }
 
 export const useDetailData = (): IUseDetailData => {
@@ -74,6 +75,16 @@ export const useDetailData = (): IUseDetailData => {
     }
   };
 
+  const deleteLog = async (docID: string) => {
+    try {
+      await apiHelper.delete({
+        path: `/api/logs?docID=${docID}`,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return {
     category,
     place,
@@ -84,5 +95,6 @@ export const useDetailData = (): IUseDetailData => {
     clearValues,
     setLog,
     updateLog,
+    deleteLog,
   };
 };

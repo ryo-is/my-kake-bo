@@ -1,54 +1,37 @@
 import { useState } from 'react';
+import dayjs from 'dayjs';
+import { Income } from '@store/incomes';
 import { TableCol } from '@atoms/TableCol';
-import { Log, useDetailData } from '@hooks/useDetailData';
-import { IUseDate } from '@hooks/useDate';
+import { IconButton } from '@atoms/IconButton';
 import { PencilIcon } from '@heroicons/react/solid';
 import { TrashIcon } from '@heroicons/react/outline';
-import { IconButton } from '@atoms/IconButton';
-import { DetailTableEditRow } from '@molecules/DetailTableEditRow';
-import { useLogs } from '@hooks/useLogs';
+import { useIncomes } from '@hooks/useIncomes';
+import { IncomeTableEditRow } from '@molecules/IncomeTableEditRow';
 
 type Props = {
-  log: Log;
-  selectDate: IUseDate['selectDate'];
+  income: Income;
 };
 
-export const DetailTableRow = ({ log, selectDate }: Props) => {
+export const IncomeTableRow = ({ income }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const { updateLog, deleteLog } = useDetailData();
-  const { getLogs } = useLogs();
-
-  const getCategory = () => {
-    const categories: { [k: string]: string } = {
-      food: '食費',
-      miscellaneous: '雑費',
-      eatingout: '外食',
-      other: 'その他',
-      total: '合計',
-    };
-    return categories[log.category] ? categories[log.category] : '';
-  };
-
-  const getMoney = () => {
-    return log.money.toLocaleString() + '円';
-  };
+  const { getIncomes, updateIncome, deleteIncome } = useIncomes();
 
   const handleClickEdit = () => {
     setIsEdit(true);
   };
 
-  const handleUpdateClick = async (log: Log) => {
-    await updateLog(log);
-    await getLogs(selectDate.format('YYYY-MM-DD'));
+  const handleUpdateClick = async (income: Income) => {
+    await updateIncome(income);
+    await getIncomes(dayjs().format('YYYY-MM-DD'));
     setIsEdit(false);
   };
 
   const handleDeleteClick = async () => {
-    if (log.docID) {
+    if (income.docID) {
       const result = window.confirm('削除しますか？');
       if (result) {
-        await deleteLog(log.docID);
-        await getLogs(selectDate.format('YYYY-MM-DD'));
+        await deleteIncome(income.docID);
+        await getIncomes(dayjs().format('YYYY-MM-DD'));
       }
     }
     setIsEdit(false);
@@ -62,9 +45,8 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
     <>
       {!isEdit ? (
         <tr className="border-b border-gray-400 text-sm">
-          <TableCol width="25%" text={getCategory()} />
-          <TableCol width="35%" text={log.place} />
-          <TableCol width="20%" text={getMoney()} />
+          <TableCol width="" text={income.label} />
+          <TableCol width="" text={`${income.value.toLocaleString()}円`} />
           <td className="flex justify-center">
             <IconButton
               handleClick={handleClickEdit}
@@ -83,8 +65,8 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
           </td>
         </tr>
       ) : (
-        <DetailTableEditRow
-          log={log}
+        <IncomeTableEditRow
+          income={income}
           handleUpdateClick={handleUpdateClick}
           handleCancel={handleCancel}
         />

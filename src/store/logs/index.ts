@@ -11,6 +11,7 @@ export type Log = {
 type AnalyticsData = {
   food: number;
   miscellaneous: number;
+  eatingout: number;
   other: number;
   total: number;
 };
@@ -22,7 +23,13 @@ export type LogsState = {
 
 const initialState: LogsState = {
   logs: {},
-  analyticsData: { food: 0, miscellaneous: 0, other: 0, total: 0 },
+  analyticsData: {
+    food: 0,
+    miscellaneous: 0,
+    other: 0,
+    eatingout: 0,
+    total: 0,
+  },
 };
 
 export const logsSlice = createSlice({
@@ -37,8 +44,9 @@ export const logsSlice = createSlice({
       Object.keys(logs).forEach((key) => {
         const log = logs[key];
         log.forEach((l) => {
-          analyticsData[l.category as 'food' | 'miscellaneous' | 'other'] +=
-            l.money;
+          analyticsData[
+            l.category as 'food' | 'miscellaneous' | 'eatingout' | 'other'
+          ] += l.money;
           analyticsData.total += l.money;
         });
       });

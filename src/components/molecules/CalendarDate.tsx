@@ -39,7 +39,17 @@ export const CalendarDate = ({
     const start = selectMonth.subtract(1, 'M').set('date', 24);
     const end = selectMonth.set('date', 25);
     if (!day.isBetween(start, end)) {
-      return 'opacity-40';
+      return 'opacity-0';
+    } else {
+      return 'cursor-pointer';
+    }
+  };
+
+  const handleClickDate = () => {
+    const start = selectMonth.subtract(1, 'M').set('date', 24);
+    const end = selectMonth.set('date', 25);
+    if (day.isBetween(start, end)) {
+      selectDetailDate(day);
     }
   };
 
@@ -58,13 +68,12 @@ export const CalendarDate = ({
       <div
         className={clsx(
           'w-full',
-          'cursor-pointer',
           'relative',
           'p-12',
           isBetweenDate(day),
           ...bindStyles
         )}
-        onClick={() => selectDetailDate(day)}
+        onClick={() => handleClickDate()}
       >
         <div className="absolute top-2 left-2">{day.format('D')}</div>
         <div className="absolute bottom-2 right-2">{totalMoney()}</div>

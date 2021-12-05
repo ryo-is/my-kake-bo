@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
-import dayjs from 'dayjs';
+import { useState } from 'react';
 import { IUseDate } from '@hooks/useDate';
-import { useLogs } from '@hooks/useLogs';
 import { DetailHeader } from '@molecules/DetailHeader';
 import { DetailLogTable } from '@molecules/DetailLogTable';
-import { DetailActions } from '@molecules/DetailActions';
+import { DetailTotalArea } from '@molecules/DetailTotalArea';
 import { useDetailData } from '@hooks/useDetailData';
 
 type Props = {
@@ -24,34 +22,26 @@ export const DetailContent = ({ selectDate }: Props) => {
     clearValues,
     setLog,
   } = useDetailData();
-  const { getLogs } = useLogs();
-
-  useEffect(() => {
-    getLogs(dayjs(selectDate).format('YYYY-MM-DD'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
-    <div className="border border-gray-400 p-2 rounded h-full">
-      <DetailHeader selectDate={selectDate} />
-      <DetailLogTable
-        isAddRowMode={isAddRowMode}
-        setIsAddRowMode={setIsAddRowMode}
-        category={category}
-        place={place}
-        money={money}
-        handleChangeCategory={handleChangeCategory}
-        handleChangePlace={handleChangePlace}
-        handleChangeMoney={handleChangeMoney}
-        setLog={setLog}
-        clearValues={clearValues}
-        selectDate={selectDate}
-      />
-      <DetailActions
-        isAddRowMode={isAddRowMode}
-        setIsAddRowMode={setIsAddRowMode}
-        clearValues={clearValues}
-      />
+    <div className="h-1/2 pb-3">
+      <div className="border border-gray-400 rounded h-full p-2 relative">
+        <DetailHeader selectDate={selectDate} />
+        <DetailLogTable
+          isAddRowMode={isAddRowMode}
+          setIsAddRowMode={setIsAddRowMode}
+          category={category}
+          place={place}
+          money={money}
+          handleChangeCategory={handleChangeCategory}
+          handleChangePlace={handleChangePlace}
+          handleChangeMoney={handleChangeMoney}
+          setLog={setLog}
+          clearValues={clearValues}
+          selectDate={selectDate}
+        />
+        <DetailTotalArea selectDate={selectDate} />
+      </div>
     </div>
   );
 };
