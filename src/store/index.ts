@@ -13,7 +13,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import { logsSlice } from './logs';
 import { incomeSlice } from './incomes';
 
 const createNoopStorage = () => {
@@ -35,7 +34,6 @@ const storage =
     : createNoopStorage();
 
 const rootReducer = combineReducers({
-  logs: logsSlice.reducer,
   incomes: incomeSlice.reducer,
 });
 export type RootState = ReturnType<typeof rootReducer>;

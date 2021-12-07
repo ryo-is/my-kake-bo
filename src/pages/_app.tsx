@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { useStore } from '@store';
+import { RecoilRoot } from 'recoil';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const store = useStore();
@@ -13,9 +14,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <RecoilRoot>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </RecoilRoot>
       </PersistGate>
     </Provider>
   );

@@ -4,8 +4,7 @@ import { DetailTableNewRow } from '@molecules/DetailTableNewRow';
 import { IUseDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
 import dayjs from 'dayjs';
-import { useSelector } from 'react-redux';
-import { RootState } from '@store';
+import { logSelectors } from '@recoil/logState';
 
 type Props = {
   isAddRowMode: boolean;
@@ -34,7 +33,7 @@ export const DetailTableBody = ({
   clearValues,
   selectDate,
 }: Props) => {
-  const { logs } = useSelector((state: RootState) => state.logs);
+  const logs = logSelectors.useLogs();
 
   const getSelectDateLogs = () => {
     return logs[dayjs(selectDate).format('YYYY-MM-DD')] || [];

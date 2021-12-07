@@ -29,7 +29,9 @@
       "@mocks/*": ["src/mocks/*"],
       "@infrastructures/*": ["src/infrastructures/*"],
       "@store": ["src/store"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "@recoil": ["src/recoil"],
+      "@recoil/*": ["src/recoil/*"]
     },
     "incremental": true
   },
