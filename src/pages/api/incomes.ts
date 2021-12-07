@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { firestore } from '@infrastructures/firestore';
-import { Income } from '@store/incomes';
+import { Income } from '@recoil/incomeState';
 
 export default async function handler(
   req: NextApiRequest,

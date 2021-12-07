@@ -3,7 +3,7 @@ import { Input } from '@atoms/Input';
 import { IconButton } from '@atoms/IconButton';
 import { SaveIcon } from '@heroicons/react/solid';
 import { XCircleIcon } from '@heroicons/react/outline';
-import { Income } from '@store/incomes';
+import { Income } from '@recoil/incomeState';
 
 type Props = {
   income: Income;
