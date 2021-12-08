@@ -1,9 +1,8 @@
 import { AnalyticsDataRow } from '@molecules/AnalyticsDataRow';
-import { useSelector } from 'react-redux';
-import { RootState } from '@store';
+import { logSelectors } from '@recoil/logState';
 
 export const AnalyticsData = () => {
-  const { analyticsData } = useSelector((state: RootState) => state.logs);
+  const analyticsData = logSelectors.useAnalytics();
 
   return (
     <>

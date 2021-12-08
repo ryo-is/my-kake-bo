@@ -1,7 +1,8 @@
 import dayjs from 'dayjs';
-import { useDispatch } from 'react-redux';
-import { incomeSlice, Income } from '@store/incomes';
+import { Income } from '@recoil/incomeState';
 import { apiHelper } from '@infrastructures/helper';
+import { useSetRecoilState } from 'recoil';
+import { incomeState } from '@recoil/incomeState';
 
 export interface IUseIncomes {
   getIncomes: (date: string) => Promise<void>;
@@ -11,7 +12,7 @@ export interface IUseIncomes {
 }
 
 export const useIncomes = (): IUseIncomes => {
-  const dispatch = useDispatch();
+  const setState = useSetRecoilState(incomeState);
 
   const getIncomes = async (date: string) => {
     try {
@@ -27,7 +28,8 @@ export const useIncomes = (): IUseIncomes => {
       const { incomes } = await apiHelper.get<{ incomes: Income[] }>({
         path: `/api/incomes?start=${start}&end=${end}`,
       });
-      dispatch(incomeSlice.actions.update(incomes));
+
+      setState({ incomes });
     } catch (e) {
       console.error(e);
     }

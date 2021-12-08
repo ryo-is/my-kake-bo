@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '@store';
 import dayjs from 'dayjs';
 import { IUseDate } from '@hooks/useDate';
 import { CalendarDate } from '@molecules/CalendarDate';
+import { logSelectors } from '@recoil/logState';
 
 type Props = Pick<IUseDate, 'selectMonth' | 'selectDate' | 'selectDetailDate'>;
 
@@ -13,7 +12,7 @@ export const CalendarDays = ({
   selectDetailDate,
 }: Props) => {
   const [days, setDays] = useState<Array<dayjs.Dayjs>>([]);
-  const { logs } = useSelector((state: RootState) => state.logs);
+  const logs = logSelectors.useLogs();
 
   useEffect(() => {
     const startMonthDay = selectMonth.subtract(1, 'M').set('date', 25);

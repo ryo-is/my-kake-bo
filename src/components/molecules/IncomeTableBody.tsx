@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '@store';
 import { IncomeTableRow } from '@molecules/IncomeTableRow';
 import { IncomeTableNewRow } from '@molecules/IncomeTableNewRow';
+import { incomeSelectors } from '@recoil/incomeState';
 
 type Props = {
   isAddRowMode: boolean;
@@ -10,7 +9,7 @@ type Props = {
 };
 
 export const IncomeTableBody = ({ isAddRowMode, setIsAddRowMode }: Props) => {
-  const { incomes } = useSelector((state: RootState) => state.incomes);
+  const incomes = incomeSelectors.useIncomes();
 
   return (
     <tbody>

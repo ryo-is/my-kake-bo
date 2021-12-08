@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import dayjs from 'dayjs';
-import { Income } from '@store/incomes';
 import { TableCol } from '@atoms/TableCol';
 import { IconButton } from '@atoms/IconButton';
 import { PencilIcon } from '@heroicons/react/solid';
 import { TrashIcon } from '@heroicons/react/outline';
 import { useIncomes } from '@hooks/useIncomes';
 import { IncomeTableEditRow } from '@molecules/IncomeTableEditRow';
+import { Income } from '@recoil/incomeState';
 
 type Props = {
   income: Income;

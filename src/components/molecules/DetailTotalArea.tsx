@@ -1,14 +1,13 @@
-import { useSelector } from 'react-redux';
 import dayjs from 'dayjs';
-import { RootState } from '@store';
 import { IUseDate } from '@hooks/useDate';
+import { logSelectors } from '@recoil/logState';
 
 type Props = {
   selectDate: IUseDate['selectDate'];
 };
 
 export const DetailTotalArea = ({ selectDate }: Props) => {
-  const { logs } = useSelector((state: RootState) => state.logs);
+  const logs = logSelectors.useLogs();
 
   const calcTotalValue = () => {
     const log = logs[dayjs(selectDate).format('YYYY-MM-DD')];

@@ -1,6 +1,6 @@
 import { apiHelper } from '@infrastructures/helper';
 import { useState, ChangeEvent } from 'react';
-import { Income } from '@store/incomes';
+import { Income } from '@recoil/incomeState';
 import dayjs from 'dayjs';
 
 export interface IUseIncomesData {

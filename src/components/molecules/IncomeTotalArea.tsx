@@ -1,9 +1,7 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '@store';
-import { IUseDate } from '@hooks/useDate';
+import { incomeSelectors } from '@recoil/incomeState';
 
 export const IncomeTotalArea = () => {
-  const { incomes } = useSelector((state: RootState) => state.incomes);
+  const incomes = incomeSelectors.useIncomes();
 
   const calcTotalValue = () => {
     if (!incomes) {

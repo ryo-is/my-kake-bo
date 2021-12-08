@@ -13,7 +13,7 @@ export const CalendarFooter = ({ selectToday }: Props) => {
   const { getLogs } = useLogs();
   const { getIncomes } = useIncomes();
 
-  const handleClick = () => {
+  const handleClick = async () => {
     selectToday(dayjs());
     getLogs(dayjs().format('YYYY-MM-DD'));
     getIncomes(dayjs().format('YYYY-MM-DD'));

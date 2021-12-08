@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '@store';
 import { AnalyticsCalcRow } from '@molecules/AnalyticsCalcRow';
+import { logSelectors } from '@recoil/logState';
+import { incomeSelectors } from '@recoil/incomeState';
 
 export const AnalyticsCalcArea = () => {
-  const { analyticsData } = useSelector((state: RootState) => state.logs);
-  const { incomes } = useSelector((state: RootState) => state.incomes);
+  const analyticsData = logSelectors.useAnalytics();
+  const incomes = incomeSelectors.useIncomes();
 
   const calcTotalValue = () => {
     if (!incomes) {
