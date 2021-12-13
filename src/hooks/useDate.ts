@@ -27,22 +27,26 @@ export const useDate = (): IUseDate => {
   };
 
   const selectDetailDate = (date: Dayjs) => {
-    setSelectDate(date);
+    if (date.format('YYYY-MM-DD') !== selectDate.format('YYYY-MM-DD')) {
+      setSelectDate(date);
 
-    if (date.get('date') >= 25) {
-      setSelectMonth(date.add(1, 'M').startOf('M'));
-    } else {
-      setSelectMonth(date);
+      if (date.get('date') >= 25) {
+        setSelectMonth(date.add(1, 'M').startOf('M'));
+      } else {
+        setSelectMonth(date);
+      }
     }
   };
 
   const selectToday = (date: Dayjs) => {
-    setSelectDate(date);
+    if (date.format('YYYY-MM-DD') !== selectDate.format('YYYY-MM-DD')) {
+      setSelectDate(date);
 
-    if (date.get('date') >= 25) {
-      setSelectMonth(date.add(1, 'M').startOf('M'));
-    } else {
-      setSelectMonth(date);
+      if (date.get('date') >= 25) {
+        setSelectMonth(date.add(1, 'M').startOf('M'));
+      } else {
+        setSelectMonth(date);
+      }
     }
   };
 
