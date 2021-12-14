@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, memo } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   options: Array<{ value: string; text: string }>;
 };
 
-export const Select = ({ value, onChange, options }: Props) => {
+export const SelectBase = ({ value, onChange, options }: Props) => {
   return (
     <div className="inline-block relative w-full">
       <div className="inline-block relative w-full">
@@ -29,3 +29,5 @@ export const Select = ({ value, onChange, options }: Props) => {
     </div>
   );
 };
+
+export const Select = memo(SelectBase);

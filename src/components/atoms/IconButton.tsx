@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
   tipText: string;
 };
 
-export const IconButton = ({
+const IconButtonBase = ({
   children,
   handleClick,
   addClass,
@@ -28,3 +28,5 @@ export const IconButton = ({
     </button>
   );
 };
+
+export const IconButton = memo(IconButtonBase);
