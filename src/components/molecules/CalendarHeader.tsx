@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { IUseDate } from '@hooks/useDate';
 import { useLogs } from '@hooks/useLogs';
@@ -6,11 +7,7 @@ import dayjs from 'dayjs';
 
 type Props = Pick<IUseDate, 'selectMonth' | 'prevMonth' | 'nextMonth'>;
 
-export const CalendarHeader = ({
-  selectMonth,
-  prevMonth,
-  nextMonth,
-}: Props) => {
+const CalendarHeaderBase = ({ selectMonth, prevMonth, nextMonth }: Props) => {
   const { getLogs } = useLogs();
   const { getIncomes } = useIncomes();
 
@@ -40,3 +37,5 @@ export const CalendarHeader = ({
     </div>
   );
 };
+
+export const CalendarHeader = memo(CalendarHeaderBase);

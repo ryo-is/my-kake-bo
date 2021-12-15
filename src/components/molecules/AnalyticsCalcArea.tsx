@@ -1,23 +1,24 @@
 import { AnalyticsCalcRow } from '@molecules/AnalyticsCalcRow';
 import { logSelectors } from '@recoil/logState';
 import { incomeSelectors } from '@recoil/incomeState';
+import { memo, useCallback } from 'react';
 
-export const AnalyticsCalcArea = () => {
+export const AnalyticsCalcAreaBase = () => {
   const analyticsData = logSelectors.useAnalytics();
   const incomes = incomeSelectors.useIncomes();
 
-  const calcTotalValue = () => {
+  const calcTotalValue = useCallback(() => {
     if (!incomes) {
       return 0;
     }
     let total = 0;
     incomes.forEach((income) => (total += income.value));
     return total;
-  };
+  }, [incomes]);
 
-  const calcDiffValue = () => {
+  const calcDiffValue = useCallback(() => {
     return calcTotalValue() - analyticsData.total;
-  };
+  }, [calcTotalValue, analyticsData]);
 
   return (
     <div className="w-1/2 ml-10">
@@ -30,3 +31,5 @@ export const AnalyticsCalcArea = () => {
     </div>
   );
 };
+
+export const AnalyticsCalcArea = memo(AnalyticsCalcAreaBase);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import dayjs from 'dayjs';
 import { TableCol } from '@atoms/TableCol';
 import { IconButton } from '@atoms/IconButton';
@@ -12,7 +12,7 @@ type Props = {
   income: Income;
 };
 
-export const IncomeTableRow = ({ income }: Props) => {
+const IncomeTableRowBase = ({ income }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const { getIncomes, updateIncome, deleteIncome } = useIncomes();
 
@@ -74,3 +74,5 @@ export const IncomeTableRow = ({ income }: Props) => {
     </>
   );
 };
+
+export const IncomeTableRow = memo(IncomeTableRowBase);

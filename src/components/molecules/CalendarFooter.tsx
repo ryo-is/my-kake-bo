@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import dayjs from 'dayjs';
 import { Button } from '@atoms/Button';
 import { CalendarIcon } from '@heroicons/react/solid';
@@ -9,7 +10,7 @@ type Props = {
   selectToday: IUseDate['selectToday'];
 };
 
-export const CalendarFooter = ({ selectToday }: Props) => {
+const CalendarFooterBase = ({ selectToday }: Props) => {
   const { getLogs } = useLogs();
   const { getIncomes } = useIncomes();
 
@@ -32,3 +33,5 @@ export const CalendarFooter = ({ selectToday }: Props) => {
     </div>
   );
 };
+
+export const CalendarFooter = memo(CalendarFooterBase);

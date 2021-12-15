@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, memo, SetStateAction, useState } from 'react';
 import { Input } from '@atoms/Input';
 import { IconButton } from '@atoms/IconButton';
 import { SaveIcon } from '@heroicons/react/solid';
@@ -10,7 +10,7 @@ type Props = {
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
 };
 
-export const IncomeTableNewRow = ({ setIsAddRowMode }: Props) => {
+const IncomeTableNewRowBase = ({ setIsAddRowMode }: Props) => {
   const [label, setLabel] = useState<string>('');
   const [value, setValue] = useState<number>(0);
 
@@ -69,3 +69,5 @@ export const IncomeTableNewRow = ({ setIsAddRowMode }: Props) => {
     </tr>
   );
 };
+
+export const IncomeTableNewRow = memo(IncomeTableNewRowBase);

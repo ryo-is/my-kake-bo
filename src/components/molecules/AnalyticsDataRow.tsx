@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type Props = {
   category: 'food' | 'miscellaneous' | 'eatingout' | 'other' | 'total';
   value: number;
 };
 
-export const AnalyticsDataRow = ({ category, value }: Props) => {
+const AnalyticsDataRowBase = ({ category, value }: Props) => {
   const categories = {
     food: '食費',
     miscellaneous: '雑費',
@@ -19,3 +21,5 @@ export const AnalyticsDataRow = ({ category, value }: Props) => {
     </div>
   );
 };
+
+export const AnalyticsDataRow = memo(AnalyticsDataRowBase);

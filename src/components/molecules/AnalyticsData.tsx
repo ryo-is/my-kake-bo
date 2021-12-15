@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { AnalyticsDataRow } from '@molecules/AnalyticsDataRow';
 import { logSelectors } from '@recoil/logState';
 
-export const AnalyticsData = () => {
+const AnalyticsDataBase = () => {
   const analyticsData = logSelectors.useAnalytics();
 
   return (
@@ -27,3 +28,5 @@ export const AnalyticsData = () => {
     </>
   );
 };
+
+export const AnalyticsData = memo(AnalyticsDataBase);

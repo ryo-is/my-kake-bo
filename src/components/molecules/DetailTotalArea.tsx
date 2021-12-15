@@ -1,12 +1,13 @@
 import dayjs from 'dayjs';
 import { IUseDate } from '@hooks/useDate';
 import { logSelectors } from '@recoil/logState';
+import { memo } from 'react';
 
 type Props = {
   selectDate: IUseDate['selectDate'];
 };
 
-export const DetailTotalArea = ({ selectDate }: Props) => {
+const DetailTotalAreaBase = ({ selectDate }: Props) => {
   const logs = logSelectors.useLogs();
 
   const calcTotalValue = () => {
@@ -26,3 +27,5 @@ export const DetailTotalArea = ({ selectDate }: Props) => {
     </div>
   );
 };
+
+export const DetailTotalArea = memo(DetailTotalAreaBase);

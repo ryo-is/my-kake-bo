@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, memo, SetStateAction } from 'react';
 import { SaveIcon } from '@heroicons/react/solid';
 import { XCircleIcon } from '@heroicons/react/outline';
 import { IUseDetailData } from '@hooks/useDetailData';
@@ -29,7 +29,7 @@ const options = [
   { value: 'other', text: 'その他' },
 ];
 
-export const DetailTableNewRow = ({
+const DetailTableNewRowBase = ({
   setIsAddRowMode,
   category,
   place,
@@ -88,3 +88,5 @@ export const DetailTableNewRow = ({
     </tr>
   );
 };
+
+export const DetailTableNewRow = memo(DetailTableNewRowBase);

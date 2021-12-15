@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { IUseDate } from '@hooks/useDate';
 
 type Props = {
   selectDate: IUseDate['selectDate'];
 };
 
-export const DetailHeader = ({ selectDate }: Props) => {
+const DetailHeaderBase = ({ selectDate }: Props) => {
   return (
     <div className="flex items-center px-2 pt-2">
       <div className="text-xl flex-1">
@@ -13,3 +14,5 @@ export const DetailHeader = ({ selectDate }: Props) => {
     </div>
   );
 };
+
+export const DetailHeader = memo(DetailHeaderBase);

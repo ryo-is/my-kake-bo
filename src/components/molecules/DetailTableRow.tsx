@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { TableCol } from '@atoms/TableCol';
 import { Log, useDetailData } from '@hooks/useDetailData';
 import { IUseDate } from '@hooks/useDate';
@@ -13,7 +13,7 @@ type Props = {
   selectDate: IUseDate['selectDate'];
 };
 
-export const DetailTableRow = ({ log, selectDate }: Props) => {
+const DetailTableRowBase = ({ log, selectDate }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const { updateLog, deleteLog } = useDetailData();
   const { getLogs } = useLogs();
@@ -92,3 +92,5 @@ export const DetailTableRow = ({ log, selectDate }: Props) => {
     </>
   );
 };
+
+export const DetailTableRow = memo(DetailTableRowBase);
