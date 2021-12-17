@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 
 type Props = {
   children: ReactNode;
   addClass?: string;
 };
 
-export const CalendarCellBox = ({ children, addClass }: Props) => {
+const CalendarCellBoxBase = ({ children, addClass }: Props) => {
   return (
     <div
       className={
@@ -17,3 +17,5 @@ export const CalendarCellBox = ({ children, addClass }: Props) => {
     </div>
   );
 };
+
+export const CalendarCellBox = memo(CalendarCellBoxBase);

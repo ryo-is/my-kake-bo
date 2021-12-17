@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, memo, SetStateAction } from 'react';
 import { IncomeTableRow } from '@molecules/IncomeTableRow';
 import { IncomeTableNewRow } from '@molecules/IncomeTableNewRow';
 import { incomeSelectors } from '@recoil/incomeState';
@@ -8,7 +8,7 @@ type Props = {
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
 };
 
-export const IncomeTableBody = ({ isAddRowMode, setIsAddRowMode }: Props) => {
+const IncomeTableBodyBase = ({ isAddRowMode, setIsAddRowMode }: Props) => {
   const incomes = incomeSelectors.useIncomes();
 
   return (
@@ -20,3 +20,5 @@ export const IncomeTableBody = ({ isAddRowMode, setIsAddRowMode }: Props) => {
     </tbody>
   );
 };
+
+export const IncomeTableBody = memo(IncomeTableBodyBase);

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, memo, SetStateAction } from 'react';
 import { TableCol } from '@atoms/TableCol';
 import { Button } from '@atoms/Button';
 import { PlusIcon } from '@heroicons/react/solid';
@@ -10,7 +10,7 @@ type Props = {
   clearValues: IUseDetailData['clearValues'];
 };
 
-export const DetailTableHeader = ({
+const DetailTableHeaderBase = ({
   isAddRowMode,
   setIsAddRowMode,
   clearValues,
@@ -41,3 +41,5 @@ export const DetailTableHeader = ({
     </thead>
   );
 };
+
+export const DetailTableHeader = memo(DetailTableHeaderBase);

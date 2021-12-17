@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, memo, SetStateAction } from 'react';
 import { DetailTableHeader } from '@molecules/DetailTableHeader';
 import { DetailTableBody } from '@molecules/DetailTableBody';
 import { IUseDetailData } from '@hooks/useDetailData';
@@ -18,7 +18,7 @@ type Props = {
   selectDate: IUseDate['selectDate'];
 };
 
-export const DetailLogTable = ({
+const DetailLogTableBase = ({
   isAddRowMode,
   setIsAddRowMode,
   category,
@@ -56,3 +56,5 @@ export const DetailLogTable = ({
     </div>
   );
 };
+
+export const DetailLogTable = memo(DetailLogTableBase);

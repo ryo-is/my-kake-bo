@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import dayjs from 'dayjs';
 import { IUseDate } from '@hooks/useDate';
 import { CalendarDate } from '@molecules/CalendarDate';
@@ -6,7 +6,7 @@ import { logSelectors } from '@recoil/logState';
 
 type Props = Pick<IUseDate, 'selectMonth' | 'selectDate' | 'selectDetailDate'>;
 
-export const CalendarDays = ({
+const CalendarDaysBase = ({
   selectMonth,
   selectDate,
   selectDetailDate,
@@ -51,3 +51,5 @@ export const CalendarDays = ({
     </div>
   );
 };
+
+export const CalendarDays = memo(CalendarDaysBase);

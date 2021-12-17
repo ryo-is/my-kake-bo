@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type Props = {
   labelKey: 'income' | 'expense' | 'diff';
   value: number;
 };
 
-export const AnalyticsCalcRow = ({ labelKey, value }: Props) => {
+const AnalyticsCalcRowBase = ({ labelKey, value }: Props) => {
   const labels = {
     income: '収入',
     expense: '支出',
@@ -17,3 +19,5 @@ export const AnalyticsCalcRow = ({ labelKey, value }: Props) => {
     </div>
   );
 };
+
+export const AnalyticsCalcRow = memo(AnalyticsCalcRowBase);

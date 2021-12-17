@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, memo, useEffect, useState } from 'react';
 import { SaveIcon } from '@heroicons/react/solid';
 import { XCircleIcon } from '@heroicons/react/outline';
 import { Log } from '@hooks/useDetailData';
@@ -19,7 +19,7 @@ const options = [
   { value: 'other', text: 'その他' },
 ];
 
-export const DetailTableEditRow = ({
+const DetailTableEditRowBase = ({
   log,
   handleUpdateClick,
   handleCancel,
@@ -89,3 +89,5 @@ export const DetailTableEditRow = ({
     </tr>
   );
 };
+
+export const DetailTableEditRow = memo(DetailTableEditRowBase);

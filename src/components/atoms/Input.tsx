@@ -1,11 +1,11 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, memo } from 'react';
 
 type Props = {
   value: string | number;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Input = ({ value, onChange }: Props) => {
+export const InputBase = ({ value, onChange }: Props) => {
   return (
     <input
       type="text"
@@ -15,3 +15,5 @@ export const Input = ({ value, onChange }: Props) => {
     />
   );
 };
+
+export const Input = memo(InputBase);

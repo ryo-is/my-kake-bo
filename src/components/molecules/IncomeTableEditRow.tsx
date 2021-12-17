@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Input } from '@atoms/Input';
 import { IconButton } from '@atoms/IconButton';
 import { SaveIcon } from '@heroicons/react/solid';
@@ -11,7 +11,7 @@ type Props = {
   handleCancel: () => void;
 };
 
-export const IncomeTableEditRow = ({
+const IncomeTableEditRowBase = ({
   income,
   handleUpdateClick,
   handleCancel,
@@ -65,3 +65,5 @@ export const IncomeTableEditRow = ({
     </tr>
   );
 };
+
+export const IncomeTableEditRow = memo(IncomeTableEditRowBase);

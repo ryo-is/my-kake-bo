@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
@@ -17,7 +17,7 @@ type Props = {
   log: Log[];
 };
 
-export const CalendarDate = ({
+const CalendarDateBase = ({
   day,
   selectMonth,
   selectDate,
@@ -81,3 +81,5 @@ export const CalendarDate = ({
     </CalendarCellBox>
   );
 };
+
+export const CalendarDate = memo(CalendarDateBase);
