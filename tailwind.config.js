@@ -15,6 +15,9 @@ module.exports = {
         icon: '24px',
         '1/7': '14.285%',
       },
+      height: {
+        '5/12': '41.667%',
+      },
     },
   },
   variants: {
