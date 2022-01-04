@@ -22,15 +22,27 @@ const DetailTableHeaderBase = ({
 
   return (
     <thead>
-      <tr className="border-b border-gray-400 text-sm">
-        <TableCol width="25%" text="カテゴリー" />
-        <TableCol width="35%" text="場所" />
-        <TableCol width="20%" text="金額" />
-        <td className="flex mt-1 justify-end">
+      <tr className="text-sm">
+        <TableCol
+          width="25%"
+          text="カテゴリー"
+          addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
+        />
+        <TableCol
+          width="35%"
+          text="場所"
+          addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
+        />
+        <TableCol
+          width="20%"
+          text="金額"
+          addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
+        />
+        <td className="mt-1 sticky top-0 border-b border-gray-400 bg-gray-100">
           {!isAddRowMode && (
             <Button
               handleClick={handleAddRowClick}
-              addClass="border border-gray-600 text-gray-800 hover:bg-gray-200"
+              addClass="border border-gray-600 text-gray-800 hover:bg-gray-200 ml-auto mr-0 my-0"
             >
               <PlusIcon className="fill-current w-4 h-4 mr-2" />
               <span>追加</span>

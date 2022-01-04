@@ -4,27 +4,38 @@ import { TableCol } from '@atoms/TableCol';
 import { PlusIcon } from '@heroicons/react/solid';
 
 type Props = {
+  isAddRowMode: boolean;
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
 };
 
-const IncomeTableHeaderBase = ({ setIsAddRowMode }: Props) => {
+const IncomeTableHeaderBase = ({ isAddRowMode, setIsAddRowMode }: Props) => {
   const handleAddRowClick = () => {
     setIsAddRowMode(true);
   };
 
   return (
     <thead>
-      <tr className="border-b border-gray-400 text-sm">
-        <TableCol width="40%" text="収入源" />
-        <TableCol width="40%" text="金額" />
-        <td className="flex mt-1 justify-end">
-          <Button
-            handleClick={handleAddRowClick}
-            addClass="border border-gray-600 text-gray-800 hover:bg-gray-200"
-          >
-            <PlusIcon className="fill-current w-4 h-4 mr-2" />
-            <span>追加</span>
-          </Button>
+      <tr className="text-sm">
+        <TableCol
+          width="40%"
+          text="収入源"
+          addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
+        />
+        <TableCol
+          width="40%"
+          text="金額"
+          addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
+        />
+        <td className="mt-1 sticky top-0 border-b border-gray-400 bg-gray-100">
+          {!isAddRowMode && (
+            <Button
+              handleClick={handleAddRowClick}
+              addClass="border border-gray-600 text-gray-800 hover:bg-gray-200 ml-auto mr-2 my-0"
+            >
+              <PlusIcon className="fill-current w-4 h-4" />
+              <span>追加</span>
+            </Button>
+          )}
         </td>
       </tr>
     </thead>

@@ -56,35 +56,37 @@ const DetailTableEditRowBase = ({
   }, [log]);
 
   return (
-    <tr className="text-sm border-b border-gray-400">
-      <td width="25%" className="py-2 px-1">
+    <tr className="text-sm">
+      <td width="25%" className="py-2 px-1 border-b border-gray-400">
         <Select
           value={category}
           onChange={handleChangeCategory}
           options={options}
         />
       </td>
-      <td width="40%" className="py-2 px-1">
+      <td width="40%" className="py-2 px-1 border-b border-gray-400">
         <Input value={place} onChange={handleChangePlace} />
       </td>
-      <td width="25%" className="py-2 px-1">
+      <td width="25%" className="py-2 px-1 border-b border-gray-400">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td className="py-2 flex justify-center">
-        <IconButton
-          handleClick={submit}
-          addClass="text-gray-700"
-          tipText="保存"
-        >
-          <SaveIcon className="w-6 h-6" />
-        </IconButton>
-        <IconButton
-          handleClick={handleCancel}
-          addClass="text-gray-700"
-          tipText="戻る"
-        >
-          <XCircleIcon className="w-6 h-6" />
-        </IconButton>
+      <td className="py-2 border-b border-gray-400">
+        <div className="flex justify-center">
+          <IconButton
+            handleClick={submit}
+            addClass="text-gray-700"
+            tipText="保存"
+          >
+            <SaveIcon className="w-6 h-6" />
+          </IconButton>
+          <IconButton
+            handleClick={handleCancel}
+            addClass="text-gray-700"
+            tipText="戻る"
+          >
+            <XCircleIcon className="w-6 h-6" />
+          </IconButton>
+        </div>
       </td>
     </tr>
   );

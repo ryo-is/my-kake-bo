@@ -69,21 +69,23 @@ const DetailTableNewRowBase = ({
       <td width="25%" className="py-2 px-1">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td className="py-2 flex justify-center">
-        <IconButton
-          handleClick={handleSaveClick}
-          addClass="text-gray-700"
-          tipText="保存"
-        >
-          <SaveIcon className="w-6 h-6" />
-        </IconButton>
-        <IconButton
-          handleClick={handleCancel}
-          addClass="text-gray-700"
-          tipText="キャンセル"
-        >
-          <XCircleIcon className="w-6 h-6" />
-        </IconButton>
+      <td className="py-2">
+        <div className="flex justify-center">
+          <IconButton
+            handleClick={handleSaveClick}
+            addClass="text-gray-700"
+            tipText="保存"
+          >
+            <SaveIcon className="w-6 h-6" />
+          </IconButton>
+          <IconButton
+            handleClick={handleCancel}
+            addClass="text-gray-700"
+            tipText="キャンセル"
+          >
+            <XCircleIcon className="w-6 h-6" />
+          </IconButton>
+        </div>
       </td>
     </tr>
   );

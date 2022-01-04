@@ -9,9 +9,12 @@ type Props = {
 
 const IncomeTableBase = ({ isAddRowMode, setIsAddRowMode }: Props) => {
   return (
-    <div className="px-3 pt-5">
-      <table className="w-full table-fixed">
-        <IncomeTableHeader setIsAddRowMode={setIsAddRowMode} />
+    <div className="px-3 pt-1 h-40 overflow-y-scroll">
+      <table className="w-full border-separate border-spacing-0">
+        <IncomeTableHeader
+          isAddRowMode={isAddRowMode}
+          setIsAddRowMode={setIsAddRowMode}
+        />
         <IncomeTableBody
           isAddRowMode={isAddRowMode}
           setIsAddRowMode={setIsAddRowMode}

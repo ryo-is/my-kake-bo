@@ -61,25 +61,39 @@ const DetailTableRowBase = ({ log, selectDate }: Props) => {
   return (
     <>
       {!isEdit ? (
-        <tr className="border-b border-gray-400 text-sm">
-          <TableCol width="25%" text={getCategory()} />
-          <TableCol width="35%" text={log.place} />
-          <TableCol width="20%" text={getMoney()} />
-          <td className="flex justify-center">
-            <IconButton
-              handleClick={handleClickEdit}
-              addClass="text-gray-700"
-              tipText="編集"
-            >
-              <PencilIcon className="fill-current w-6 h-6" />
-            </IconButton>
-            <IconButton
-              handleClick={handleDeleteClick}
-              addClass="text-red-700"
-              tipText="削除"
-            >
-              <TrashIcon className="w-6 h-6" />
-            </IconButton>
+        <tr className="text-sm">
+          <TableCol
+            width="25%"
+            text={getCategory()}
+            addClass="border-b border-gray-400"
+          />
+          <TableCol
+            width="35%"
+            text={log.place}
+            addClass="border-b border-gray-400"
+          />
+          <TableCol
+            width="20%"
+            text={getMoney()}
+            addClass="border-b border-gray-400"
+          />
+          <td className="border-b border-gray-400">
+            <div className="flex justify-center">
+              <IconButton
+                handleClick={handleClickEdit}
+                addClass="text-gray-700"
+                tipText="編集"
+              >
+                <PencilIcon className="fill-current w-6 h-6" />
+              </IconButton>
+              <IconButton
+                handleClick={handleDeleteClick}
+                addClass="text-red-700"
+                tipText="削除"
+              >
+                <TrashIcon className="w-6 h-6" />
+              </IconButton>
+            </div>
           </td>
         </tr>
       ) : (

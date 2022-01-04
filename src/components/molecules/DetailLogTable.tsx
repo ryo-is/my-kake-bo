@@ -32,8 +32,8 @@ const DetailLogTableBase = ({
   selectDate,
 }: Props) => {
   return (
-    <div className="px-3 pt-5">
-      <table className="w-full table-fixed">
+    <div className="px-3 pt-1 overflow-y-scroll h-60">
+      <table className="w-full border-separate border-spacing-0">
         <DetailTableHeader
           isAddRowMode={isAddRowMode}
           setIsAddRowMode={setIsAddRowMode}

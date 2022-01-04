@@ -44,24 +44,34 @@ const IncomeTableRowBase = ({ income }: Props) => {
   return (
     <>
       {!isEdit ? (
-        <tr className="border-b border-gray-400 text-sm">
-          <TableCol width="" text={income.label} />
-          <TableCol width="" text={`${income.value.toLocaleString()}円`} />
-          <td className="flex justify-center">
-            <IconButton
-              handleClick={handleClickEdit}
-              addClass="text-gray-700"
-              tipText="編集"
-            >
-              <PencilIcon className="fill-current w-6 h-6" />
-            </IconButton>
-            <IconButton
-              handleClick={handleDeleteClick}
-              addClass="text-red-700"
-              tipText="削除"
-            >
-              <TrashIcon className="w-6 h-6" />
-            </IconButton>
+        <tr className="text-sm">
+          <TableCol
+            width=""
+            text={income.label}
+            addClass="border-b border-gray-400"
+          />
+          <TableCol
+            width=""
+            text={`${income.value.toLocaleString()}円`}
+            addClass="border-b border-gray-400"
+          />
+          <td className="border-b border-gray-400">
+            <div className="flex justify-center">
+              <IconButton
+                handleClick={handleClickEdit}
+                addClass="text-gray-700"
+                tipText="編集"
+              >
+                <PencilIcon className="fill-current w-6 h-6" />
+              </IconButton>
+              <IconButton
+                handleClick={handleDeleteClick}
+                addClass="text-red-700"
+                tipText="削除"
+              >
+                <TrashIcon className="w-6 h-6" />
+              </IconButton>
+            </div>
           </td>
         </tr>
       ) : (
