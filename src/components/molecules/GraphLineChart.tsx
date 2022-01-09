@@ -4,8 +4,8 @@ import { logSelectors } from '@recoil/logState';
 import {
   ResponsiveContainer,
   CartesianGrid,
-  BarChart,
-  Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   Legend,
@@ -21,7 +21,7 @@ const demoChartData = [
   { name: '2022-01', income: 450000, spending: 250000 },
 ];
 
-export const GraphBarChart = () => {
+export const GraphLineChart = () => {
   const analyticsData = logSelectors.useAnalytics();
   const incomes = incomeSelectors.useIncomes();
 
@@ -31,8 +31,8 @@ export const GraphBarChart = () => {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart
-        id="bar-chart"
+      <LineChart
+        id="line-chart"
         data={demoChartData}
         margin={{
           top: 10,
@@ -46,9 +46,21 @@ export const GraphBarChart = () => {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Bar name="収入" dataKey="income" fill="#0ea5e9" />
-        <Bar name="支出" dataKey="spending" fill="#ef4444" />
-      </BarChart>
+        <Line
+          name="収入"
+          dataKey="income"
+          type="monotone"
+          stroke="#0ea5e9"
+          strokeWidth={2}
+        />
+        <Line
+          name="支出"
+          dataKey="spending"
+          type="monotone"
+          stroke="#ef4444"
+          strokeWidth={2}
+        />
+      </LineChart>
     </ResponsiveContainer>
   );
 };
