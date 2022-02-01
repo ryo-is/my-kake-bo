@@ -8,6 +8,7 @@ import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';
 import { Incomes } from '@templates/Incomes';
 import { Graph } from '@templates/Graph';
+import { SideMenu } from '@templates/SideMenu';
 
 const Index: VFC<{}> = () => {
   const {
@@ -29,21 +30,26 @@ const Index: VFC<{}> = () => {
 
   return (
     <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen bg-gray-100 overflow-y-scroll">
-      <div className="w-2/3 py-3 pl-3 pr-0">
-        <Calendar
-          selectMonth={selectMonth}
-          selectDate={selectDate}
-          prevMonth={prevMonth}
-          nextMonth={nextMonth}
-          selectDetailDate={selectDetailDate}
-          selectToday={selectToday}
-        />
-        <Analytics />
+      <div className="w-sidemenu">
+        <SideMenu />
       </div>
-      <div className="w-1/3 p-3">
-        <Detail selectDate={selectDate} />
-        <Incomes />
-        <Graph />
+      <div className="w-maincontent flex">
+        <div className="w-2/3 py-3 pl-3 pr-0">
+          <Calendar
+            selectMonth={selectMonth}
+            selectDate={selectDate}
+            prevMonth={prevMonth}
+            nextMonth={nextMonth}
+            selectDetailDate={selectDetailDate}
+            selectToday={selectToday}
+          />
+          <Analytics />
+        </div>
+        <div className="w-1/3 p-3">
+          <Detail selectDate={selectDate} />
+          <Incomes />
+          <Graph />
+        </div>
       </div>
     </div>
   );
