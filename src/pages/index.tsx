@@ -33,10 +33,10 @@ const Index: VFC<{}> = () => {
 
   return (
     <div className="min-h-screen h-screen flex flex-wrap min-w-screen w-screen bg-gray-100 overflow-y-scroll">
-      <div className="w-sidemenu">
+      <div className="w-sidemenu fixed h-screen">
         <SideMenu />
       </div>
-      <div className="w-maincontent flex">
+      <div className="w-maincontent flex m-maincontent">
         <div className="w-2/3 py-3 pl-3 pr-0">
           <Calendar
             selectMonth={selectMonth}
