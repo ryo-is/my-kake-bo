@@ -24,17 +24,17 @@ const DetailTableHeaderBase = ({
     <thead>
       <tr className="text-sm">
         <TableCol
-          width="25%"
+          width="40%"
           text="カテゴリー"
           addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
         />
-        <TableCol
+        {/* <TableCol
           width="35%"
           text="場所"
           addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
-        />
+        /> */}
         <TableCol
-          width="20%"
+          width="40%"
           text="金額"
           addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
         />

@@ -1,7 +1,5 @@
 import { Button } from '@atoms/Button';
-import { IconButton } from '@atoms/IconButton';
 import { PlusIcon } from '@heroicons/react/solid';
-import { TrashIcon } from '@heroicons/react/outline';
 import { periodSelectors } from '@recoil/periodState';
 import { SideMenuPeriodItem } from '@molecules/SideMenuPeriodItem';
 

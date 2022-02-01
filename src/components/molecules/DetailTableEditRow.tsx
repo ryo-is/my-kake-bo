@@ -64,9 +64,9 @@ const DetailTableEditRowBase = ({
           options={options}
         />
       </td>
-      <td width="40%" className="py-2 px-1 border-b border-gray-400">
+      {/* <td width="40%" className="py-2 px-1 border-b border-gray-400">
         <Input value={place} onChange={handleChangePlace} />
-      </td>
+      </td> */}
       <td width="25%" className="py-2 px-1 border-b border-gray-400">
         <Input value={money} onChange={handleChangeMoney} />
       </td>

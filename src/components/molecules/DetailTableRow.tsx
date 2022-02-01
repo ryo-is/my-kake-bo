@@ -67,11 +67,11 @@ const DetailTableRowBase = ({ log, selectDate }: Props) => {
             text={getCategory()}
             addClass="border-b border-gray-400"
           />
-          <TableCol
+          {/* <TableCol
             width="35%"
             text={log.place}
             addClass="border-b border-gray-400"
-          />
+          /> */}
           <TableCol
             width="20%"
             text={getMoney()}
