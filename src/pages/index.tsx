@@ -2,6 +2,7 @@ import { VFC, useEffect } from 'react';
 import dayjs from 'dayjs';
 import { useDate } from '@hooks/useDate';
 import { useLogs } from '@hooks/useLogs';
+import { usePeriods } from '@hooks/usePeriods';
 import { useIncomes } from '@hooks/useIncomes';
 import { Calendar } from '@templates/Calendar';
 import { Detail } from '@templates/Detail';
@@ -21,10 +22,12 @@ const Index: VFC<{}> = () => {
   } = useDate();
   const { getLogs } = useLogs();
   const { getIncomes } = useIncomes();
+  const { getPeriods } = usePeriods();
 
   useEffect(() => {
     getLogs(dayjs(selectMonth).format('YYYY-MM-DD'));
     getIncomes(dayjs(selectMonth).format('YYYY-MM-DD'));
+    getPeriods();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
