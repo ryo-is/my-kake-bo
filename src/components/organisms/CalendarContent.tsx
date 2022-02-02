@@ -16,11 +16,7 @@ export const CalendarContent = ({
 }: Props) => {
   return (
     <>
-      <CalendarHeader
-        selectMonth={selectMonth}
-        prevMonth={prevMonth}
-        nextMonth={nextMonth}
-      />
+      <CalendarHeader />
       <CalendarDayOfWeek />
       <CalendarDays
         selectMonth={selectMonth}

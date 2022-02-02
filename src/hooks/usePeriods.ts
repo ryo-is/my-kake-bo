@@ -1,13 +1,15 @@
-import { apiHelper } from '@infrastructures/helper';
+// import { apiHelper } from '@infrastructures/helper';
 import { useSetRecoilState } from 'recoil';
 import { periodState, Period } from '@recoil/periodState';
+import { selectedPeriodStates } from '@recoil/selectedPeriodState';
 
 export interface IUsePeriods {
   getPeriods: () => Promise<void>;
 }
 
 export const usePeriods = (): IUsePeriods => {
-  const setState = useSetRecoilState(periodState);
+  const setPeriodState = useSetRecoilState(periodState);
+  const [, setSelectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
 
   const getPeriods = async () => {
     try {
@@ -88,9 +90,22 @@ export const usePeriods = (): IUsePeriods => {
           endDate: '2022-12-23',
         },
       ];
-      setState({
-        periods,
-      });
+      const latestSelectedPeriodID = localStorage.getItem(
+        'latestSelectedPeriodID'
+      );
+      if (latestSelectedPeriodID) {
+        const idx = periods.findIndex(
+          (p) => p.docID === latestSelectedPeriodID
+        );
+        if (idx >= 0) {
+          setSelectedPeriod(periods[idx]);
+        } else {
+          setSelectedPeriod(periods[0]);
+        }
+      } else {
+        setSelectedPeriod(periods[0]);
+      }
+      setPeriodState({ periods });
     } catch (e) {
       console.error(e);
     }
