@@ -4,12 +4,12 @@ import { useDate } from '@hooks/useDate';
 import { useLogs } from '@hooks/useLogs';
 import { usePeriods } from '@hooks/usePeriods';
 import { useIncomes } from '@hooks/useIncomes';
+import { SideMenu } from '@templates/SideMenu';
 import { Calendar } from '@templates/Calendar';
 import { Detail } from '@templates/Detail';
 import { Analytics } from '@templates/Analytics';
 import { Incomes } from '@templates/Incomes';
-import { Graph } from '@templates/Graph';
-import { SideMenu } from '@templates/SideMenu';
+// import { Graph } from '@templates/Graph';
 
 const Index: VFC<{}> = () => {
   const {
@@ -51,7 +51,7 @@ const Index: VFC<{}> = () => {
         <div className="w-1/3 p-3">
           <Detail selectDate={selectDate} />
           <Incomes />
-          <Graph />
+          {/* <Graph /> */}
         </div>
       </div>
     </div>
