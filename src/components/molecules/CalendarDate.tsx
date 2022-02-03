@@ -22,12 +22,29 @@ const CalendarDateBase = ({ day, selectDetailDate, log }: Props) => {
   const [selectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const totalMoney = () => {
+  const totalInMoney = () => {
     if (!log) {
       return '0円';
     }
     let total = 0;
-    log.forEach((l) => (total += l.money));
+    log.forEach((l) => {
+      if (l.type === 'in') {
+        total += l.money;
+      }
+    });
+    return `${total.toLocaleString()}円`;
+  };
+
+  const totalOutMoney = () => {
+    if (!log) {
+      return '0円';
+    }
+    let total = 0;
+    log.forEach((l) => {
+      if (l.type === 'out') {
+        total += l.money;
+      }
+    });
     return `${total.toLocaleString()}円`;
   };
 
@@ -57,10 +74,13 @@ const CalendarDateBase = ({ day, selectDetailDate, log }: Props) => {
         onClick={() => handleClickDate()}
       >
         <div className="absolute top-2 left-2">{day.format('D')}</div>
-        <div className="absolute bottom-2 right-2">{totalMoney()}</div>
+        <div className="absolute bottom-2 right-2 text-sm text-right">
+          <div className="text-blue-700">{totalInMoney()}</div>
+          <div className="text-red-700">{totalOutMoney()}</div>
+        </div>
       </div>
       <ModalContent isModalOpen={isOpen} setIsModalOpen={setIsOpen}>
-        <SelectDateLogEdit selectDate={day} />
+        <SelectDateLogEdit selectDate={day} setIsOpen={setIsOpen} />
       </ModalContent>
     </CalendarCellBox>
   );
