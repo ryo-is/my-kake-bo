@@ -1,15 +1,17 @@
 import { useState, ChangeEvent } from 'react';
 import { apiHelper } from '@infrastructures/helper';
-import { v4 as uuidv4 } from 'uuid';
+import { Log } from '@recoil/logState';
 
-export type Log = {
-  docID?: string;
-  uuid: string;
-  category: string;
-  place: string;
-  money: number;
-  date: string;
-};
+export const categories = [
+  { value: '', text: '', type: 'out' },
+  { value: 'food', text: '食費', type: 'out' },
+  { value: 'miscellaneous', text: '雑費', type: 'out' },
+  { value: 'eatingout', text: '外食', type: 'out' },
+  { value: 'credit', text: 'クレジットカード', type: 'out' },
+  { value: 'bank', text: '銀行引き落とし', type: 'out' },
+  { value: 'ryoIncome', text: 'りょう 収入', type: 'in' },
+  { value: 'shiIncome', text: 'しほ 収入', type: 'in' },
+];
 
 export interface IUseDetailData {
   category: string;
@@ -28,9 +30,15 @@ export const useDetailData = (): IUseDetailData => {
   const [category, setCategory] = useState<string>('');
   const [place, setPlace] = useState<string>('');
   const [money, setMoney] = useState<number>(0);
+  const [type, setType] = useState<string>('');
 
   const handleChangeCategory = (event: ChangeEvent<HTMLSelectElement>) => {
-    setCategory(event.target.value);
+    const value = event.target.value;
+    const type = categories.find((c) => c.value === value)?.type;
+    if (type) {
+      setType(type);
+    }
+    setCategory(value);
   };
 
   const handleChangePlace = (event: ChangeEvent<HTMLInputElement>) => {
@@ -52,11 +60,11 @@ export const useDetailData = (): IUseDetailData => {
       await apiHelper.post<Log>({
         path: '/api/logs',
         body: {
-          uuid: uuidv4(),
           category,
           place,
           money,
           date,
+          type,
         },
       });
     } catch (e) {

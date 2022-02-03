@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import { CalendarCellBox } from '@atoms/CalendarCellBox';
 import { IUseDate } from '@hooks/useDate';
-import { Log } from '@hooks/useDetailData';
+import { Log } from '@recoil/logState';
 import { selectedPeriodStates } from '@recoil/selectedPeriodState';
+import { ModalContent } from '@organisms/ModalContent';
+import { SelectDateLogEdit } from '@molecules/SelectDateLogEdit';
 
 dayjs.extend(isBetween);
 
@@ -18,6 +20,7 @@ type Props = {
 
 const CalendarDateBase = ({ day, selectDetailDate, log }: Props) => {
   const [selectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const totalMoney = () => {
     if (!log) {
@@ -43,6 +46,7 @@ const CalendarDateBase = ({ day, selectDetailDate, log }: Props) => {
     const end = dayjs(selectedPeriod.endDate).add(1, 'd');
     if (day.isBetween(start, end)) {
       selectDetailDate(day);
+      setIsOpen(true);
     }
   };
 
@@ -55,6 +59,9 @@ const CalendarDateBase = ({ day, selectDetailDate, log }: Props) => {
         <div className="absolute top-2 left-2">{day.format('D')}</div>
         <div className="absolute bottom-2 right-2">{totalMoney()}</div>
       </div>
+      <ModalContent isModalOpen={isOpen} setIsModalOpen={setIsOpen}>
+        <SelectDateLogEdit selectDate={day} />
+      </ModalContent>
     </CalendarCellBox>
   );
 };

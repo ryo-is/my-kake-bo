@@ -17,8 +17,8 @@ type SeletedPeriodStates = {
 
 const initialState: SelectedPeriod = {
   name: '',
-  startDate: '1970-01-01',
-  endDate: '1970-12-31',
+  startDate: '',
+  endDate: '',
 };
 
 export const selectedPeriodState = atom<SelectedPeriod>({

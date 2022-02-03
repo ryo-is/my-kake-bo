@@ -3,11 +3,11 @@ import { RecoilAtomKeys, RecoilSelectorKeys } from './keys';
 
 export type Log = {
   docID?: string;
-  uuid: string;
   category: string;
   place: string;
   money: number;
   date: string;
+  type: string;
 };
 
 type AnalyticsData = {

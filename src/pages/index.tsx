@@ -1,5 +1,4 @@
 import { VFC, useEffect } from 'react';
-import dayjs from 'dayjs';
 import { useDate } from '@hooks/useDate';
 import { usePeriods } from '@hooks/usePeriods';
 import { SideMenu } from '@templates/SideMenu';

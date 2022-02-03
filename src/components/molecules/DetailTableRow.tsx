@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import { TableCol } from '@atoms/TableCol';
-import { Log, useDetailData } from '@hooks/useDetailData';
-import { IUseDate } from '@hooks/useDate';
+import { Log } from '@recoil/logState';
+import { useDetailData, categories } from '@hooks/useDetailData';
 import { PencilIcon } from '@heroicons/react/solid';
 import { TrashIcon } from '@heroicons/react/outline';
 import { IconButton } from '@atoms/IconButton';
@@ -20,14 +20,7 @@ const DetailTableRowBase = ({ log }: Props) => {
   const [selectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
 
   const getCategory = () => {
-    const categories: { [k: string]: string } = {
-      food: '食費',
-      miscellaneous: '雑費',
-      eatingout: '外食',
-      other: 'その他',
-      total: '合計',
-    };
-    return categories[log.category] ? categories[log.category] : '';
+    return categories.find((c) => c.value === log.category)?.text || '';
   };
 
   const getMoney = () => {

@@ -1,23 +1,17 @@
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 import { SaveIcon } from '@heroicons/react/solid';
 import { XCircleIcon } from '@heroicons/react/outline';
-import { Log } from '@hooks/useDetailData';
+import { Log } from '@recoil/logState';
 import { IconButton } from '@atoms/IconButton';
 import { Select } from '@atoms/Select';
 import { Input } from '@atoms/Input';
+import { categories } from '@hooks/useDetailData';
 
 type Props = {
   log: Log;
   handleUpdateClick: (log: Log) => void;
   handleCancel: () => void;
 };
-
-const options = [
-  { value: '', text: '' },
-  { value: 'food', text: '食費' },
-  { value: 'miscellaneous', text: '雑費' },
-  { value: 'other', text: 'その他' },
-];
 
 const DetailTableEditRowBase = ({
   log,
@@ -32,9 +26,9 @@ const DetailTableEditRowBase = ({
     setCategory(event.target.value);
   };
 
-  const handleChangePlace = (event: ChangeEvent<HTMLInputElement>) => {
-    setPlace(event.target.value);
-  };
+  // const handleChangePlace = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setPlace(event.target.value);
+  // };
 
   const handleChangeMoney = (event: ChangeEvent<HTMLInputElement>) => {
     setMoney(Number(event.target.value));
@@ -61,7 +55,7 @@ const DetailTableEditRowBase = ({
         <Select
           value={category}
           onChange={handleChangeCategory}
-          options={options}
+          options={categories}
         />
       </td>
       {/* <td width="40%" className="py-2 px-1 border-b border-gray-400">
