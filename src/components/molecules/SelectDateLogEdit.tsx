@@ -29,7 +29,9 @@ export const SelectDateLogEdit = ({
 
   return (
     <div className="relative p-4">
-      <div className="text-xl">{selectDate.format('YYYY-MM-DD')}の収支</div>
+      <div className="text-xl pb-2">
+        {selectDate.format('YYYY-MM-DD')}の収支
+      </div>
       <IconButton
         handleClick={() => setIsOpen(false)}
         addClass="text-gray-700 absolute top-2 right-2"
