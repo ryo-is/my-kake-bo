@@ -7,6 +7,7 @@ import { IconButton } from '@atoms/IconButton';
 import { Select } from '@atoms/Select';
 import { Input } from '@atoms/Input';
 import { useLogs } from '@hooks/useLogs';
+import { selectedPeriodStates } from '@recoil/selectedPeriodState';
 
 type Props = {
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
@@ -42,10 +43,14 @@ const DetailTableNewRowBase = ({
   selectDate,
 }: Props) => {
   const { getLogs } = useLogs();
+  const [selectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
 
   const handleSaveClick = async () => {
     await setLog(selectDate.format('YYYY-MM-DD'));
-    await getLogs(selectDate.format('YYYY-MM-DD'));
+    await getLogs({
+      start: selectedPeriod.startDate,
+      end: selectedPeriod.endDate,
+    });
     setIsAddRowMode(false);
   };
 

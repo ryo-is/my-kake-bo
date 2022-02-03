@@ -42,7 +42,7 @@ const DetailTableBodyBase = ({
   return (
     <tbody>
       {getSelectDateLogs().map((l) => (
-        <DetailTableRow key={l.uuid} log={l} selectDate={selectDate} />
+        <DetailTableRow key={l.uuid} log={l} />
       ))}
       {isAddRowMode && (
         <DetailTableNewRow

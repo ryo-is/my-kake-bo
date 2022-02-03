@@ -7,16 +7,17 @@ import { TrashIcon } from '@heroicons/react/outline';
 import { IconButton } from '@atoms/IconButton';
 import { DetailTableEditRow } from '@molecules/DetailTableEditRow';
 import { useLogs } from '@hooks/useLogs';
+import { selectedPeriodStates } from '@recoil/selectedPeriodState';
 
 type Props = {
   log: Log;
-  selectDate: IUseDate['selectDate'];
 };
 
-const DetailTableRowBase = ({ log, selectDate }: Props) => {
+const DetailTableRowBase = ({ log }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const { updateLog, deleteLog } = useDetailData();
   const { getLogs } = useLogs();
+  const [selectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
 
   const getCategory = () => {
     const categories: { [k: string]: string } = {
@@ -39,7 +40,10 @@ const DetailTableRowBase = ({ log, selectDate }: Props) => {
 
   const handleUpdateClick = async (log: Log) => {
     await updateLog(log);
-    await getLogs(selectDate.format('YYYY-MM-DD'));
+    await getLogs({
+      start: selectedPeriod.startDate,
+      end: selectedPeriod.endDate,
+    });
     setIsEdit(false);
   };
 
@@ -48,7 +52,10 @@ const DetailTableRowBase = ({ log, selectDate }: Props) => {
       const result = window.confirm('削除しますか？');
       if (result) {
         await deleteLog(log.docID);
-        await getLogs(selectDate.format('YYYY-MM-DD'));
+        await getLogs({
+          start: selectedPeriod.startDate,
+          end: selectedPeriod.endDate,
+        });
       }
     }
     setIsEdit(false);

@@ -1,26 +1,16 @@
 import { apiHelper } from '@infrastructures/helper';
-import dayjs from 'dayjs';
 import { useSetRecoilState } from 'recoil';
 import { logState, Log } from '@recoil/logState';
 
 export interface IUseLogs {
-  getLogs: (date: string) => Promise<void>;
+  getLogs: (p: { start: string; end: string }) => Promise<void>;
 }
 
 export const useLogs = (): IUseLogs => {
   const setState = useSetRecoilState(logState);
 
-  const getLogs = async (date: string) => {
+  const getLogs = async ({ start, end }: { start: string; end: string }) => {
     try {
-      const dateNumber = dayjs(date).get('date');
-      const start =
-        dateNumber < 25
-          ? dayjs(date).subtract(1, 'M').format('YYYY-MM-25')
-          : dayjs(date).format('YYYY-MM-25');
-      const end =
-        dateNumber < 25
-          ? dayjs(date).format('YYYY-MM-24')
-          : dayjs(date).add(1, 'M').format('YYYY-MM-24');
       const res = await apiHelper.get<{ [date: string]: Log[] }>({
         path: `/api/logs?start=${start}&end=${end}`,
       });

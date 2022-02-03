@@ -1,30 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState, memo } from 'react';
+import { memo } from 'react';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import { CalendarCellBox } from '@atoms/CalendarCellBox';
 import { IUseDate } from '@hooks/useDate';
 import { Log } from '@hooks/useDetailData';
+import { selectedPeriodStates } from '@recoil/selectedPeriodState';
 
 dayjs.extend(isBetween);
 
 type Props = {
   day: dayjs.Dayjs;
-  selectMonth: IUseDate['selectMonth'];
-  selectDate: IUseDate['selectDate'];
   selectDetailDate: IUseDate['selectDetailDate'];
   log: Log[];
 };
 
-const CalendarDateBase = ({
-  day,
-  selectMonth,
-  selectDate,
-  selectDetailDate,
-  log,
-}: Props) => {
-  const [bindStyles, setBindStyles] = useState<string[]>([]);
+const CalendarDateBase = ({ day, selectDetailDate, log }: Props) => {
+  const [selectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
 
   const totalMoney = () => {
     if (!log) {
@@ -36,8 +29,8 @@ const CalendarDateBase = ({
   };
 
   const isBetweenDate = (day: dayjs.Dayjs) => {
-    const start = selectMonth.subtract(1, 'M').set('date', 24);
-    const end = selectMonth.set('date', 25);
+    const start = dayjs(selectedPeriod.startDate).subtract(1, 'd');
+    const end = dayjs(selectedPeriod.endDate).add(1, 'd');
     if (!day.isBetween(start, end)) {
       return 'opacity-0';
     } else {
@@ -46,33 +39,17 @@ const CalendarDateBase = ({
   };
 
   const handleClickDate = () => {
-    const start = selectMonth.subtract(1, 'M').set('date', 24);
-    const end = selectMonth.set('date', 25);
+    const start = dayjs(selectedPeriod.startDate).subtract(1, 'd');
+    const end = dayjs(selectedPeriod.endDate).add(1, 'd');
     if (day.isBetween(start, end)) {
       selectDetailDate(day);
     }
   };
 
-  useEffect(() => {
-    const newStyles = [];
-    if (day.format('YYYY-MM-DD') === selectDate.format('YYYY-MM-DD')) {
-      newStyles.push('bg-blue-500 text-white');
-    } else {
-      newStyles.push('hover:bg-blue-100');
-    }
-    setBindStyles([...newStyles]);
-  }, [selectDate]);
-
   return (
     <CalendarCellBox key={`day-${day.format('YYYY-MM-DD')}`}>
       <div
-        className={clsx(
-          'w-full',
-          'relative',
-          'p-12',
-          isBetweenDate(day),
-          ...bindStyles
-        )}
+        className={clsx('w-full', 'relative', 'p-12', isBetweenDate(day))}
         onClick={() => handleClickDate()}
       >
         <div className="absolute top-2 left-2">{day.format('D')}</div>

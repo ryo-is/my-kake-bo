@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { incomeSelectors } from '@recoil/incomeState';
 import { logSelectors } from '@recoil/logState';
 import {
   ResponsiveContainer,
@@ -23,11 +21,6 @@ const demoChartData = [
 
 export const GraphBarChart = () => {
   const analyticsData = logSelectors.useAnalytics();
-  const incomes = incomeSelectors.useIncomes();
-
-  useEffect(() => {
-    console.log(incomes);
-  }, [incomes]);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
