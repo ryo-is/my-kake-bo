@@ -19,17 +19,25 @@ export const useLogs = (): IUseLogs => {
       const analyticsData = {
         food: 0,
         miscellaneous: 0,
-        other: 0,
         eatingout: 0,
+        credit: 0,
+        bank: 0,
         total: 0,
       };
       Object.keys(logs).forEach((key) => {
         const log = logs[key];
         log.forEach((l) => {
           analyticsData[
-            l.category as 'food' | 'miscellaneous' | 'eatingout' | 'other'
+            l.category as
+              | 'food'
+              | 'miscellaneous'
+              | 'eatingout'
+              | 'credit'
+              | 'bank'
           ] += l.money;
-          analyticsData.total += l.money;
+          if (l.type === 'out') {
+            analyticsData.total += l.money;
+          }
         });
       });
       setState({
