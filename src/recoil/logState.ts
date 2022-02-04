@@ -17,6 +17,7 @@ type AnalyticsData = {
   credit: number;
   bank: number;
   total: number;
+  income: number;
 };
 
 export type LogsState = {
@@ -38,6 +39,7 @@ const initialState: LogsState = {
     bank: 0,
     eatingout: 0,
     total: 0,
+    income: 0,
   },
 };
 

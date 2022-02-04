@@ -23,6 +23,7 @@ export const useLogs = (): IUseLogs => {
         credit: 0,
         bank: 0,
         total: 0,
+        income: 0,
       };
       Object.keys(logs).forEach((key) => {
         const log = logs[key];
@@ -37,6 +38,8 @@ export const useLogs = (): IUseLogs => {
           ] += l.money;
           if (l.type === 'out') {
             analyticsData.total += l.money;
+          } else {
+            analyticsData.income += l.money;
           }
         });
       });
