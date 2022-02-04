@@ -1,5 +1,4 @@
 import { AnalyticsContent } from '@organisms/AnalyticsContent';
-import { IUseDate } from '@hooks/useDate';
 
 export const Analytics = () => {
   return (

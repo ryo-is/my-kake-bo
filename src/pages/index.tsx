@@ -4,6 +4,7 @@ import { usePeriods } from '@hooks/usePeriods';
 import { SideMenu } from '@templates/SideMenu';
 import { Calendar } from '@templates/Calendar';
 import { Analytics } from '@templates/Analytics';
+import { Timeline } from '@templates/Timeline';
 
 const Index: VFC<{}> = () => {
   const { selectDate, selectDetailDate } = useDate();
@@ -24,7 +25,9 @@ const Index: VFC<{}> = () => {
           <Calendar selectDetailDate={selectDetailDate} />
           <Analytics />
         </div>
-        <div className="w-1/3 p-3"></div>
+        <div className="w-1/3 p-3">
+          <Timeline />
+        </div>
       </div>
     </div>
   );
