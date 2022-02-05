@@ -12,7 +12,7 @@ export const SelectBase = ({ value, onChange, options }: Props) => {
     <div className="inline-block relative w-full">
       <div className="inline-block relative w-full">
         <select
-          className="block appearance-none w-full bg-gray-50 border-2 border-gray-400 p-1 rounded-sm leading-tight focus:outline-none cursor-pointer"
+          className="block appearance-none w-full bg-gray-50 border-2 border-gray-400 px-1 py-2 rounded leading-tight focus:outline-none cursor-pointer"
           value={value}
           onChange={(e) => onChange(e)}
         >

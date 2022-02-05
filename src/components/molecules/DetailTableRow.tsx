@@ -65,7 +65,7 @@ const DetailTableRowBase = ({ log }: Props) => {
           <TableCol
             width="25%"
             text={getCategory()}
-            addClass="border-b border-gray-400"
+            addClass="border-b border-gray-400 pl-2"
           />
           {/* <TableCol
             width="35%"
@@ -77,8 +77,8 @@ const DetailTableRowBase = ({ log }: Props) => {
             text={getMoney()}
             addClass="border-b border-gray-400"
           />
-          <td className="border-b border-gray-400">
-            <div className="flex justify-center">
+          <td className="border-b border-gray-400 pr-2">
+            <div className="flex justify-end">
               <IconButton
                 handleClick={handleClickEdit}
                 addClass="text-gray-700"

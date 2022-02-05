@@ -26,7 +26,7 @@ const DetailTableHeaderBase = ({
         <TableCol
           width="40%"
           text="カテゴリー"
-          addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
+          addClass="sticky top-0 border-b border-gray-400 bg-gray-100 pl-2"
         />
         {/* <TableCol
           width="35%"
@@ -38,7 +38,7 @@ const DetailTableHeaderBase = ({
           text="金額"
           addClass="sticky top-0 border-b border-gray-400 bg-gray-100"
         />
-        <td className="mt-1 sticky top-0 border-b border-gray-400 bg-gray-100">
+        <td className="mt-1 sticky top-0 border-b border-gray-400 bg-gray-100 pr-1">
           {!isAddRowMode && (
             <Button
               handleClick={handleAddRowClick}

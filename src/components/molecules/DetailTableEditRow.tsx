@@ -51,7 +51,7 @@ const DetailTableEditRowBase = ({
 
   return (
     <tr className="text-sm">
-      <td width="25%" className="py-2 px-1 border-b border-gray-400">
+      <td width="25%" className="py-1 px-1 border-b border-gray-400">
         <Select
           value={category}
           onChange={handleChangeCategory}
@@ -61,11 +61,11 @@ const DetailTableEditRowBase = ({
       {/* <td width="40%" className="py-2 px-1 border-b border-gray-400">
         <Input value={place} onChange={handleChangePlace} />
       </td> */}
-      <td width="25%" className="py-2 px-1 border-b border-gray-400">
+      <td width="25%" className="py-1 px-1 border-b border-gray-400">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td className="py-2 border-b border-gray-400">
-        <div className="flex justify-center">
+      <td className="py-1 border-b border-gray-400 pr-2">
+        <div className="flex justify-end">
           <IconButton
             handleClick={submit}
             addClass="text-gray-700"

@@ -67,8 +67,8 @@ const DetailTableNewRowBase = ({
       <td width="25%" className="py-2 px-1">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td className="py-2">
-        <div className="flex justify-center">
+      <td className="py-2 pr-2">
+        <div className="flex justify-end">
           <IconButton
             handleClick={handleSaveClick}
             addClass="text-gray-700"

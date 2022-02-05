@@ -19,6 +19,7 @@ module.exports = {
       },
       height: {
         '5/12': '41.667%',
+        timeline: 'calc(100vh - 1.75rem)',
       },
       margin: {
         maincontent: '0 0 0 240px',
