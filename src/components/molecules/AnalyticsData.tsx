@@ -20,7 +20,8 @@ const AnalyticsDataBase = () => {
             category="eatingout"
             value={analyticsData.eatingout}
           />
-          <AnalyticsDataRow category="other" value={analyticsData.other} />
+          <AnalyticsDataRow category="credit" value={analyticsData.credit} />
+          <AnalyticsDataRow category="bank" value={analyticsData.bank} />
           <div className="w-full border-b-2 border-gray-400" />
           <AnalyticsDataRow category="total" value={analyticsData.total} />
         </div>

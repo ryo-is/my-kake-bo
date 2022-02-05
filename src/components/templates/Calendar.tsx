@@ -1,26 +1,12 @@
 import { IUseDate } from '@hooks/useDate';
 import { CalendarContent } from '@organisms/CalendarContent';
 
-type Props = IUseDate;
+type Props = { selectDetailDate: IUseDate['selectDetailDate'] };
 
-export const Calendar = ({
-  selectMonth,
-  selectDate,
-  prevMonth,
-  nextMonth,
-  selectDetailDate,
-  selectToday,
-}: Props) => {
+export const Calendar = ({ selectDetailDate }: Props) => {
   return (
     <div>
-      <CalendarContent
-        selectMonth={selectMonth}
-        selectDate={selectDate}
-        prevMonth={prevMonth}
-        nextMonth={nextMonth}
-        selectDetailDate={selectDetailDate}
-        selectToday={selectToday}
-      />
+      <CalendarContent selectDetailDate={selectDetailDate} />
     </div>
   );
 };

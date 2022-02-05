@@ -1,7 +1,13 @@
 import { memo } from 'react';
 
 type Props = {
-  category: 'food' | 'miscellaneous' | 'eatingout' | 'other' | 'total';
+  category:
+    | 'food'
+    | 'miscellaneous'
+    | 'eatingout'
+    | 'credit'
+    | 'bank'
+    | 'total';
   value: number;
 };
 
@@ -10,13 +16,14 @@ const AnalyticsDataRowBase = ({ category, value }: Props) => {
     food: '食費',
     miscellaneous: '雑費',
     eatingout: '外食',
-    other: 'その他',
+    credit: 'クレジットカード',
+    bank: '銀行引き落とし',
     total: '合計',
   };
 
   return (
     <div className="p-2 flex">
-      <div className="mx-2 w-24">{categories[category]}</div>
+      <div className="mx-2 w-36">{categories[category]}</div>
       <div>{value.toLocaleString()}円</div>
     </div>
   );

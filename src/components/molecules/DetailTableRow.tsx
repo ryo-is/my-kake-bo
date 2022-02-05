@@ -1,32 +1,26 @@
 import { memo, useState } from 'react';
 import { TableCol } from '@atoms/TableCol';
-import { Log, useDetailData } from '@hooks/useDetailData';
-import { IUseDate } from '@hooks/useDate';
+import { Log } from '@recoil/logState';
+import { useDetailData, categories } from '@hooks/useDetailData';
 import { PencilIcon } from '@heroicons/react/solid';
 import { TrashIcon } from '@heroicons/react/outline';
 import { IconButton } from '@atoms/IconButton';
 import { DetailTableEditRow } from '@molecules/DetailTableEditRow';
 import { useLogs } from '@hooks/useLogs';
+import { selectedPeriodStates } from '@recoil/selectedPeriodState';
 
 type Props = {
   log: Log;
-  selectDate: IUseDate['selectDate'];
 };
 
-const DetailTableRowBase = ({ log, selectDate }: Props) => {
+const DetailTableRowBase = ({ log }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const { updateLog, deleteLog } = useDetailData();
   const { getLogs } = useLogs();
+  const [selectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
 
   const getCategory = () => {
-    const categories: { [k: string]: string } = {
-      food: '食費',
-      miscellaneous: '雑費',
-      eatingout: '外食',
-      other: 'その他',
-      total: '合計',
-    };
-    return categories[log.category] ? categories[log.category] : '';
+    return categories.find((c) => c.value === log.category)?.text || '';
   };
 
   const getMoney = () => {
@@ -39,7 +33,10 @@ const DetailTableRowBase = ({ log, selectDate }: Props) => {
 
   const handleUpdateClick = async (log: Log) => {
     await updateLog(log);
-    await getLogs(selectDate.format('YYYY-MM-DD'));
+    await getLogs({
+      start: selectedPeriod.startDate,
+      end: selectedPeriod.endDate,
+    });
     setIsEdit(false);
   };
 
@@ -48,7 +45,10 @@ const DetailTableRowBase = ({ log, selectDate }: Props) => {
       const result = window.confirm('削除しますか？');
       if (result) {
         await deleteLog(log.docID);
-        await getLogs(selectDate.format('YYYY-MM-DD'));
+        await getLogs({
+          start: selectedPeriod.startDate,
+          end: selectedPeriod.endDate,
+        });
       }
     }
     setIsEdit(false);
@@ -65,20 +65,20 @@ const DetailTableRowBase = ({ log, selectDate }: Props) => {
           <TableCol
             width="25%"
             text={getCategory()}
-            addClass="border-b border-gray-400"
+            addClass="border-b border-gray-400 pl-2"
           />
-          <TableCol
+          {/* <TableCol
             width="35%"
             text={log.place}
             addClass="border-b border-gray-400"
-          />
+          /> */}
           <TableCol
             width="20%"
             text={getMoney()}
             addClass="border-b border-gray-400"
           />
-          <td className="border-b border-gray-400">
-            <div className="flex justify-center">
+          <td className="border-b border-gray-400 pr-2">
+            <div className="flex justify-end">
               <IconButton
                 handleClick={handleClickEdit}
                 addClass="text-gray-700"

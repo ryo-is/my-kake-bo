@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { firestore } from '@infrastructures/firestore';
-import { Log } from '@hooks/useDetailData';
+import { Log } from '@recoil/logState';
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,6 +11,9 @@ export default async function handler(
     case 'GET':
       try {
         const { start, end } = req.query;
+        if (!start || !end) {
+          return res.status(200).json({});
+        }
         const ref = await firestore
           .collection('logs')
           .where('date', '>=', start)
@@ -24,11 +27,11 @@ export default async function handler(
           }
           logs[data.date].push({
             docID: doc.id,
-            uuid: data.uuid,
             category: data.category,
             place: data.place,
             money: data.money,
             date: data.date,
+            type: data.type,
           });
         });
         return res.status(200).json(logs);

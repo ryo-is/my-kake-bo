@@ -14,9 +14,15 @@ module.exports = {
       width: {
         icon: '24px',
         '1/7': '14.285%',
+        sidemenu: '240px',
+        maincontent: 'calc(100vw - 240px)',
       },
       height: {
         '5/12': '41.667%',
+        timeline: 'calc(100vh - 1.75rem)',
+      },
+      margin: {
+        maincontent: '0 0 0 240px',
       },
     },
   },

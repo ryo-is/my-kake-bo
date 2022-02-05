@@ -3,19 +3,21 @@ import { RecoilAtomKeys, RecoilSelectorKeys } from './keys';
 
 export type Log = {
   docID?: string;
-  uuid: string;
   category: string;
   place: string;
   money: number;
   date: string;
+  type: string;
 };
 
 type AnalyticsData = {
   food: number;
   miscellaneous: number;
   eatingout: number;
-  other: number;
+  credit: number;
+  bank: number;
   total: number;
+  income: number;
 };
 
 export type LogsState = {
@@ -33,9 +35,11 @@ const initialState: LogsState = {
   analyticsData: {
     food: 0,
     miscellaneous: 0,
-    other: 0,
+    credit: 0,
+    bank: 0,
     eatingout: 0,
     total: 0,
+    income: 0,
   },
 };
 

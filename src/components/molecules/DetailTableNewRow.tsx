@@ -7,6 +7,8 @@ import { IconButton } from '@atoms/IconButton';
 import { Select } from '@atoms/Select';
 import { Input } from '@atoms/Input';
 import { useLogs } from '@hooks/useLogs';
+import { selectedPeriodStates } from '@recoil/selectedPeriodState';
+import { categories } from '@hooks/useDetailData';
 
 type Props = {
   setIsAddRowMode: Dispatch<SetStateAction<boolean>>;
@@ -21,14 +23,6 @@ type Props = {
   selectDate: IUseDate['selectDate'];
 };
 
-const options = [
-  { value: '', text: '' },
-  { value: 'food', text: '食費' },
-  { value: 'miscellaneous', text: '雑費' },
-  { value: 'eatingout', text: '外食' },
-  { value: 'other', text: 'その他' },
-];
-
 const DetailTableNewRowBase = ({
   setIsAddRowMode,
   category,
@@ -42,10 +36,14 @@ const DetailTableNewRowBase = ({
   selectDate,
 }: Props) => {
   const { getLogs } = useLogs();
+  const [selectedPeriod] = selectedPeriodStates.useSelectedPeriodState();
 
   const handleSaveClick = async () => {
     await setLog(selectDate.format('YYYY-MM-DD'));
-    await getLogs(selectDate.format('YYYY-MM-DD'));
+    await getLogs({
+      start: selectedPeriod.startDate,
+      end: selectedPeriod.endDate,
+    });
     setIsAddRowMode(false);
   };
 
@@ -60,17 +58,17 @@ const DetailTableNewRowBase = ({
         <Select
           value={category}
           onChange={handleChangeCategory}
-          options={options}
+          options={categories}
         />
       </td>
-      <td width="40%" className="py-2 px-1">
+      {/* <td width="40%" className="py-2 px-1">
         <Input value={place} onChange={handleChangePlace} />
-      </td>
+      </td> */}
       <td width="25%" className="py-2 px-1">
         <Input value={money} onChange={handleChangeMoney} />
       </td>
-      <td className="py-2">
-        <div className="flex justify-center">
+      <td className="py-2 pr-2">
+        <div className="flex justify-end">
           <IconButton
             handleClick={handleSaveClick}
             addClass="text-gray-700"
