@@ -8,7 +8,11 @@ export const categories = [
   { value: 'miscellaneous', text: '雑費', type: 'out' },
   { value: 'eatingout', text: '外食', type: 'out' },
   { value: 'credit', text: 'クレジットカード', type: 'out' },
-  { value: 'bank', text: '銀行引き落とし', type: 'out' },
+  { value: 'utility', text: '光熱費', type: 'out' },
+  { value: 'water', text: '水道', type: 'out' },
+  { value: 'mobile', text: '携帯電話', type: 'out' },
+  { value: 'rent', text: '家賃', type: 'out' },
+  { value: 'insurance', text: '保険', type: 'out' },
   { value: 'ryoIncome', text: 'りょう 収入', type: 'in' },
   { value: 'shiIncome', text: 'しほ 収入', type: 'in' },
 ];

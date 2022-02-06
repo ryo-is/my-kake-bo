@@ -10,12 +10,16 @@ export type Log = {
   type: string;
 };
 
-type AnalyticsData = {
+export type AnalyticsData = {
   food: number;
   miscellaneous: number;
   eatingout: number;
   credit: number;
-  bank: number;
+  utility: number;
+  water: number;
+  mobile: number;
+  rent: number;
+  insurance: number;
   total: number;
   income: number;
 };
@@ -30,17 +34,23 @@ type LogSelectors = {
   useAnalytics: () => AnalyticsData;
 };
 
+export const initialAnalyticsData = {
+  food: 0,
+  miscellaneous: 0,
+  eatingout: 0,
+  credit: 0,
+  utility: 0,
+  water: 0,
+  mobile: 0,
+  rent: 0,
+  insurance: 0,
+  total: 0,
+  income: 0,
+};
+
 const initialState: LogsState = {
   logs: {},
-  analyticsData: {
-    food: 0,
-    miscellaneous: 0,
-    credit: 0,
-    bank: 0,
-    eatingout: 0,
-    total: 0,
-    income: 0,
-  },
+  analyticsData: initialAnalyticsData,
 };
 
 export const logState = atom<LogsState>({

@@ -1,29 +1,26 @@
 import { memo } from 'react';
+import { categories } from '@hooks/useDetailData';
 
 type Props = {
-  category:
-    | 'food'
-    | 'miscellaneous'
-    | 'eatingout'
-    | 'credit'
-    | 'bank'
-    | 'total';
+  category: string;
   value: number;
 };
 
 const AnalyticsDataRowBase = ({ category, value }: Props) => {
-  const categories = {
-    food: '食費',
-    miscellaneous: '雑費',
-    eatingout: '外食',
-    credit: 'クレジットカード',
-    bank: '銀行引き落とし',
-    total: '合計',
+  const categoryText = () => {
+    if (category === 'total') {
+      return '合計';
+    }
+    const idx = categories.findIndex((c) => c.value === category);
+    if (idx >= 0) {
+      return categories[idx].text;
+    }
+    return '';
   };
 
   return (
-    <div className="p-2 flex">
-      <div className="mx-2 w-36">{categories[category]}</div>
+    <div className="p-1 flex text-sm">
+      <div className="mx-2 w-36">{categoryText()}</div>
       <div>{value.toLocaleString()}円</div>
     </div>
   );

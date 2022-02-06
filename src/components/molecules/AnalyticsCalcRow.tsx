@@ -13,7 +13,7 @@ const AnalyticsCalcRowBase = ({ labelKey, value }: Props) => {
   };
 
   return (
-    <div className="p-2 flex">
+    <div className="p-1 flex text-sm">
       <div className="mx-2 w-24">{labels[labelKey]}</div>
       <div>{value.toLocaleString()}円</div>
     </div>

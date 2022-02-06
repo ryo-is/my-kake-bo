@@ -1,30 +1,18 @@
 import clsx from 'clsx';
 import { Log } from '@recoil/logState';
+import { categories } from '@hooks/useDetailData';
 
 interface TimelineSectionCardProps {
   log: Log;
 }
 
 export const TimelineSectionCard = ({ log }: TimelineSectionCardProps) => {
-  const categoryToString = (value: string) => {
-    switch (value) {
-      case 'food':
-        return '食費';
-      case 'miscellaneous':
-        return '雑費';
-      case 'eatingout':
-        return '外食';
-      case 'credit':
-        return 'クレジットカード';
-      case 'bank':
-        return '銀行引き落とし';
-      case 'ryoIncome':
-        return 'りょう 収入';
-      case 'shiIncome':
-        return 'しほ 収入';
-      default:
-        return '';
+  const categoryText = (value: string) => {
+    const idx = categories.findIndex((c) => c.value === value);
+    if (idx >= 0) {
+      return categories[idx].text;
     }
+    return '';
   };
 
   const cardColor = (type: string) => {
@@ -41,7 +29,7 @@ export const TimelineSectionCard = ({ log }: TimelineSectionCardProps) => {
         cardColor(log.type)
       )}
     >
-      <div className="mb-1">{categoryToString(log.category)}</div>
+      <div className="mb-1">{categoryText(log.category)}</div>
       <div>{log.money.toLocaleString()}円</div>
     </div>
   );
